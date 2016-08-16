@@ -1,0 +1,31 @@
+{
+  "name": "seolondon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "python3 manage.py runserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nick-rogers@bitbucket.org/glendelm/seo-django.git"
+  },
+  "author": "Glendelm Design Limited",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/glendelm/seo-django#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-csslint": "^0.3.1",
+    "gulp-filter": "^4.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "run-sequence": "^1.2.2",
+    "semantic-ui": "^2.2.2"
+  }
+}
