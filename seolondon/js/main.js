@@ -1,3 +1,3 @@
-$(document).ready(() => {
-  console.log("TEST");
+$(document).ready(function ($) {
+  $('.my-slider').unslider();
 });
