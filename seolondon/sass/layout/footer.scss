@@ -1,0 +1,314 @@
+#footer {
+  background-color: $light-grey;
+
+  .social {
+    a {
+      font-size: 20px;
+      display: inline-block;
+      margin: 5px 0;
+    }
+    .scholars {
+      a {
+        color: $orange;
+      }
+    }
+    .careers {
+      a {
+        color: $teal;
+      }
+    }
+    .connect {
+      a {
+        color: $red;
+      }
+    }
+  }
+
+  a {
+    color: $blue;
+  }
+
+  padding-top: 5px;
+
+  .ui.grid {
+    margin-top: 0;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    @include not-computer {
+      justify-content: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      padding: 30px 0 0 0;
+
+      @include not-computer {
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 20px;
+        flex-basis: 100%;
+        justify-content: center;
+      }
+
+      li {
+        margin: 0;
+        display: inline-block;
+        font-size: 14px;
+      }
+    }
+
+    ul.breadcrumbs {
+      padding-top: 0;
+
+      @include mobile {
+        display: none;
+      }
+
+      @include tablet {
+        margin-bottom: 1rem;
+      }
+
+      li {
+        position: relative;
+        padding: 0 30px 0 0;
+        height: 36px;
+        line-height: 36px;
+
+        &:after {
+          display: block;
+          content: "\f105";
+          position: absolute;
+          top: 0;
+          right: 12px;
+          font-family: Icons;
+        }
+
+        &:last-child {
+          padding-right: 0;
+
+          &:after {
+            display: none;
+          }
+        }
+
+        &.logo {
+          display: block;
+          height: auto;
+
+          a {
+            display: block;
+          }
+
+          img {
+            width: 50px;
+            height: auto;
+            display: block;
+          }
+        }
+
+      }
+
+      img, object {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    ul.top-links {
+      padding-top: 0;
+
+      @include mobile {
+        justify-content: center;
+      }
+
+      li {
+        color: $very-dark-blue;
+        font-weight: 600;
+        padding: 0 0 0 30px;
+        text-align: center;
+
+        @include mobile {
+          padding: 10px;
+
+          &:first-child {
+            flex-basis: 100%;
+          }
+        }
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        a {
+          color: $very-dark-blue;
+
+          &:hover {
+            color: $blue;
+          }
+
+          .icon {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      margin: 2px 0;
+      padding: 0;
+    }
+  }
+
+  .middle.row {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    .social.links.dropdown.column {
+      a {
+        font-size: 1.4rem;
+        margin-right: 1rem;
+      }
+    }
+
+    @include mobile {
+      padding-top: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      > .column {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      > .dropdown.column {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: 1px solid $grey;
+
+        .title {
+          position: relative;
+          padding-top: 1rem;
+          padding-right: 2rem;
+          padding-bottom: 1rem;
+          margin: 0;
+          cursor: pointer;
+
+          &:after {
+            position: absolute;
+            right: 0.5em;
+            content: '\f107';
+            font-family: Icons;
+          }
+        }
+
+        .content {
+          display: none;
+          padding-bottom: 1rem;
+        }
+
+        &.open {
+          .title {
+            &:after {
+              content: '\f106';
+            }
+          }
+
+          .content {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  form {
+    .subscribe-footer {
+      display: flex;
+    }
+
+    .subscribe-sidebar {
+      display: none;
+    }
+
+    .mc4wp-form-fields {
+      input {
+        background-color: rgba(255, 255, 255, 0);
+        transition: all 0.35s ease;
+        border: 1px solid $grey;
+        padding: 5px 5px 5px 10px;
+        width: 100%;
+        outline: none;
+
+        &:focus {
+          background-color: rgba(255, 255, 255, 1);
+        }
+      }
+
+      .submit {
+        margin-left: -6px;
+        height: 34px;
+        width: 70px;
+        background-color: $light-blue;
+        border: 1px solid $light-blue;
+        border-radius: 0 3px 3px 0;
+        outline: none;
+
+        &:hover {
+          background-color: lighten($light-blue, 10%);
+          border-color: lighten($light-blue, 10%);
+        }
+
+        &:before {
+          font-family: Icons;
+          content: "\f1d9";
+          color: white;
+        }
+      }
+    }
+
+    .mc4wp-response {
+      margin-top: 1em;
+    }
+  }
+
+  .legals {
+    > .column {
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+    }
+
+    .mobile.logo {
+      width: 30px;
+    }
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  .small {
+    font-size: 11px;
+
+    .bottom-middle-links a {
+      padding: 0 8px;
+    }
+  }
+}

@@ -1,0 +1,193 @@
+.header {
+  width: 100%;
+  display: block;
+  position: relative;
+
+  .ui.secondary.menu {
+    background: white;
+    position: relative;
+    height: 75px;
+    margin: 0;
+
+    .logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+
+      &.selected {
+        a {
+          background: $accent;
+          color: #FFF;
+        }
+      }
+
+      a {
+        font-family: "Lato", sans-serif;
+        font-weight: 300 !important;
+        text-transform: uppercase;
+        background: #FFF;
+        opacity: 1;
+        transition: 0.3s ease all !important;
+        border-radius: 0 !important;
+        display: block;
+        padding: 10px 15px;
+        color: $black;
+
+        &:hover {
+          background: $accent;
+          color: #FFF;
+        }
+        &.search {
+          &:hover {
+            background: none;
+          }
+        }
+        &.fixed {
+          background: $accent;
+          color: #FFF;
+
+          margin-left: 10px;
+        }
+      }
+    }
+
+  }
+
+  h1, p {
+    color: #FFFFFF;
+  }
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    //background: rgba(0, 0, 0, 0.4);
+  }
+
+}
+
+// Slider
+
+.unslider {
+  position: relative;
+
+  .unslider-arrow {
+    color: rgba(0, 0, 0, 0);
+    top: 47%;
+    font-size: 0;
+
+    &:hover {
+      &:before {
+        opacity: 0.7;
+      }
+    }
+
+    &.next {
+      right: 40px;
+      &:before {
+        content: "\f138";
+        font-family: FontAwesome;
+        font-size: 40px;
+        color: white;
+      }
+    }
+
+    &.prev {
+      left: 40px;
+      &:before {
+        content: "\f137";
+        font-family: FontAwesome;
+        font-size: 40px;
+        color: white;
+      }
+    }
+  }
+
+  .unslider-nav {
+    margin-bottom: 30px;
+    li {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+    }
+  }
+}
+
+.masthead {
+
+  background-image: url('/static/img/header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 100%;
+
+  &.careers {
+
+    .grid {
+      padding-bottom: 25px;
+    }
+
+    .grid h1 span {
+      background-color: $teal;
+    }
+
+    .buttons {
+      padding-top: 200px !important;
+
+      .button {
+        display: block;
+        max-width: 175px;
+        margin-left: auto;
+        margin-bottom: 5px;
+        background-color: $teal !important;
+        color: white;
+      }
+    }
+
+
+  }
+
+  .grid {
+    padding: 100px 0;
+
+    h1 {
+      font-family: "Lato", sans-serif;
+      font-weight: 300 !important;
+      font-size: 35px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+      line-height: 50px;
+
+      span {
+        color: #FFF;
+        padding: 5px 15px;
+        background-color: $accent;
+      }
+
+    }
+
+    p {
+      font-family: "Lato", sans-serif;
+      font-weight: 400 !important;
+      font-size: 20px;
+      margin: 30px 0 35px;
+    }
+
+    .donate.button {
+      background: $orange !important;
+    }
+  }
+}

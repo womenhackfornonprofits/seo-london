@@ -1,0 +1,48 @@
+.section {
+  padding: 70px 0 !important;
+}
+
+.ui.primary.button {
+  background: $blue !important;
+}
+
+.ui.secondary.button {
+  background: $orange !important;
+}
+
+.ui.button {
+  border-radius: 0 !important;
+  opacity: 1;
+  transition: 0.3s ease opacity !important;
+  font-family: "Lato", sans-serif !important;
+  font-weight: 300 !important;
+  text-transform: uppercase !important;
+  padding: 12px 20px !important;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+.caps-title {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.teal {
+  color: $teal;
+}
+
+.white {
+  color: white;
+}
+
+.teal-background {
+  background-color: $teal;
+}

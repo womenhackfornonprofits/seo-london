@@ -1,0 +1,111 @@
+.infographic {
+  background: #f3f3f3;
+}
+
+.donations {
+  p {
+    margin: 50px 0 50px;
+  }
+}
+.services {
+
+  .scholars {
+    transition: 0.3s ease all !important;
+
+    img {
+      transition: 0.3s ease all !important;
+    }
+
+    .button {
+      background: $orange !important;
+    }
+
+    &:hover {
+      background: $orange;
+
+      p {
+        color: white;
+      }
+
+      img {
+        -webkit-filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1);
+      }
+
+      .button {
+        background: white !important;
+        color: $orange !important;
+      }
+    }
+  }
+
+  .careers {
+    transition: 0.3s ease all !important;
+
+    img {
+      transition: 0.3s ease all !important;
+    }
+
+    .button {
+      background: $teal !important;
+    }
+
+    &:hover {
+      background: $teal;
+
+      p {
+        color: white;
+      }
+
+      img {
+        -webkit-filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1);
+      }
+
+      .button {
+        background: white !important;
+        color: $teal !important;
+      }
+    }
+  }
+
+  .connect {
+    transition: 0.3s ease all !important;
+
+    img {
+      transition: 0.3s ease all !important;
+    }
+
+    .button {
+      background: $red !important;
+      transition: 0.3s ease all !important;
+    }
+
+    &:hover {
+      background: $red;
+
+      p {
+        color: white;
+      }
+
+      img {
+        -webkit-filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1);
+      }
+
+      .button {
+        background: white !important;
+        color: $red !important;
+      }
+    }
+  }
+
+  p {
+    margin: 25px 0;
+    height: 75px;
+  }
+
+  img {
+    height: 75px;
+  }
+}

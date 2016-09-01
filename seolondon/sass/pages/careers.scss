@@ -1,0 +1,59 @@
+.careers.how-we-work {
+
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  .training-item {
+
+    display: flex !important;
+    align-items: center;
+
+    margin-bottom: 30px !important;
+
+    img {
+      max-width: 40px !important;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      padding-left: 20px;
+    }
+
+  }
+
+}
+
+.industry-programmes {
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .ui.cards {
+
+
+    .card {
+      border-radius: 0;
+
+      .header {
+        font-weight: 400 !important;
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  .background-image {
+
+    img {
+      width: 80%;
+      margin-left: auto;
+      display: block;
+    }
+
+  }
+
+
+}
