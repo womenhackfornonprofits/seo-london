@@ -2,170 +2,168 @@
 {% load staticfiles %}
 <!doctype html>
 <html>
-    <head>
-        <title>{% block title %}This is my new project home page{% endblock title %}</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'dist/styles.min.css' %}" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
-        <script src="{% static 'dist/scripts.min.js' %}"></script>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        {% render_block "css" %}
-    </head>
-    <body>
-        {% cms_toolbar %}
-        <div class="header">
+<head>
+    <title>{% block title %}This is my new project home page{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/styles.min.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+    <script src="{% static 'dist/scripts.min.js' %}"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {% render_block "css" %}
+</head>
+<body>
+{% cms_toolbar %}
+<div class="header">
 
-            <div class="ui secondary menu">
-                <div class="ui grid container">
+    <div class="ui secondary menu">
+        <div class="ui grid container">
 
-                    <div class="logo item">
-                        <a href="/"><img src="/static/img/logo.png"></a>
-                    </div>
-
-                    <div class="right menu">
-                        <a href="/scholars" class="ui item">
-                            Scholars
-                        </a>
-                        <a href="/careers" class="ui item">
-                            Careers
-                        </a>
-                        <a href="/connect" class="ui item">
-                            Connect
-                        </a>
-                        <a href="/about" class="ui item">
-                            About Us
-                        </a>
-                        <a href="/work-with-us" class="ui item">
-                            Work With Us
-                        </a>
-                        <a class="ui item">
-                            Success Stories
-                        </a>
-                        <a href="/contact" class="ui item search">
-                            <i class="search icon"></i>
-                        </a>
-                        <a href="/contact" class="ui item fixed orange">
-                            Apply
-                        </a>
-                        <a href="/contact" class="ui item fixed red">
-                            Log In
-                        </a>
-                    </div>
-                </div>
+            <div class="logo item">
+                <a href="/"><img src="/static/img/logo.png"></a>
             </div>
-            <div class="ui grid container masthead middle aligned">
 
-                <div class="eight wide column">
-
-                    <h1>
-                        <span>We prepare talented</span><br><span>students from ethnic</span><br><span>minority or low</span><br><span>socioeconomic</span><br><span>backgrounds for career</span><br><span>success.</span>
-                    </h1>
-
-                    <a class="ui secondary donate button">Donate now</a>
-
-                </div>
-
+            <div class="right menu">
+                {% load menu_tags %}
+                <ul>
+                    {% show_menu 0 100 100 100 %}
+                    <li><a href="/contact" class="ui item search"><i class="search icon"></i></a></li>
+                    <li><a href="/contact" class="fixed">Apply</a></li>
+                    <li><a href="/contact" class="fixed">Log In</a></li>
+                </ul>
+                <!--<a href="/scholars" class="ui item">-->
+                <!--Scholars-->
+                <!--</a>-->
+                <!--<a href="/careers" class="ui item">-->
+                <!--Careers-->
+                <!--</a>-->
+                <!--<a href="/connect" class="ui item">-->
+                <!--Connect-->
+                <!--</a>-->
+                <!--<a href="/about" class="ui item">-->
+                <!--About Us-->
+                <!--</a>-->
+                <!--<a href="/work-with-us" class="ui item">-->
+                <!--Work With Us-->
+                <!--</a>-->
+                <!--<a class="ui item">-->
+                <!--Success Stories-->
+                <!--</a>-->
             </div>
+        </div>
+    </div>
+    <div class="ui grid container masthead middle aligned">
+
+        <div class="eight wide column">
+
+            <h1>
+                <span>We prepare talented</span><br><span>students from ethnic</span><br><span>minority or low</span><br><span>socioeconomic</span><br><span>backgrounds for career</span><br><span>success.</span>
+            </h1>
+
+            <a class="ui secondary donate button">Donate now</a>
 
         </div>
-        {% block content %}{% endblock content %}
 
-        <footer id="footer" class="site-footer" role="contentinfo">
-            <div class="ui vertically divided stackable grid container">
-                <div class="row">
-                    <div class="column top">
-                        <ul class="breadcrumbs">
-                            <li class="logo"><a href="/"><img width="100" height="68" src="/static/img/logo.png"></a></li>
-                            <li>Home</li>
-                        </ul>
-                        <ul class="top-links">
-                            <li><a href="tel:+44 (0)207 400 0400"><i class="call icon"></i> +44 (0)207 400 0400</a></li>
-                            <li><a class="message-us"><i class="mail outline icon"></i> Message us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="middle row">
-                    <div class="three wide dropdown column">
-                        <h5 class="title">Quick Links</h5>
+    </div>
 
-                        <div class="content">
-                            <ul id="footer" class="menu">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Apply to SEO</a></li>
-                                <li><a href="#">Join Our Team</a></li>
-                                <li><a href="#">Scholars</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Connect</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="three wide dropdown column">
-                        <h5 class="title">Social Media</h5>
+</div>
+{% block content %}{% endblock content %}
 
-                        <div class="content social">
-                            <ul>
-                                <li>Scholars</li>
-                                <li class="scholars"><a href="#"><i class="facebook square icon"></i></a>
-                                    <a href="#"><i class="twitter square icon"></i></a>
-                                    <a href="#"><i class="youtube square icon"></i></a>
-                                    <a href="#"><i class="instagram square icon"></i></a>
-                                    <a href="#"><i class="linkedin square icon"></i></a></li>
-                                <li>Careers</li>
-                                <li class="careers"><a href="#"><i class="facebook square icon"></i></a>
-                                    <a href="#"><i class="twitter square icon"></i></a>
-                                    <a href="#"><i class="youtube square icon"></i></a>
-                                    <a href="#"><i class="instagram square icon"></i></a>
-                                    <a href="#"><i class="linkedin square icon"></i></a></li>
-                                <li>Connect</li>
-                                <li class="connect"><a href="#"><i class="facebook square icon"></i></a>
-                                    <a href="#"><i class="twitter square icon"></i></a>
-                                    <a href="#"><i class="youtube square icon"></i></a>
-                                    <a href="#"><i class="instagram square icon"></i></a>
-                                    <a href="#"><i class="linkedin square icon"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="four wide dropdown column">
-                        <h5 class="title">Find Us</h5>
+<footer id="footer" class="site-footer" role="contentinfo">
+    <div class="ui vertically divided stackable grid container">
+        <div class="row">
+            <div class="column top">
+                <ul class="breadcrumbs">
+                    <li class="logo"><a href="/"><img width="100" height="68" src="/static/img/logo.png"></a></li>
+                    <li>Home</li>
+                </ul>
+                <ul class="top-links">
+                    <li><a href="tel:+44 (0)207 400 0400"><i class="call icon"></i> +44 (0)207 400 0400</a></li>
+                    <li><a class="message-us"><i class="mail outline icon"></i> Message us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="middle row">
+            <div class="three wide dropdown column">
+                <h5 class="title">Quick Links</h5>
 
-                        <div class="content">
-                            <ul>
-                                <li>18-21 Hand Court</li>
-                                <li>London</li>
-                                <li>WC1V 6JF</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="six wide column">
-                        <h5>Subscribe</h5>
-
-                        <p>Sign up to our newsletter to receive continued support and information.</p>
-
-                        <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-92 mc4wp-ajax" method="post" data-id="92"
-                              data-name="Subscribe Footer">
-                            <div class="mc4wp-form-fields">
-                                <div class="subscribe-footer">
-                                    <input type="email" name="email" placeholder="Your Email">
-                                    <button class="submit"></button>
-                                </div>
-                                <div style="display: none;"><input type="text" name="_mc4wp_honeypot" value="" tabindex="-1"
-                                                                   autocomplete="off"></div>
-                                <input type="hidden" name="_mc4wp_timestamp" value="1472202159"><input type="hidden"
-                                                                                                       name="_mc4wp_form_id"
-                                                                                                       value="92"><input
-                                type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"></div>
-                            <div class="mc4wp-response"></div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row legals">
-                    <div class="four wide center aligned centered column small bottom-middle-links">
-                        © 2016 SEO London LTD | Reg. 012345678 | VAT. GB012345678
-                        <a href="/sitemap">Sitemap</a> ● <a href="/privacy-policy">Privacy Policy</a>
-                    </div>
+                <div class="content">
+                    <ul id="footer" class="menu">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Apply to SEO</a></li>
+                        <li><a href="#">Join Our Team</a></li>
+                        <li><a href="#">Scholars</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Connect</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            <div class="three wide dropdown column">
+                <h5 class="title">Social Media</h5>
 
-        {% render_block "js" %}
-    </body>
+                <div class="content social">
+                    <ul>
+                        <li>Scholars</li>
+                        <li class="scholars"><a href="#"><i class="facebook square icon"></i></a>
+                            <a href="#"><i class="twitter square icon"></i></a>
+                            <a href="#"><i class="youtube square icon"></i></a>
+                            <a href="#"><i class="instagram square icon"></i></a>
+                            <a href="#"><i class="linkedin square icon"></i></a></li>
+                        <li>Careers</li>
+                        <li class="careers"><a href="#"><i class="facebook square icon"></i></a>
+                            <a href="#"><i class="twitter square icon"></i></a>
+                            <a href="#"><i class="youtube square icon"></i></a>
+                            <a href="#"><i class="instagram square icon"></i></a>
+                            <a href="#"><i class="linkedin square icon"></i></a></li>
+                        <li>Connect</li>
+                        <li class="connect"><a href="#"><i class="facebook square icon"></i></a>
+                            <a href="#"><i class="twitter square icon"></i></a>
+                            <a href="#"><i class="youtube square icon"></i></a>
+                            <a href="#"><i class="instagram square icon"></i></a>
+                            <a href="#"><i class="linkedin square icon"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="four wide dropdown column">
+                <h5 class="title">Find Us</h5>
+
+                <div class="content">
+                    <ul>
+                        <li>18-21 Hand Court</li>
+                        <li>London</li>
+                        <li>WC1V 6JF</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="six wide column">
+                <h5>Subscribe</h5>
+
+                <p>Sign up to our newsletter to receive continued support and information.</p>
+
+                <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-92 mc4wp-ajax" method="post" data-id="92"
+                      data-name="Subscribe Footer">
+                    <div class="mc4wp-form-fields">
+                        <div class="subscribe-footer">
+                            <input type="email" name="email" placeholder="Your Email">
+                            <button class="submit"></button>
+                        </div>
+                        <div style="display: none;"><input type="text" name="_mc4wp_honeypot" value="" tabindex="-1"
+                                                           autocomplete="off"></div>
+                        <input type="hidden" name="_mc4wp_timestamp" value="1472202159"><input type="hidden"
+                                                                                               name="_mc4wp_form_id"
+                                                                                               value="92"><input
+                        type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"></div>
+                    <div class="mc4wp-response"></div>
+                </form>
+            </div>
+        </div>
+        <div class="row legals">
+            <div class="four wide center aligned centered column small bottom-middle-links">
+                © 2016 SEO London LTD | Reg. 012345678 | VAT. GB012345678
+                <a href="/sitemap">Sitemap</a> ● <a href="/privacy-policy">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% render_block "js" %}
+</body>
 </html>
