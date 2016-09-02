@@ -5,3 +5,8 @@ npm-debug.log
 .idea/
 project.db
 __pycache__/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
