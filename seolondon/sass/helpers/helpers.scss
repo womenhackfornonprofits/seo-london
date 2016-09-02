@@ -33,6 +33,10 @@
   font-weight: 300;
   font-size: 40px;
   text-transform: uppercase;
+
+  &.small {
+    font-size: 30px;
+  }
 }
 
 .teal {
@@ -45,4 +49,8 @@
 
 .teal-background {
   background-color: $teal;
+}
+
+.light {
+  font-weight: 300;
 }

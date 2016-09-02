@@ -1,11 +1,22 @@
-.careers.how-we-work {
-
+.careers {
 
   p {
     margin-bottom: 10px;
   }
 
-  .training-item {
+  .training-item, .support-item {
+
+    .number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid $teal;
+      text-align: center;
+      line-height: 35px;
+      font-family: "Lato", sans-serif;
+      font-weight: 600;
+      color: $teal;
+    }
 
     display: flex !important;
     align-items: center;
@@ -24,6 +35,14 @@
 
   }
 
+  .support-item {
+    .row {
+      width: 100%;
+      display: block;
+    }
+
+  }
+
 }
 
 .industry-programmes {
@@ -33,7 +52,6 @@
   }
 
   .ui.cards {
-
 
     .card {
       border-radius: 0;
@@ -55,5 +73,61 @@
 
   }
 
+}
+
+.careers.inner {
+
+  .sponsors.grid {
+    .column {
+      img {
+        max-width: 80%;
+        margin: 0 auto;
+        // Spacing
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  .divisions.grid {
+    p {
+      font-weight: 300;
+      color: $teal;
+      font-size: 20px;
+    }
+    ul {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      padding-left: 20px;
+
+      li {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .support.grid {
+    margin-top: 20px;
+
+    .column {
+
+      .support {
+        padding: 25px 20px;
+      }
+
+      &.inverted {
+
+        .support {
+          background: $teal;
+          color: white;
+
+          .number {
+            color: white;
+            border-color: white;
+          }
+        }
+      }
+
+    }
+  }
 
 }

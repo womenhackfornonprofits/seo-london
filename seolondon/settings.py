@@ -180,6 +180,7 @@ CMS_TEMPLATES = (
     ## Customize this
     ('homepage.html', 'Homepage'),
     ('careers.html', 'Careers Landing Page'),
+    ('careers-inner.html', 'Careers Inner Page'),
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right')
