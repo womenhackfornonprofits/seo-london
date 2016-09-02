@@ -6,7 +6,7 @@ const sequence = require('run-sequence').use(gulp);
 const gulpLoadPlugins = require('gulp-load-plugins');
 const $ = gulpLoadPlugins({
     rename: {
-        'gulp-minify-css': 'cssmin'
+        'gulp-clean-css': 'cssmin'
     }
 });
 
