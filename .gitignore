@@ -1,7 +1,6 @@
 node_modules/
 dist/
 npm-debug.log
-/seolondon/static/dist/
 .idea/
 project.db
 __pycache__/
