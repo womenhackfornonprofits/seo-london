@@ -1,0 +1,17 @@
+{% if instance.logoChoice == '1' %}
+<div class="logo item">
+    <a href="/"><img src="/static/img/logo-careers.png"></a>
+</div>
+{% elif instance.logoChoice == '2' %}
+<div class="logo item">
+    <a href="/"><img src="/static/img/logo-scholars.png"></a>
+</div>
+{% elif instance.logoChoice == '3' %}
+<div class="logo item">
+    <a href="/"><img src="/static/img/logo-connect.png"></a>
+</div>
+{% else %}
+<div class="logo item">
+    <a href="/"><img src="/static/img/logo.png"></a>
+</div>
+{% endif %}

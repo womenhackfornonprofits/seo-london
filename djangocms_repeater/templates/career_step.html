@@ -1,0 +1,16 @@
+{% if instance.description %}
+    <div class="column {% if instance.style == "b" %} inverted {% endif %} {% if instance.style == "o" %} inverted orangey {% endif %}">
+        <div class="support">
+            <div class="support-item">
+                <div class="number">{{ instance.number }}</div>
+                <span>{{ instance.title }}</span>
+            </div>
+            <p>{{ instance.description }}</p>
+        </div>
+    </div>
+{% else %}
+<div class="column training-item">
+    <div class="number">{{ instance.number }}</div>
+    <span>{{ instance.title }}</span>
+</div>
+{% endif %}

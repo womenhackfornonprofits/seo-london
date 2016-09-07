@@ -1,0 +1,16 @@
+{% load cms_tags %}
+
+{% for plugin in instance.child_plugin_instances %}
+
+    {% if instance.add_columns %}
+        <div class="column">
+    {% endif %}
+
+    {% render_plugin plugin %}
+
+    {% if instance.add_columns %}
+        </div>
+    {% endif %}
+
+{% endfor %}
+
