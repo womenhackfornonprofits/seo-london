@@ -4,7 +4,6 @@ from django.utils.encoding import python_2_unicode_compatible
 
 from cms.models import CMSPlugin
 
-@python_2_unicode_compatible
 class Repeater(CMSPlugin):
     repeater_name = models.CharField(max_length=50)
     add_columns = models.BooleanField(default=False)
