@@ -1,0 +1,77 @@
+#scholars-page {
+
+  .section {
+    h1 {
+      margin-bottom: 50px;
+      color: $orange;
+      text-transform:uppercase;
+      font-weight: 300;
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.8em;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        padding-left: 30px;
+        position: relative;
+        margin: 15px 0;
+
+        &:before {
+          position: absolute;
+          font-family: Icons;
+          content: "\f046";
+          color: $orange;
+          left: 0;
+          font-size: 20px;
+          top: 3px;
+        }
+      }
+    }
+
+    &.orange-background, &.teal-background {
+      h1 {
+        color: #FFF;
+      }
+
+      ul li:before {
+        color: #FFF;
+      }
+
+      p {
+        color: #FFF;
+      }
+
+      p a {
+        color: #FFF;
+        font-weight: 600;
+      }
+    }
+
+    &.logos {
+      img {
+        max-width: 80%;
+        margin: 20px auto;
+        display: block;
+      }
+    }
+
+    &.become {
+      li:before {
+        content: '\f10c';
+      }
+      ul + p {
+        margin: 25px 0;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,46 @@
+#connect-page {
+
+  h1 {
+    color: $red;
+    font-weight: 300;
+    font-size: 36px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-weight: 400;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      padding-left: 30px;
+      position: relative;
+      margin: 15px 0;
+
+      &:before {
+        position: absolute;
+        font-family: Icons;
+        content: "\f046";
+        color: $red;
+        left: 0;
+        font-size: 20px;
+        top: 3px;
+      }
+    }
+  }
+
+  .three.column.grid {
+    margin-top: 30px !important;
+  }
+
+  .contact-us {
+    h1 {
+      margin-bottom: 30px;
+    }
+  }
+
+}

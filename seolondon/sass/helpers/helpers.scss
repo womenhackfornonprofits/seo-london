@@ -10,6 +10,10 @@
   background: $orange !important;
 }
 
+.ui.red.button {
+  background: $red !important;
+}
+
 .ui.button {
   border-radius: 0 !important;
   opacity: 1;
@@ -49,6 +53,12 @@
 
 .teal-background {
   background-color: $teal;
+}
+
+.orange-background {
+  background-color: $orange;
+
+  color: #FFF;
 }
 
 .light {

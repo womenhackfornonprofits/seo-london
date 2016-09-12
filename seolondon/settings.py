@@ -182,6 +182,8 @@ CMS_TEMPLATES = (
     ('careers.html', 'Careers Landing Page'),
     ('careers-inner.html', 'Careers Inner Page'),
     ('scholars.html', 'Scholars Page'),
+    ('connect.html', 'Connect Page'),
+    ('faq.html', 'FAQ Page'),
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right')

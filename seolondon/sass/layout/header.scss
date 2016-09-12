@@ -159,6 +159,18 @@
   background-position: top;
   width: 100%;
 
+  &.connect {
+    .grid h1 span {
+      background-color: $red;
+    }
+  }
+
+  &.scholars {
+    .grid h1 span {
+      background-color: $orange;
+    }
+  }
+
   &.careers {
 
     .grid {
