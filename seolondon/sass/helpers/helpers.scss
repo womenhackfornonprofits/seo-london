@@ -61,6 +61,10 @@
   color: #FFF;
 }
 
+.grey-background {
+  background-color: $light-grey;
+}
+
 .light {
   font-weight: 300;
 }
@@ -71,4 +75,8 @@
 
 .center-align {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
 }

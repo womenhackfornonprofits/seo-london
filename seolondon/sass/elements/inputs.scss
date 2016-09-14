@@ -9,3 +9,11 @@
     }
   }
 }
+
+.ui.dropdown {
+  border-radius: 0 !important;
+
+  &:focus {
+    border-color: $teal;
+  }
+}

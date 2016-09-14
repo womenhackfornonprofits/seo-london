@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+
+<div class="masthead">
+
+    <div class="ui grid container middle aligned">
+
+        <div class="eight wide column">
+
+            <h1>
+                <span>We prepare talented</span><br><span>students from ethnic</span><br><span>minority or</span><br><span>disadvantaged</span><br><span>backgrounds for career</span><br><span>success.</span>
+            </h1>
+
+            <a class="ui secondary donate button">Donate now</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="who-we-support-page">
+    <div class="section">
+        <div class="ui grid container">
+            <div class="ten wide centered center aligned column">
+                <h1 class="teal">Who do we support?</h1>
+                <p>To receive our support, you must fit into one of our two beneficiary groups:</p>
+                <div class="ui grid">
+                    <div class="ten wide centered column">
+                        <ul class="text-left">
+                            <li>Students of black or minority ethnic origin</li>
+                            <li>Students of all ethnicities who meet our social mobility criteria*</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section grey-background">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="teal center-align">Social Mobility Criteria</h1>
+                <p>We support students who went to a selective or non-selective state-funded secondary school (i.e.
+                    non-fee paying) and were either:</p>
+                <ul>
+                    <li>Eligible for free school meals or some other form of income-related financial assistance</li>
+                    <li>The first generation of their immediate family to go to university</li>
+                    <li>Have been in care</li>
+                </ul>
+                <p>If none of the circumstances above apply to you, but you come from a low socio-economic background
+                    that has put you at a significant disadvantage, you will have the opportunity to tell us about this
+                    on your application form. <strong>We may need to ask you for other relevant information to be able
+                        to
+                        consider your application.</strong></p>
+
+                <p><strong>All of the information you provide will be treated confidentially and in line with data
+                    protection.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="center-align teal">Academic Eligibility</h1>
+                <p>This is for your guidance only as requirements may vary depending on industry or business area.</p>
+                <p>Please select the program you are interested in to determine your eligbility:</p>
+
+                <div class="ui grid">
+                    <div class="row margin">
+                        <div class="two wide middle aligned column">
+                            <p>Background:</p>
+                        </div>
+                        <div class="fourteen wide middle aligned column">
+                            <select name="programme" class="ui dropdown">
+                                <option value="">Background</option>
+                                <option value="AL">Undergraduate</option>
+                                <option value="AK">Postgraduate</option>
+                                <option value="AL">Undergraduate</option>
+                                <option value="AK">Postgraduate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="two wide middle aligned column">
+                            <p>Interested In:</p>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line">
+                            <select name="programme" class="ui dropdown">
+                                <option value="">Background</option>
+                                <option value="AL">Undergraduate</option>
+                                <option value="AK">Postgraduate</option>
+                                <option value="AL">Undergraduate</option>
+                                <option value="AK">Postgraduate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="two wide middle aligned column">
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line">
+                            <div class="eligible">You are eligible <i class="check icon"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section grey-background">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="center-align teal">Mitigating Circumstances</h1>
+                <p>If none of the circumstances above apply to you, but you come from a low socio-economic background
+                    that has put you at a significant disadvantage, you will have the opportunity to tell us about this
+                    on your application form. <strong>We may need to ask you for other relevant information to be able
+                        to
+                        consider your application.</strong></p>
+
+                <p><strong>All of the information you provide will be treated confidentially and in line with data
+                    protection.</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="center-align teal">How we select you</h1>
+                <p>This is for your guidance only as the selection process to become an SEO candidate may vary slightly
+                    from programme to programme.</p>
+
+                <p>Please select the program you are interested in to view your interview process</p>
+
+                <div class="ui grid">
+                    <div class="row margin">
+                        <div class="one wide middle aligned column">
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="fourteen wide middle aligned column">
+                            <select name="programme" class="ui dropdown">
+                                <option value="">Program</option>
+                                <option value="AL">Banking</option>
+                                <option value="AK">Corporate Law</option>
+                                <option value="AL">CSH</option>
+                                <option value="AK">Civil</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="one wide middle aligned column">
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> This is a description of a step in our process</li>
+                                <li><span class="circle">2</span> This is a description of a step in our process</li>
+                                <li><span class="circle">3</span> This is a description of a step in our process</li>
+                                <li><span class="circle">4</span> This is a description of a step in our process</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section grey-background">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="teal">Additional Guidance</h1>
+                <ul>
+                    <li>We support candidates in all years of study, reading any degree discipline, who come from black,
+                        minority ethnic or low socio-economic backgrounds.
+                    </li>
+                    <li>We also support graduates. For most programmes this will mean those who have graduated within
+                        the last two years.
+                    </li>
+                    <li>The Corporate Law Programme will accept any eligible graduates, regardless of their year of
+                        graduation.
+                    </li>
+                    <li>For help when completing your application, you can use our Application Guide.</li>
+                    <li>Once you submit your application and are awaiting our response, please continue to monitor your
+                        junk email folder to ensure our response hasn’t been directed there.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="teal">Corporate Law</h1>
+                <p>If you are applying to the Corporate Law Programme you should ideally:</p>
+                <ul>
+                    <li>Have ABB/320 UCAS points not including General Studies, at A-Level (or equivalent).</li>
+                    <li>Be on course for or have achieved a 2.1 (or equivalent) at university.</li>
+                </ul>
+                <p>We know that, if you are applying to the First Year Programme, you may not have your university
+                    grades yet (e.g. if you are about to start your degree). However, you should include your A-Level
+                    grades (or equivalent) on your application.</p>
+
+                <p>If you are applying to the Vacation Scheme &amp; Training Contract Programme, we will require your
+                    A-Level grades (or equivalent) in addition to all module grades for university exams you have
+                    taken.</p>
+
+                <p>For the Corporate Law CV Guide &amp; Template please click here</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

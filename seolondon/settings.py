@@ -184,6 +184,7 @@ CMS_TEMPLATES = (
     ('scholars.html', 'Scholars Page'),
     ('get-involved.html', 'Get Involved Page'),
     ('success-stories.html', 'Success Stories Page'),
+    ('who-we-support.html', 'Who We Support Page'),
     ('connect.html', 'Connect Page'),
     ('faq.html', 'FAQ Page'),
     ('fullwidth.html', 'Fullwidth'),
