@@ -10,4 +10,11 @@ $(document).ready(function ($) {
     })
   ;
 
+  // open second modal on first modal buttons
+  $('.success.story.modal')
+    .modal('attach events', '.sucess.story.button')
+  ;
+
+  $('.ui.dropdown').dropdown();
+
 });

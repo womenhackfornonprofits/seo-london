@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+
+<div class="masthead">
+
+    <div class="ui grid container middle aligned">
+
+        <div class="eight wide column">
+
+            <h1>
+                <span>We prepare talented</span><br><span>students from ethnic</span><br><span>minority or</span><br><span>disadvantaged</span><br><span>backgrounds for career</span><br><span>success.</span>
+            </h1>
+
+            <a class="ui secondary donate button">Donate now</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="success-stories-page">
+    <div class="section">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <h1 class="teal">Success Stories</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+    </div>
+    <div class="section teal-background">
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+                <p class="big">Take a look at some of our candidate stories below</p>
+            </div>
+        </div>
+    </div>
+    <div class="ui four column grid">
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+        <div class="column story">
+            <div class="content">
+                <h2>John Smith</h2>
+                <p>Here's a little bit about John Smith, who went into banking after all our amazing support.</p>
+                <a class="ui sucess story orange button">Full Story</a>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="ui grid container">
+            <div class="ten wide centered column">
+                <h1 class="teal">Have you got a story you'd like to share?</h1>
+                <form class="ui form">
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" name="first-name" placeholder="Name">
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" name="last-name" placeholder="Email">
+                    </div>
+                    <div class="field">
+                        <label>SEO Industry Programme</label>
+                        <select name="programme" class="ui dropdown">
+                            <option value="">Programme</option>
+                            <option value="AL">Banking</option>
+                            <option value="AK">Corporate Law</option>
+                            <option value="AZ">CSH</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Class Of</label>
+                        <input type="text" name="last-name" placeholder="Class Of">
+                    </div>
+                    <div class="field">
+                        <label>Current Position</label>
+                        <input type="text" name="last-name" placeholder="Current Position">
+                    </div>
+                    <div class="field">
+                        <label>Story</label>
+                        <textarea></textarea>
+                    </div>
+                    <button class="ui orange button" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui success story modal">
+    <div class="header">John Smith</div>
+    <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut blandit metus. In hac habitasse platea
+        dictumst. Maecenas sed nisl vel leo pretium gravida in quis tellus. In et libero consectetur, ornare quam et,
+        interdum est. Quisque rhoncus ligula arcu, at volutpat erat congue non. Aliquam in lacus porta, pulvinar magna
+        et, efficitur orci. Nullam auctor sollicitudin felis, suscipit consectetur arcu hendrerit rutrum.</p>
+
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam malesuada fermentum
+        tortor condimentum aliquam. Maecenas maximus maximus maximus. Phasellus sed elit ac lectus mattis scelerisque
+        quis sed nisi. Nullam sed purus in lacus auctor rutrum eu et sem. In sed justo vulputate, vulputate urna vitae,
+        auctor lacus. In blandit, ex nec vestibulum scelerisque, ligula orci accumsan diam, non malesuada nisi arcu at
+        nunc. Nulla egestas, leo eu dapibus bibendum, metus sapien fermentum ipsum, mollis fermentum neque ligula
+        sodales sapien. Phasellus vel ornare lorem. Suspendisse maximus ipsum ac posuere ornare. Mauris sit amet velit
+        turpis. Phasellus eu imperdiet tortor.</p>
+
+        <p>Sed eleifend orci a odio pulvinar finibus. Vivamus sed tincidunt mauris. Morbi feugiat neque at nisl
+        sollicitudin tincidunt. Sed turpis enim, auctor et rhoncus eget, molestie a lectus. Curabitur nisi lacus, auctor
+        vel orci vel, commodo viverra dolor. Curabitur pellentesque lorem mi, a porta libero maximus et. Pellentesque
+        tincidunt sed justo sed facilisis.</p>
+
+        <p>Donec tristique laoreet pretium. Ut tempor tincidunt felis sed posuere. Nunc blandit nibh sit amet leo tincidunt
+        suscipit id non leo. Morbi aliquet, risus eget hendrerit fringilla, orci mi accumsan ante, in pretium sapien est
+        eu justo. Quisque laoreet tortor vitae odio dapibus, ac tempor dolor lacinia. Phasellus nibh leo, ultrices et
+        condimentum a, finibus sit amet lectus. Nunc sit amet est ex. Interdum et malesuada fames ac ante ipsum primis
+        in faucibus. Phasellus nec pellentesque nunc. Ut consequat nulla ut erat pretium tristique. Morbi odio nisl,
+        aliquet at pulvinar quis, gravida sit amet dui. Duis gravida venenatis tortor, eget feugiat est vestibulum ac.</p>
+    </div>
+</div>
+
+{% endblock content %}

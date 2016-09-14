@@ -10,9 +10,11 @@ body {
 @import "layout/header";
 @import "layout/footer";
 @import "helpers/helpers";
+@import "elements/accordion";
+@import "elements/inputs";
 @import "pages/homepage";
 @import "pages/careers";
 @import "pages/scholars";
 @import "pages/connect";
 @import "pages/get-involved";
-@import "elements/accordion";
+@import "pages/success-stories";

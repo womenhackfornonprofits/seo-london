@@ -183,6 +183,7 @@ CMS_TEMPLATES = (
     ('careers-inner.html', 'Careers Inner Page'),
     ('scholars.html', 'Scholars Page'),
     ('get-involved.html', 'Get Involved Page'),
+    ('success-stories.html', 'Success Stories Page'),
     ('connect.html', 'Connect Page'),
     ('faq.html', 'FAQ Page'),
     ('fullwidth.html', 'Fullwidth'),
