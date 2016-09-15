@@ -10,13 +10,13 @@ cd seolondon
 virtualenv env
 source env/bin/activate
 pip3 install djangocms-installer
-mkdir seolondon
-cd seolondon
 ```
 
 ## Clone
 ```bash
-git clone <>
+git clone <> seolondon
+cd seolondon
+pip3 install -r requirements.txt
 ```
 
 ## After cloning
