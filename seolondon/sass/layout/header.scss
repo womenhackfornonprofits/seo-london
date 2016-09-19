@@ -26,8 +26,8 @@
         justify-content: center;
 
         &.selected {
-          a {
-            background: $teal;
+          >a {
+            background: $blue;
             color: #FFF;
           }
         }
@@ -57,7 +57,7 @@
 
         a {
           font-family: "Lato", sans-serif;
-          font-weight: 300 !important;
+          font-weight: 400 !important;
           text-transform: uppercase;
           background: #FFF;
           opacity: 1;
@@ -171,7 +171,7 @@
     }
   }
 
-  &.careers {
+  &.careers-page {
 
     .grid {
       padding-bottom: 25px;
@@ -185,7 +185,7 @@
       padding-top: 200px !important;
 
       .button {
-        display: block;
+        display: inline-block;
         max-width: 175px;
         margin-left: auto;
         margin-bottom: 5px;
