@@ -1,10 +1,9 @@
 #scholars-page {
-
   .section {
     h1 {
       margin-bottom: 50px;
       color: $orange;
-      text-transform:uppercase;
+      text-transform: uppercase;
       font-weight: 300;
       font-size: 36px;
     }
@@ -14,9 +13,27 @@
       margin-bottom: 30px;
     }
 
+    .ui.cards {
+      .card {
+        border-radius: 0;
+      }
+    }
+
     ul {
       margin: 0;
       padding: 0;
+
+      &.no-margin {
+        li {
+          &:first-child {
+            margin-top: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
 
       li {
         list-style: none;
@@ -30,8 +47,8 @@
           content: "\f046";
           color: $orange;
           left: 0;
-          font-size: 20px;
-          top: 3px;
+          font-size: 15px;
+          top: 2px;
         }
       }
     }
@@ -67,6 +84,7 @@
       li:before {
         content: '\f10c';
       }
+
       ul + p {
         margin: 25px 0;
       }
