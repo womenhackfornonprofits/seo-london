@@ -1,8 +1,7 @@
 #get-involved-page {
-
   img.logo-img {
     height: 80px;
-    margin: 10px 0 30px 0;
+    margin: 30px 0 20px;
   }
 
   .section {
@@ -16,8 +15,6 @@
   }
 
   h1.center-align {
-    //font-weight: 400;
-    //font-size: 36px;
     text-transform: uppercase;
     margin-bottom: 35px;
     text-align: left;
@@ -88,13 +85,12 @@
 
     &:hover {
       .content {
+        max-height: 300px;
 
         p {
           opacity: 1;
         }
-        max-height: 300px;
       }
     }
   }
-
 }

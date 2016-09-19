@@ -71,15 +71,16 @@
             background: $accent;
             color: #FFF;
           }
+
           &.search {
             &:hover {
               background: none;
             }
           }
+
           &.fixed {
             background: $accent;
             color: #FFF;
-
             margin-left: 10px;
           }
         }
@@ -99,13 +100,10 @@
     right: 0;
     bottom: 0;
     content: "";
-    //background: rgba(0, 0, 0, 0.4);
   }
-
 }
 
 // Slider
-
 .unslider {
   position: relative;
 
@@ -122,6 +120,7 @@
 
     &.next {
       right: 40px;
+
       &:before {
         content: "\f138";
         font-family: FontAwesome;
@@ -132,6 +131,7 @@
 
     &.prev {
       left: 40px;
+
       &:before {
         content: "\f137";
         font-family: FontAwesome;
@@ -143,6 +143,7 @@
 
   .unslider-nav {
     margin-bottom: 30px;
+
     li {
       width: 12px;
       height: 12px;
@@ -152,7 +153,6 @@
 }
 
 .masthead {
-
   background-image: url('/static/img/header.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -172,7 +172,6 @@
   }
 
   &.careers-page {
-
     .grid {
       padding-bottom: 25px;
     }
@@ -212,7 +211,6 @@
         padding: 5px 15px;
         background-color: $teal;
       }
-
     }
 
     p {
