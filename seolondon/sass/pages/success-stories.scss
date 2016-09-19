@@ -1,5 +1,4 @@
 #success-stories-page {
-
   .section {
     &.teal-background {
       color: #FFF;
@@ -68,8 +67,6 @@
       }
 
       p {
-        padding-left: 30px;
-        padding-right: 30px;
         margin: 20px 0;
         opacity: 0;
         transition: 0.4s ease all;
@@ -80,16 +77,14 @@
       }
     }
 
-
     &:hover {
       .content {
+        max-height: 300px;
 
         p {
           opacity: 1;
         }
-        max-height: 300px;
       }
     }
   }
-
 }

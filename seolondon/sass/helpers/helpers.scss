@@ -2,7 +2,8 @@
   padding: 70px 0 !important;
 }
 
-.ui.primary.button {
+.ui.primary.button,
+.primary.submit {
   background: $blue !important;
 }
 
@@ -19,12 +20,17 @@
   opacity: 1;
   transition: 0.3s ease opacity !important;
   font-family: "Lato", sans-serif !important;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
   text-transform: uppercase !important;
   padding: 12px 20px !important;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &.white {
+    background: #fff;
+    color: black !important;
   }
 }
 

@@ -1,5 +1,6 @@
 #footer {
-  background-color: $light-grey;
+  background-color: #f7f7f7;
+  padding-top: 5px;
 
   .social {
     a {
@@ -7,16 +8,19 @@
       display: inline-block;
       margin: 5px 0;
     }
+
     .scholars {
       a {
         color: $orange;
       }
     }
+
     .careers {
       a {
         color: $teal;
       }
     }
+
     .connect {
       a {
         color: $red;
@@ -27,8 +31,6 @@
   a {
     color: $blue;
   }
-
-  padding-top: 5px;
 
   .ui.grid {
     margin-top: 0;
@@ -116,7 +118,6 @@
             display: block;
           }
         }
-
       }
 
       img, object {

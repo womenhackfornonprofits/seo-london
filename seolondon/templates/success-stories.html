@@ -6,28 +6,22 @@
 {% block content %}
 
 <div class="masthead">
-
     <div class="ui grid container middle aligned">
-
         <div class="eight wide column">
-
             <h1>
                 <span>We prepare talented</span><br><span>students from ethnic</span><br><span>minority or</span><br><span>disadvantaged</span><br><span>backgrounds for career</span><br><span>success.</span>
             </h1>
 
             <a class="ui secondary donate button">Donate now</a>
-
         </div>
-
     </div>
-
 </div>
 
 <div id="success-stories-page">
     <div class="section">
         <div class="ui grid container">
             <div class="sixteen wide column">
-                <h1 class="teal">Success Stories</h1>
+                <h1 class="teal caps-title">Success Stories</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -96,39 +90,45 @@
     </div>
     <div class="section">
         <div class="ui grid container">
-            <div class="ten wide centered column">
-                <h1 class="teal">Have you got a story you'd like to share?</h1>
-                <form class="ui form">
-                    <div class="field">
-                        <label>Name</label>
-                        <input type="text" name="first-name" placeholder="Name">
+            <div class="sixteen wide centered column">
+                <h1 class="teal caps-title">Have you got a story you'd like to share?</h1>
+                <form >
+                    <div class="ui grid">
+                        <div class="eight wide column ui form">
+                            <div class="field">
+                                <label>Name</label>
+                                <input type="text" name="first-name" placeholder="Name">
+                            </div>
+                            <div class="field">
+                                <label>Email</label>
+                                <input type="email" name="last-name" placeholder="Email">
+                            </div>
+                            <div class="field">
+                                <label>SEO Industry Programme</label>
+                                <select name="programme" class="ui dropdown">
+                                    <option value="">Programme</option>
+                                    <option value="AL">Banking</option>
+                                    <option value="AK">Corporate Law</option>
+                                    <option value="AZ">CSH</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Class Of</label>
+                                <input type="text" name="last-name" placeholder="Class Of">
+                            </div>
+                        </div>
+                        <div class="eight wide column ui form">
+                            <div class="field">
+                                <label>Current Position</label>
+                                <input type="text" name="last-name" placeholder="Current Position">
+                            </div>
+                            <div class="field">
+                                <label>Story</label>
+                                <textarea></textarea>
+                            </div>
+                            <button class="ui orange button" type="submit">Submit</button>
+                        </div>
                     </div>
-                    <div class="field">
-                        <label>Email</label>
-                        <input type="email" name="last-name" placeholder="Email">
-                    </div>
-                    <div class="field">
-                        <label>SEO Industry Programme</label>
-                        <select name="programme" class="ui dropdown">
-                            <option value="">Programme</option>
-                            <option value="AL">Banking</option>
-                            <option value="AK">Corporate Law</option>
-                            <option value="AZ">CSH</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label>Class Of</label>
-                        <input type="text" name="last-name" placeholder="Class Of">
-                    </div>
-                    <div class="field">
-                        <label>Current Position</label>
-                        <input type="text" name="last-name" placeholder="Current Position">
-                    </div>
-                    <div class="field">
-                        <label>Story</label>
-                        <textarea></textarea>
-                    </div>
-                    <button class="ui orange button" type="submit">Submit</button>
                 </form>
             </div>
         </div>

@@ -25,3 +25,14 @@ npm install
 gulp
 npm run server (simultaneously with gulp)
 ```
+
+## Start the django server
+```
+source ../env/bin/activate
+python3 manage.py runserver
+```
+
+## Troubleshooting
+
+"Missing module...": Probably because you didn't activate the environment `source ../env/bin/activate`; or install the
+requirements inside the environment `pip3 install -r requirements.txt`.
