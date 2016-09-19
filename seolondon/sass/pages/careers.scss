@@ -85,7 +85,49 @@
 
 .careers.inner {
 
+  .training-item, .support-item {
+
+    .number {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      border-radius: 50%;
+      border: 2px solid $orange;
+      text-align: center;
+      line-height: 35px;
+      font-family: "Lato", sans-serif;
+      font-weight: 600;
+      color: $orange;
+    }
+
+    display: flex !important;
+    align-items: center;
+
+    margin-bottom: 30px !important;
+
+    img {
+      max-width: 40px !important;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      padding-left: 20px;
+    }
+
+  }
+
+  .support-item {
+    .row {
+      width: 100%;
+      display: block;
+    }
+
+  }
+
   .sponsors.grid {
+    margin-top: 30px;
     .column {
       img {
         max-width: 80%;
@@ -114,34 +156,8 @@
   }
 
   .support.grid {
-    margin-top: 20px;
-
-    .column {
-
-      .support {
-        padding: 25px 20px;
-      }
-
-      &.inverted {
-
-        &.orangey {
-          .support {
-            background: $orange;
-          }
-        }
-
-        .support {
-          background: $teal;
-          color: white;
-
-          .number {
-            color: white;
-            border-color: white;
-          }
-        }
-      }
-
-    }
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 
 }

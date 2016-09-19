@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="masthead careers">
+<div class="masthead careers-page">
 
     <div class="ui grid container middle aligned">
 
@@ -32,47 +32,29 @@
 <div class="ui grid container section careers inner">
 
     <div class="row">
-
-        <div class="seven wide column">
-
-            <h1 class="caps-title teal small">{% placeholder "Career Name" %}</h1>
-
-        </div>
-
-
-        <div class="nine wide middle aligned column">
-
+        <div class="sixteen wide column">
+            <h1 class="caps-title teal">{% placeholder "Career Name" %}</h1>
             <p>{% placeholder "Introductory Text" %}</p>
-
         </div>
-
     </div>
 
     <div class="row">
-
-        <div class="four wide middle aligned column">
-            <h1 class="light teal very small">{% placeholder "First Year Title" %}</h1>
-        </div>
-
-        <div class="twelve wide middle aligned column">
+        <div class="sixteen wide column">
+            <h1 class="light teal">{% placeholder "First Year Title" %}</h1>
             <p>{% placeholder "First Year Text" %}</p>
         </div>
-
     </div>
 
-    <div class="ui three column row margin-top-30">
-
-        {% placeholder "First Year Support Items" %}
-
+    <div class="sixteen wide column">
+        <div class="ui three column relaxed support grid">
+            {% placeholder "First Year Support Items" %}
+        </div>
     </div>
 
     <div class="row">
 
-        <div class="four wide middle aligned column">
-            <h1 class="light teal very small">{% placeholder "Final Year Title" %}</h1>
-        </div>
-
-        <div class="twelve wide middle aligned column">
+        <div class="sixteen wide wide middle aligned column">
+            <h1 class="light teal">{% placeholder "Final Year Title" %}</h1>
             <p>{% placeholder "Final Year Text" %}</p>
         </div>
 
@@ -95,18 +77,12 @@
 
     <div class="ui grid container section why-unique">
 
-        <div class="four wide column">
+        <div class="sixteen wide column">
 
             <h1 class="white caps-title">{% placeholder "Sponsors Title" %}</h1>
 
-        </div>
-
-        <div class="twelve wide column">
-
-            <div class="ui three column sponsors grid">
-
+            <div class="ui four column sponsors grid">
                 {% placeholder "Sponsor Logos" %}
-
             </div>
 
         </div>
