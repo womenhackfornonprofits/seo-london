@@ -239,7 +239,7 @@ body.sidebar-open {
 
       > li {
         margin: 0;
-        padding: 0 15px;
+        padding: 0;
         position: relative;
         z-index: 120;
         height: 100%;
@@ -270,6 +270,12 @@ body.sidebar-open {
           transition: all $animation-duration ease;
           will-change: color;
           padding: 8px 14px;
+
+          &.fixed {
+            background: $accent;
+            color: #FFF;
+            margin-left: 10px;
+          }
 
           @include computer {
             &:hover {

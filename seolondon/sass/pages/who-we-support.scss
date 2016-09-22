@@ -90,6 +90,10 @@
 
   .ui.dropdown {
     width: 450px;
+
+    @include not-computer {
+      width: auto;
+    }
   }
 
   .row {

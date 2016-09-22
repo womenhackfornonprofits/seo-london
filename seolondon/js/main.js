@@ -83,34 +83,34 @@ class Header {
    * Handle the window scroll event
    */
   scroll() {
-    let scrollPosition = this.$window.scrollTop();
-
-    if (scrollPosition > 100) {
-      if (this.lastScrollPosition === scrollPosition) {
-        return;
-      }
-
-      if (!this.scrolling) {
-        this.scrolling = true;
-        this.$navbar.addClass('scrolling');
-      } else if (this.lastScrollPosition < scrollPosition || scrollPosition < 200) {
-        this.$navbar.addClass('slide-up').removeClass('slide-down');
-      } else {
-        this.$navbar.removeClass('slide-up').addClass('slide-down');
-      }
-    } else {
-      if (this.scrolling) {
-        this.scrolling = false;
-
-        // prevent animations from occurring
-        this.$navbar
-          .removeClass('scrolling')
-          .removeClass('slide-up')
-          .removeClass('slide-down');
-      }
-    }
-
-    this.lastScrollPosition = scrollPosition;
+    // let scrollPosition = this.$window.scrollTop();
+    //
+    // if (scrollPosition > 100) {
+    //   if (this.lastScrollPosition === scrollPosition) {
+    //     return;
+    //   }
+    //
+    //   if (!this.scrolling) {
+    //     this.scrolling = true;
+    //     this.$navbar.addClass('scrolling');
+    //   } else if (this.lastScrollPosition < scrollPosition || scrollPosition < 200) {
+    //     this.$navbar.addClass('slide-up').removeClass('slide-down');
+    //   } else {
+    //     this.$navbar.removeClass('slide-up').addClass('slide-down');
+    //   }
+    // } else {
+    //   if (this.scrolling) {
+    //     this.scrolling = false;
+    //
+    //     // prevent animations from occurring
+    //     this.$navbar
+    //       .removeClass('scrolling')
+    //       .removeClass('slide-up')
+    //       .removeClass('slide-down');
+    //   }
+    // }
+    //
+    // this.lastScrollPosition = scrollPosition;
   }
 
   /**

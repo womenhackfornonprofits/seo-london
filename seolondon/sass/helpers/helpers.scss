@@ -120,3 +120,11 @@
     display: none;
   }
 }
+
+.separate-on-mobile {
+  @include not-computer {
+    .column {
+      margin-bottom: 25px !important;
+    }
+  }
+}
