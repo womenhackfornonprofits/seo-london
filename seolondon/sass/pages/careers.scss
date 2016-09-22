@@ -1,29 +1,25 @@
-.careers-page {
-
-  p {
-    margin-bottom: 10px;
-  }
-
-  .training-item, .support-item {
+.careers-page,
+.careers.inner {
+  .training-item,
+  .support-item {
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 30px !important;
 
     .number {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      min-height: 40px;
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      min-height: 30px;
       border-radius: 50%;
       border: 2px solid $orange;
       text-align: center;
-      line-height: 35px;
+      font-size: 0.8em;
+      line-height: 26px;
       font-family: "Lato", sans-serif;
       font-weight: 600;
       color: $orange;
     }
-
-    display: flex !important;
-    align-items: center;
-
-    margin-bottom: 30px !important;
 
     img {
       max-width: 40px !important;
@@ -34,7 +30,6 @@
       font-size: 16px;
       padding-left: 20px;
     }
-
   }
 
   .support-item {
@@ -42,92 +37,19 @@
       width: 100%;
       display: block;
     }
-
   }
-
 }
 
-.industry-programmes {
-
-  h1 {
-    margin-bottom: 20px;
-  }
-
-  .ui.cards {
-
-    .card {
-      border-radius: 0;
-
-      .header {
-        font-weight: 400 !important;
-        font-size: 14px !important;
-      }
-    }
-  }
-
-  .background-image {
-
-    img {
-      width: 80%;
-      margin-left: auto;
-      display: block;
-    }
-
-  }
-
-}
-
-.why-unique {
-  strong {
-    font-size: 16px;
+.careers-page {
+  p {
+    margin-bottom: 10px;
   }
 }
 
 .careers.inner {
-
-  .training-item, .support-item {
-
-    .number {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      min-height: 40px;
-      border-radius: 50%;
-      border: 2px solid $orange;
-      text-align: center;
-      line-height: 35px;
-      font-family: "Lato", sans-serif;
-      font-weight: 600;
-      color: $orange;
-    }
-
-    display: flex !important;
-    align-items: center;
-
-    margin-bottom: 30px !important;
-
-    img {
-      max-width: 40px !important;
-    }
-
-    span {
-      font-weight: 600;
-      font-size: 16px;
-      padding-left: 20px;
-    }
-
-  }
-
-  .support-item {
-    .row {
-      width: 100%;
-      display: block;
-    }
-
-  }
-
   .sponsors.grid {
     margin-top: 30px;
+
     .column {
       img {
         max-width: 80%;
@@ -144,6 +66,7 @@
       color: $orange;
       font-size: 20px;
     }
+
     ul {
       margin-top: 10px;
       margin-bottom: 30px;
@@ -159,5 +82,35 @@
     margin-top: 10px;
     margin-bottom: 20px;
   }
+}
 
+.industry-programmes {
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .ui.cards {
+    .card {
+      border-radius: 0;
+
+      .header {
+        font-weight: 400 !important;
+        font-size: 14px !important;
+      }
+    }
+  }
+
+  .background-image {
+    img {
+      width: 80%;
+      margin-left: auto;
+      display: block;
+    }
+  }
+}
+
+.why-unique {
+  strong {
+    font-size: 16px;
+  }
 }
