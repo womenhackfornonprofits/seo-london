@@ -1,0 +1,118 @@
+.masthead.about-page {
+  background: none;
+
+  h1 {
+    margin: 0;
+    color: $blue;
+  }
+
+  h2 {
+    margin: 0;
+    font-weight: 300;
+    color: $blue;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .grid {
+    padding: 60px 0 25px;
+  }
+}
+
+#about-page {
+
+  h2 {
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $blue;
+    font-size: 24px;
+
+    &.today {
+      font-size: 36px;
+      margin-bottom: 0;
+      margin-top: 15px;
+    }
+
+    &.no-margin-top {
+      margin-top: 5px !important;
+    }
+  }
+
+  .section.no-padding-top {
+    padding-bottom: 30px !important;
+  }
+
+  .spaced.row {
+    margin: 25px 0;
+
+    &.first {
+      margin-top: 0;
+    }
+  }
+
+  .column img {
+    width: 100% !important;
+  }
+
+  .the-team.section {
+
+    padding-top: 0 !important;
+
+    h2 {
+      margin-bottom: 40px;
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .team.column {
+      min-height: 400px;
+      background-size: cover;
+      background-position: center center;
+      position: relative;
+
+      .content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: #FFF;
+        padding: 20px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .overlay {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(50, 58, 69, 0.95);
+        color: #FFF;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        padding-left: 35px;
+        padding-right: 35px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s ease all;
+      }
+
+      &:hover {
+        .overlay {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+}
