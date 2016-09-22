@@ -12,25 +12,29 @@
 </head>
 <body>
 {% cms_toolbar %}
-<div class="header">
-
-    <div class="ui secondary menu">
-        <div class="ui grid container">
-
-            {% placeholder "Logo" %}
-
-            <div class="right menu">
-                {% load menu_tags %}
-                <ul>
-                    {% show_menu 0 100 100 100 %}
-                    <li><a href="/contact" class="ui item search"><i class="search icon"></i></a></li>
-                    <li><a href="/contact" class="fixed">Apply</a></li>
-                    <li><a href="/contact" class="fixed">Log In</a></li>
-                </ul>
-            </div>
-        </div>
+<div id="navigation-bar">
+    <div class="ui container">
+        {% placeholder "Logo" %}
+        <nav id="primary-menu" class="desktop links menu">
+            <ul>
+                {% show_menu 0 100 100 100 %}
+            </ul>
+        </nav>
+        <nav class="mobile toggle menu">
+            <ul>
+                <li><a><span>Menu Toggle</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="ui mobile container">
+        <nav id="primary-menu" class="mobile vertical links">
+            <ul>
+                {% show_menu 0 100 100 100 %}
+            </ul>
+        </nav>
     </div>
 </div>
+
 {% block content %}{% endblock content %}
 
 <footer id="footer" class="site-footer" role="contentinfo">
