@@ -209,11 +209,25 @@
       }
     }
 
+    h2 {
+      span {
+        color: #FFF;
+        padding: 5px 15px;
+        background-color: rgba($teal, $span-opacity);
+      }
+    }
+
     p {
       font-family: "Lato", sans-serif;
       font-weight: 400 !important;
       font-size: 20px;
       margin: 30px 0 35px;
+
+      span {
+        color: #FFF;
+        padding: 5px 15px;
+        background-color: rgba($teal, $span-opacity);
+      }
     }
 
     // set the colour with primary/secondary -- the .donate.button class will be used for the modal
