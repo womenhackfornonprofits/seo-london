@@ -103,6 +103,10 @@
       max-width: 175px;
       margin-left: auto;
       margin-bottom: 5px;
+
+      @include not-computer {
+        margin: 0;
+      }
     }
   }
 
@@ -120,6 +124,10 @@
         color: #FFF;
         padding: 5px 15px;
         background-color: rgba($teal, $span-opacity);
+
+        @include not-computer {
+          display: block;
+        }
       }
     }
 

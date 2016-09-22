@@ -108,3 +108,15 @@
 .text-left {
   text-align: left;
 }
+
+.hidden-on-computer {
+  @include computer {
+    display: none;
+  }
+}
+
+.only-on-computer {
+  @include not-computer {
+    display: none;
+  }
+}
