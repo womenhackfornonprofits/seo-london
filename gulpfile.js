@@ -143,10 +143,10 @@ gulp.task('watch', () => {
   gulp.watch('seolondon/sass/**/*.scss', ['css']);
   gulp.watch('seolondon/js/**/*.js', {interval: 500}, ['js']);
   gulp.watch('**/*.html', () => {
-    gulp.src('seolondon/urls.py')
-      .pipe($.touch());
+    // gulp.src('seolondon/urls.py')
+    //   .pipe($.touch());
 
-    setTimeout(() => $.livereload.reload(), 1000);  // wait for django to reload
+    setTimeout(() => $.livereload.reload(), 0);  // wait for django to reload
   });
   sequence('semantic:watch');  // NOTE: run semantic watch without callback
 });
