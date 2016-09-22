@@ -2,19 +2,6 @@
   padding: 70px 0 !important;
 }
 
-.ui.primary.button,
-.primary.submit {
-  background: $blue !important;
-}
-
-.ui.secondary.button {
-  background: $orange !important;
-}
-
-.ui.red.button {
-  background: $red !important;
-}
-
 .ui.button {
   border-radius: 0 !important;
   opacity: 1;
@@ -31,6 +18,24 @@
   &.white {
     background: #fff;
     color: black !important;
+  }
+
+  &.primary,
+  &.blue {
+    background: $blue !important;
+  }
+
+  &.secondary,
+  &.orange {
+    background: $orange !important;
+  }
+
+  &.red {
+    background: $red !important;
+  }
+
+  &.teal {
+    background: $teal !important;
   }
 }
 

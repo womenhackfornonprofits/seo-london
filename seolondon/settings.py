@@ -33,9 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 
-
-
-
 ROOT_URLCONF = 'seolondon.urls'
 
 WSGI_APPLICATION = 'seolondon.wsgi.application'

@@ -159,44 +159,37 @@
   background-position: top;
   width: 100%;
 
+  $span-opacity: 0.6;
+
   .grid h1.blue span {
-    background-color: $blue;
+    background-color: rgba($blue, $span-opacity);
   }
 
   &.connect {
     .grid h1 span {
-      background-color: $red;
+      background-color: rgba($red, $span-opacity);
     }
   }
 
   &.scholars {
     .grid h1 span {
-      background-color: $orange;
+      background-color: rgba($orange, $span-opacity);
     }
   }
 
   &.careers-page {
-    .grid {
-      padding-bottom: 25px;
-    }
-
     .grid h1 span {
-      background-color: $teal;
+      background-color: rgba($teal, $span-opacity);
     }
+  }
 
-    .buttons {
-      padding-top: 200px !important;
-
-      .button {
-        display: inline-block;
-        max-width: 175px;
-        margin-left: auto;
-        margin-bottom: 5px;
-        background-color: $teal !important;
-        color: white;
-      }
+  .buttons {
+    .button {
+      display: inline-block;
+      max-width: 175px;
+      margin-left: auto;
+      margin-bottom: 5px;
     }
-
   }
 
   .grid {
@@ -207,13 +200,12 @@
       font-weight: 300 !important;
       font-size: 35px;
       text-transform: uppercase;
-      margin-bottom: 50px;
-      line-height: 50px;
+      line-height: 52px;
 
       span {
         color: #FFF;
         padding: 5px 15px;
-        background-color: $teal;
+        background-color: rgba($teal, $span-opacity);
       }
     }
 
