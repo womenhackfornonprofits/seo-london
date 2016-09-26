@@ -8,6 +8,10 @@ $(document).ready(function ($) {
       }
     });
 
+  $('.menu .item')
+    .tab()
+  ;
+
   // open second modal on first modal buttons
   $('.success.story.modal')
     .modal('attach events', '.sucess.story.button');
