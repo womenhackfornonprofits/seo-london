@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+
+<div class="masthead careers-page">
+    <div class="ui grid container bottom aligned">
+        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
+            <h1>
+                <span>{% placeholder "Header Title" %}</span>
+            </h1>
+        </div>
+
+        <div class="sixteen wide mobile sixteen wide tablet eight wide computer right aligned text right column buttons">
+            <a class="ui teal button">Apply Now</a>
+            <a class="ui teal button">More Stories</a>
+            <a class="ui teal button">Work With Us</a>
+        </div>
+    </div>
+</div>
+
+<div class="ui grid container section careers inner">
+
+    <div class="row">
+        <div class="sixteen wide wide middle aligned column">
+            <h1 class="light teal">{% placeholder "Introduction Title" %}</h1>
+            {% placeholder "Introduction Content" %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="sixteen wide wide middle aligned column">
+            <h1 class="light teal">{% placeholder "First Year Title" %}</h1>
+            {% placeholder "First Year Content" %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="sixteen wide wide middle aligned column">
+            <h1 class="light teal">{% placeholder "Penultimate Year Title" %}</h1>
+            {% placeholder "Penultimate Year Content" %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="sixteen wide wide middle aligned column">
+            <h1 class="light teal">{% placeholder "Final Year Title" %}</h1>
+            {% placeholder "Final Year Content" %}
+        </div>
+    </div>
+</div>
+
+<div class="ui grid container section industry-programmes careers inner">
+    <div class="sixteen wide centered column">
+        <h1 class="caps-title orange">{% placeholder "Divisions Title" %}</h1>
+
+        <div class="ui two column stackable grid divisions">
+            <div class="column">
+                {% placeholder "Divisions Column 1" %}
+            </div>
+
+            <div class="column">
+                {% placeholder "Divisions Column 2" %}
+            </div>
+
+            <div class="column">
+                {% placeholder "Divisions Column 3" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

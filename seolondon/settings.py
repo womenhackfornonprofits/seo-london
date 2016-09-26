@@ -172,6 +172,7 @@ CMS_TEMPLATES = (
     ('careers.html', 'Careers Landing Page'),
     ('careers-inner.html', 'Careers Inner Page'),
     ('careers-inner-corporates.html', 'Careers Inner (Corporates) Page'),
+    ('careers-inner-civil.html', 'Careers Inner (Civil Service) Page'),
     ('scholars.html', 'Scholars Page'),
     ('about.html', 'About Page'),
     ('get-involved.html', 'Get Involved Page'),
