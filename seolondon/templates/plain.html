@@ -3,6 +3,8 @@
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
+{% block content %}
+
 <div class="masthead" style="background-image:url('/static/img/banners/homepage/banner1.jpg')">
     <div class="ui grid container bottom aligned">
         <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
@@ -29,10 +31,9 @@
 <div class="section">
     <div class="ui grid container">
         <div class="sixteen wide column">
-            {% block content %}
-                {% placeholder "content" %}
-            {% endblock content %}
+            {% placeholder "content" %}
         </div>
     </div>
 </div>
 
+{% endblock content %}

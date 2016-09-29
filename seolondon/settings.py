@@ -179,6 +179,7 @@ CMS_TEMPLATES = (
     ('success-stories.html', 'Success Stories Page'),
     ('who-we-support.html', 'Who We Support Page'),
     ('connect.html', 'Connect Page'),
+    ('plain.html', 'Plain Page'),
     ('faq.html', 'FAQ Page'),
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
