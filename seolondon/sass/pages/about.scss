@@ -27,6 +27,13 @@
 
 #about-page {
 
+  .column .logo-image {
+    height: 100px !important;
+    width: auto !important;
+    margin: 30px auto 45px;
+    display: block;
+  }
+
   .the-board {
 
     padding-top: 0 !important;

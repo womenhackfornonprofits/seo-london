@@ -1,5 +1,7 @@
 $(document).ready(function ($) {
-  $('.my-slider').unslider();
+  $('.slider').unslider({
+    animation: 'horizontal'
+  });
 
   $('.ui.accordion')
     .accordion({
@@ -22,7 +24,7 @@ $(document).ready(function ($) {
 
   $('.ui.dropdown').dropdown();
 
-  $('li.child.descendant:contains("FAQ")').css("border-top", "3px solid #105f9b");
+  $('li li.child:contains("FAQ")').css("border-top", "3px solid #105f9b");
 
   $('a[href*="#"]:not([href="#"])').click(function (e) {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
