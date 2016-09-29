@@ -27,6 +27,32 @@
 
 #about-page {
 
+  .the-board {
+
+    padding-top: 0 !important;
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .column {
+      h3 {
+        color: $blue;
+        font-weight: 300;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+
+      hr {
+        opacity: 0.4;
+      }
+
+      &:not(:first-child) {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
   h2 {
     font-weight: 300;
     text-transform: uppercase;
