@@ -16,6 +16,10 @@ $(document).ready(function ($) {
   $('.success.story.modal')
     .modal('attach events', '.sucess.story.button');
 
+  // open second modal on first modal buttons
+  $('.donate.modal')
+    .modal('attach events', '.donate-modal.button');
+
   $('.ui.dropdown').dropdown();
 
   $('a[href*="#"]:not([href="#"])').click(function (e) {
