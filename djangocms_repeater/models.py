@@ -36,3 +36,14 @@ class SuccessStory(CMSPlugin):
     excerpt = models.CharField(max_length=500, default='Excerpt')
     text = models.TextField(default='Story Content')
     image = models.ImageField(upload_to='success-stories/', default='success-stories/none.jpg')
+
+class TeamMember(CMSPlugin):
+    name = models.CharField(max_length=200, default='Name')
+    title = models.CharField(max_length=400, default='Job Title')
+    text = models.TextField(default='Description')
+    image = models.ImageField(upload_to='team-members/', default='team-members/none.jpg')
+
+class BoardMember(CMSPlugin):
+    name = models.CharField(max_length=200, default='Name')
+    title = models.CharField(max_length=400, default='Job Title')
+    text = models.TextField(default='Description')

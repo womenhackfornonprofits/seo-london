@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import Repeater, CareerStep, Logo, SuccessStory
+from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember
 
 class RepeaterPlugin(CMSPluginBase):
     model = Repeater
@@ -47,3 +47,25 @@ class SuccessStoryPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(SuccessStoryPlugin)
+
+class TeamMemberPlugin(CMSPluginBase):
+    model = TeamMember
+    name = 'Team Member Plugin'
+    render_template = "team_member.html"
+
+    def render(self, context, instance, placeholder):
+        context = super(TeamMemberPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(TeamMemberPlugin)
+
+class BoardMemberPlugin(CMSPluginBase):
+    model = BoardMember
+    name = 'Board Member Plugin'
+    render_template = "board_member.html"
+
+    def render(self, context, instance, placeholder):
+        context = super(BoardMemberPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(BoardMemberPlugin)

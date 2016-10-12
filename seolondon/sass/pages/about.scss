@@ -27,6 +27,12 @@
 
 #about-page {
 
+  .column.contains-logo {
+    img {
+      width: 50% !important;
+    }
+  }
+
   .column .logo-image {
     height: 100px !important;
     width: auto !important;
