@@ -29,3 +29,10 @@ LOGOCHOICE = (
 
 class Logo(CMSPlugin):
     logoChoice = models.CharField(max_length=1, choices=LOGOCHOICE, default='0')
+
+class SuccessStory(CMSPlugin):
+    storyId = models.CharField(max_length=10, default='Story ID')
+    name = models.CharField(max_length=50, default='Candidate Name')
+    excerpt = models.CharField(max_length=500, default='Excerpt')
+    text = models.TextField(default='Story Content')
+    image = models.ImageField(upload_to='success-stories/', default='success-stories/none.jpg')

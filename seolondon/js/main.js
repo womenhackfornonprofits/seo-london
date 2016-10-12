@@ -14,9 +14,10 @@ $(document).ready(function ($) {
     .tab()
   ;
 
-  // open second modal on first modal buttons
-  $('.success.story.modal')
-    .modal('attach events', '.sucess.story.button');
+  $('.success.story.button').click(function() {
+    var storyId = $(this).data('story');
+    $('.success.story.modal.'+storyId).modal('show');
+  });
 
   // open second modal on first modal buttons
   $('.donate.modal')
