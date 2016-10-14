@@ -19,6 +19,10 @@ $(document).ready(function ($) {
     $('.success.story.modal.'+storyId).modal('show');
   });
 
+  $('.apply-button').click(function() {
+    $('.apply.modal').modal('show');
+  });
+
   // open second modal on first modal buttons
   $('.donate.modal')
     .modal('attach events', '.donate-modal.button');

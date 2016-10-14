@@ -42,7 +42,7 @@
   .column.story {
     background-image: url('/static/img/header.jpg');
     background-size:cover;
-    background-position: center right;
+    background-position: center center;
     background-repeat: no-repeat;
     min-height: 275px;
     display: flex;
@@ -85,6 +85,14 @@
           opacity: 1;
         }
       }
+    }
+  }
+}
+
+.ui.success.story.modal {
+  .content {
+    img {
+      max-width: 100%;
     }
   }
 }

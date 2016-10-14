@@ -47,3 +47,7 @@ class BoardMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
     title = models.CharField(max_length=400, default='Job Title')
     text = models.TextField(default='Description')
+
+class Question(CMSPlugin):
+    question = models.CharField(max_length=10000, default='Question')
+    answer = models.TextField(default='Answer')
