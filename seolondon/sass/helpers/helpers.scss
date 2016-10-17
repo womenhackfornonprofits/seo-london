@@ -140,3 +140,20 @@
 .margin-bottom-15 {
   margin-bottom: 15px !important;
 }
+
+#scroll-to-top {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  padding: 10px 2px 0;
+  background: $blue;
+  color: #FFF;
+  font-size: 40px;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.4s ease all;
+
+  &.visible {
+    opacity: 1;
+  }
+}

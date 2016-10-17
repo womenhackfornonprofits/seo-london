@@ -5,52 +5,24 @@
 
 {% block content %}
 
-<div class="masthead" style="background-image:url('/static/img/banners/homepage/banner1.jpg')">
-    <div class="ui grid container bottom aligned">
-        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
-            <h1 class="blue only-on-computer">
-                <span>We prepare talented</span><br>
-                <span>students from ethnic</span><br>
-                <span>minority or</span><br>
-                <span>disadvantaged</span><br>
-                <span>backgrounds for career</span><br>
-                <span>success.</span>
-            </h1>
-            <h1 class="blue hidden-on-computer">
-                <span>We prepare talented students from ethnic minority or disadvantaged backgrounds for career success.</span>
-            </h1>
-        </div>
-
-        <div
-            class="sixteen wide mobile sixteen wide tablet eight wide computer right aligned text right column buttons">
-            <a class="ui primary donate button donate-modal">Donate now</a>
-        </div>
-    </div>
-</div>
-
+{% placeholder "Header" %}
 
 <div class="services section ui three column stackable relaxed grid container">
     <div class="column scholars">
         <img src="/static/img/logo-scholars.png">
-
-        <p>We help high achieving students in years 11-13 broaden their horizons through access to academic,
-            professional and enrichment opportunities.</p>
+        <p>{% placeholder "Scholars Intro" %}</p>
         <a href="/scholars" class="ui primary button">Find out more</a>
     </div>
 
     <div class="column careers">
         <img src="/static/img/logo-careers.png">
-
-        <p>We equip talented university students to launch successful professional careers. As candidates build their
-            experience, they share their knowledge with the next generation.</p>
+        <p>{% placeholder "Careers Intro" %}</p>
         <a href="/careers" class="ui secondary button">Find out more</a>
     </div>
 
     <div class="column connect">
         <img src="/static/img/logo-connect.png">
-
-        <p>Our SEO Careers alumni are our role models, trainers and mentors. Our lateral hiring platform, SEO Connect,
-            supports alumni and like-minded professionals as they progress through their careers.</p>
+        <p>{% placeholder "Connect Intro" %}</p>
         <a href="/connect" class="ui primary button">Find out more</a>
     </div>
 </div>
@@ -67,39 +39,9 @@
     <div class="sixteen wide mobile sixteen wide tablet eight wide computer centered center aligned column">
         <h1 class="caps-title">Donations</h1>
 
-        <p>This is some placeholder content where the donations text will go, encouraging people to click the button
-            below.</p>
+        <p>{% placeholder "Donations Intro" %}</p>
 
         <a class="ui primary button donate-modal">Donate Now</a>
-    </div>
-</div>
-
-<div class="ui donate modal">
-    <div class="header">Donations</div>
-    <div class="content">
-        <p>What we do at SEO changes life chances. When our young people start successful career journeys, they inspire
-            others and access economic opportunities. They contribute to a world where ethnic and socioeconomic
-            diversity is celebrated as a central pillar of the workplace.</p>
-        <p>The giving back ethos of our alumni, candidates and supporters keeps our programmes flourishing. We’re
-            grateful to all of you that contribute your gifts in so many ways.</p>
-
-        <div class="ui three column stackable grid margin-top-15">
-            <div class="column">
-                <a href="http://www.sponsorme.co.uk/your-donation/mydonation.aspx?CR=CT51047&CN=Sponsors%20for%20Educational%20Opportunity%20Limited&PR=1000"
-                   target="_blank" class="ui primary button margin-bottom-15">Donate Online</a>
-                <p>All online donations are administered by the Charities Trust (sponsorme.co.uk) on behalf of SEO
-                    London.</p>
-            </div>
-            <div class="column">
-                <a class="ui primary button margin-bottom-15">Donate by Text</a>
-                <p>TBC</p>
-            </div>
-            <div class="column">
-                <h3>Give as you earn, matched funding, or direct debit</h3>
-                <p>Please contact Bhadresh on bhadresh.devchand@seo-london.org for further details on payroll giving or
-                    direct debit.</p>
-            </div>
-        </div>
     </div>
 </div>
 

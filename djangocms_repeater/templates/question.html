@@ -1,0 +1,13 @@
+{% load cms_tags %}
+
+<div class="title">
+    <i class="dropdown icon"></i>
+    {{ instance.questionText }}
+</div>
+<div class="content">
+    {% for plugin in instance.child_plugin_instances %}
+
+        {% render_plugin plugin %}
+
+    {% endfor %}
+</div>

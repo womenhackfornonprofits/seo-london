@@ -1,66 +1,85 @@
 {% extends "base.html" %}
 {% load cms_tags %}
+{% load extra_cms_tags %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
 {% block content %}
 
-<div class="masthead careers-page">
-    <div class="ui grid container bottom aligned">
-        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
-            <h1>
-                <span>{% placeholder "Header Title" %}</span>
-            </h1>
-        </div>
-
-        <div class="sixteen wide mobile sixteen wide tablet eight wide computer right aligned text right column buttons">
-            <a class="ui teal button">Apply Now</a>
-            <a class="ui teal button">More Stories</a>
-            <a class="ui teal button">Work With Us</a>
-        </div>
-    </div>
-</div>
+{% placeholder "Header" %}
 
 <div class="ui grid container section careers inner">
+
     <div class="row">
         <div class="sixteen wide column">
             <h1 class="caps-title teal">{% placeholder "Career Name" %}</h1>
             {# <p>{% placeholder "Introductory Text" %}</p> #}
             <h1 class="light teal">{% placeholder "First Year Title" %}</h1>
-            <p>{% placeholder "First Year Text" %}</p>
+
+            {% get_placeholder "First Year Text" as first_year_text %}
+            {% if first_year_text %}
+            <p>{{ first_year_text }}</p>
+            {% endif %}
         </div>
     </div>
 
+    {% get_placeholder "First Year Support Items" as first_year_support_items %}
+
+    {% if first_year_support_items %}
     <div class="sixteen wide column">
         <div class="ui three column relaxed support stackable grid">
-            {% placeholder "First Year Support Items" %}
+            {{ first_year_support_items }}
         </div>
     </div>
+    {% endif %}
 
+    {% get_placeholder "Final Year Title" as final_year_title %}
+
+    {% if final_year_title %}
     <div class="row">
         <div class="sixteen wide wide middle aligned column">
-            <h1 class="light teal">{% placeholder "Final Year Title" %}</h1>
-            <p>{% placeholder "Final Year Text" %}</p>
+            <h1 class="light teal">{{ final_year_title }}</h1>
+
+            {% get_placeholder "Final Year Text" as final_year_text %}
+            {% if final_year_text %}
+            <p>{{ final_year_text }}</p>
+            {% endif %}
         </div>
     </div>
+    {% endif %}
 
+    {% get_placeholder "Penultimate and Final Year Support Items" as penultimate_items %}
+
+    {% if penultimate_items %}
     <div class="sixteen wide column">
         <div class="ui three column relaxed support stackable grid">
-            {% placeholder "Penultimate and Final Year Support Items" %}
+            {{ penultimate_items }}
         </div>
     </div>
+    {% endif %}
+
 </div>
+
+{% get_placeholder "Sponsor Logos" as sponsor_logos %}
+
+{% if sponsor_logos %}
 
 <div class="teal-background careers inner">
     <div class="ui grid container section why-unique">
         <div class="sixteen wide column">
             <h1 class="white caps-title">{% placeholder "Sponsors Title" %}</h1>
             <div class="ui four column very relaxed sponsors doubling stackable grid">
-                {% placeholder "Sponsor Logos" %}
+                {{ sponsor_logos }}
             </div>
         </div>
     </div>
 </div>
+
+{% endif %}
+
+{% get_placeholder "Divisions Title" as divisions_title %}
+
+{% if divisions_title %}
 
 <div class="ui grid container section industry-programmes careers inner">
     <div class="sixteen wide centered column">
@@ -81,5 +100,7 @@
         </div>
     </div>
 </div>
+
+{% endif %}
 
 {% endblock content %}

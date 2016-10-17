@@ -29,7 +29,16 @@ $(document).ready(function ($) {
 
   $('.ui.dropdown').dropdown();
 
-  $('li li.child:contains("FAQ")').css("border-top", "3px solid #105f9b");
+  $('#navigation-bar li li.child:contains("FAQ")').css("border-top", "3px solid #105f9b");
+
+  $('#navigation-bar li a:contains("About Us")').parent().append(
+    "<ul>" +
+    "<li class='child'><a href='/about-us#our-story'>Our Story</a></li>" +
+    "<li class='child'><a href='/about-us#today'>Today</a></li>" +
+    "<li class='child'><a href='/about-us#team'>Team</a></li>" +
+    "<li class='child'><a href='/about-us#board'>Board</a></li>" +
+    "</ul>"
+  );
 
   $('a[href*="#"]:not([href="#"])').click(function (e) {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -43,6 +52,21 @@ $(document).ready(function ($) {
 
         e.preventDefault();
       }
+    }
+  });
+
+  $("#scroll-to-top").click(function(e) {
+    console.log("HERE");
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 200)  {
+      $("#scroll-to-top").addClass('visible');
+    } else {
+      $("#scroll-to-top").removeClass('visible');
     }
   });
 });

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember, Question
+from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember, Question, SingleHeader, Button, MultipleHeader, MultipleSingleHeader
 
 class RepeaterPlugin(CMSPluginBase):
     model = Repeater
@@ -74,9 +74,57 @@ class QuestionPlugin(CMSPluginBase):
     model = Question
     name = 'Question Plugin'
     render_template = "question.html"
+    allow_children = True
 
     def render(self, context, instance, placeholder):
         context = super(QuestionPlugin, self).render(context, instance, placeholder)
         return context
 
 plugin_pool.register_plugin(QuestionPlugin)
+
+class SingleHeaderPlugin(CMSPluginBase):
+    model = SingleHeader
+    name = 'Single Header Plugin'
+    render_template = "single-header.html"
+    allow_children = True
+
+    def render(self, context, instance, placeholder):
+        context = super(SingleHeaderPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(SingleHeaderPlugin)
+
+class ButtonPlugin(CMSPluginBase):
+    model = Button
+    name = 'Button Plugin'
+    render_template = "button.html"
+
+    def render(self, context, instance, placeholder):
+        context = super(ButtonPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(ButtonPlugin)
+
+class MultipleHeaderPlugin(CMSPluginBase):
+    model = MultipleHeader
+    name = 'Multiple Header Plugin'
+    render_template = "multiple-header.html"
+    allow_children = True
+
+    def render(self, context, instance, placeholder):
+        context = super(MultipleHeaderPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(MultipleHeaderPlugin)
+
+class MultipleSingleHeaderPlugin(CMSPluginBase):
+    model = MultipleSingleHeader
+    name = 'Multiple Single Header Plugin'
+    render_template = "multiple-single-header.html"
+    allow_children = True
+
+    def render(self, context, instance, placeholder):
+        context = super(MultipleSingleHeaderPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(MultipleSingleHeaderPlugin)

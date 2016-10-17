@@ -5,72 +5,13 @@
 
 {% block content %}
 
-
-<div class="slider">
-    <ul>
-        <li class="masthead careers-page" style="background-image:url('/static/img/banners/homepage/banner1.jpg')">
-            <div class="ui grid container bottom aligned">
-                <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
-                    <h1 class="only-on-computer">
-                        <span>Tiana, Class of 2016</span><br><span>secured a training</span><br><span>contract at Jones Day.</span>
-                    </h1>
-                    <h1 class="hidden-on-computer">
-                        <span>Tiana, Class of 2016, secured a training contract at Jones Day.</span>
-                    </h1>
-                </div>
-
-                <div class="sixteen wide mobile sixteen wide tablet eight wide computer right aligned text right column buttons">
-                    <a class="ui teal button">Apply Now</a>
-                    <a class="ui teal button">More Stories</a>
-                    <a class="ui teal button">Get Involved</a>
-                </div>
-            </div>
-        </li>
-        <li class="masthead careers-page" style="background-image:url('/static/img/banners/careers/banner2.jpg')">
-            <div class="ui grid container bottom aligned">
-                <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
-                    <h1 class="only-on-computer">
-                        <span>Dennis, current SEO</span><br><span>Candidate, Investment</span><br><span>Baking Programme.</span>
-                    </h1>
-                    <h1 class="hidden-on-computer"
-                    <span>Dennis, current SEO Candidate, Investment Baking Programme.</span>
-                    </h1>
-                </div>
-
-                <div class="sixteen wide mobile sixteen wide tablet eight wide computer right aligned text right column buttons">
-                    <a class="ui teal button">Apply Now</a>
-                    <a class="ui teal button">More Stories</a>
-                    <a class="ui teal button">Get Involved</a>
-                </div>
-            </div>
-        </li>
-        <li class="masthead careers-page" style="background-image:url('/static/img/banners/careers/banner3.jpg')">
-            <div class="ui grid container bottom aligned">
-                <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
-                    <h1 class="only-on-computer">
-                        <span>Naima Anwar, Diversity Outreach Manager, Civil Service Human Resources</span>
-                    </h1>
-                    <h1 class="hidden-on-computer">
-                        <span>Naima Anwar, Diversity Outreach Manager, Civil Service Human Resources</span>
-                    </h1>
-                </div>
-
-                <div class="sixteen wide mobile sixteen wide tablet eight wide computer right aligned text right column buttons">
-                    <a class="ui teal button">Apply Now</a>
-                    <a class="ui teal button">More Stories</a>
-                    <a class="ui teal button">Get Involved</a>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
+{% placeholder "Header" %}
 
 <div class="ui grid container section how-we-work careers-page">
     <div class="row">
         <div class="sixteen wide column">
-            <h1 class="caps-title teal">How we work</h1>
-            <p>We help you excel at the interview, land the internship, or get a full-time job by providing training
-                in:</p>
+            <h1 class="caps-title teal">{% placeholder "How We Work Title" %}</h1>
+            <p>{% placeholder "How We Work Intro" %}</p>
         </div>
     </div>
 
@@ -110,25 +51,15 @@
 <div class="teal-background">
     <div class="ui relaxed grid container section why-unique">
         <div class="sixteen wide column">
-            <h1 class="white caps-title">Why we're unique</h1>
+            <h1 class="white caps-title">{% placeholder "Why Unique Title" %}</h1>
         </div>
 
         <div class="white sixteen wide mobile eight wide tablet eight wide computer column justified">
-            <p><strong>Our programmes are led by industry professionals.</strong> Our team has worked across a broad
-                range of sectors and organisations. We have succeeded at assessment centres, completed graduate training
-                programmes and amassed a wealth of commercial knowledge and professional experience to share with you.
-            </p>
-            <p><strong>We offer cross-industry opportunities in eight sectors</strong> giving you the chance to explore
-                what’s out there and learn about the industry that’s right for you.</p>
+            {% placeholder "Column 1 Text" %}
         </div>
 
         <div class="white sixteen wide mobile eight wide tablet eight wide computer column justified">
-            <p><strong>Our long-established relationships with sponsor firms</strong> open doors to the best contacts
-                and career opportunities.</p>
-            <p><strong>We have an alumni network of over 5,000 industry mentors</strong>. As you progress through your
-                internship, you will receive ongoing mentoring and support direct from the network. As you build your
-                professional experience, you get the chance to share your knowledge with the next generation and to join
-                our alumni network.</p>
+            {% placeholder "Column 2 Text" %}
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import cms.models.fields
 
 
 class Migration(migrations.Migration):
@@ -15,9 +16,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Question',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(to='cms.CMSPlugin', parent_link=True, auto_created=True, serialize=False, primary_key=True)),
-                ('question', models.CharField(default='Question', max_length=10000)),
-                ('answer', models.TextField(default='Answer')),
+                ('cmsplugin_ptr', models.OneToOneField(primary_key=True, auto_created=True, to='cms.CMSPlugin', parent_link=True, serialize=False)),
+                ('questionText', models.CharField(max_length=10000, default='Question')),
+                ('answerText', cms.models.fields.PlaceholderField(editable=False, null=True, slotname='answerText', to='cms.Placeholder')),
             ],
             options={
                 'abstract': False,

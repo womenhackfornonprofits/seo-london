@@ -37,7 +37,7 @@
 
       &:before {
         content: "\f138";
-        font-family: FontAwesome;
+        font-family: Icons;
         font-size: 40px;
         color: white;
       }
@@ -48,7 +48,7 @@
 
       &:before {
         content: "\f137";
-        font-family: FontAwesome;
+        font-family: Icons;
         font-size: 40px;
         color: white;
       }
@@ -72,6 +72,30 @@
   background-repeat: no-repeat;
   background-position: center center;
   width: 100%;
+  position: relative;
+
+  .button {
+    margin-top: 25px;
+  }
+
+  &:not(.about-page) {
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    >.grid {
+      height: 75vh;
+    }
+
+  }
 
   $span-opacity: 0.6;
 
@@ -120,7 +144,6 @@
   }
 
   .grid {
-    padding: 200px 0;
 
     h1 {
       font-family: "Lato", sans-serif;
