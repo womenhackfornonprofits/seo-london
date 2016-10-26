@@ -1,0 +1,11 @@
+{% load cms_tags %}
+<a href="{{ instance.URL }}" class="card">
+    <div class="image">
+        {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+        {% endfor %}
+    </div>
+    <div class="content">
+        <span class="header">{{ instance.name }}</span>
+    </div>
+</a>

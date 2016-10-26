@@ -1,4 +1,6 @@
-<div class="column story" style="background-image:url('/media/{{ instance.image }}')">
+{% load cms_tags %}
+
+<div class="column story" style="background-image:url('{{instance.storyImage.url}}')">
     <div class="content">
         <h2>{{ instance.name }}</h2>
         <p>{{ instance.excerpt }}</p>
@@ -9,7 +11,9 @@
 <div class="ui success story modal {{ instance.storyId }}">
     <div class="header">{{ instance.name }}</div>
     <div class="content">
-        <img src="/media/{{ instance.image }}">
-        {{ instance.text }}
+        <img src="{{ instance.storyImage.url }}" alt="{{ instance.name }} Story">
+        {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+        {% endfor %}
     </div>
 </div>

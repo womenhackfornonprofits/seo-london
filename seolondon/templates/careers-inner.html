@@ -13,7 +13,11 @@
     <div class="row">
         <div class="sixteen wide column">
             <h1 class="caps-title teal">{% placeholder "Career Name" %}</h1>
-            {# <p>{% placeholder "Introductory Text" %}</p> #}
+
+            {% get_placeholder "Introductory Paragraph" as introductory_paragraph %}
+            {% if introductory_paragraph %}
+            <p>{{ introductory_paragraph }}</p>
+            {% endif %}
             <h1 class="light teal">{% placeholder "First Year Title" %}</h1>
 
             {% get_placeholder "First Year Text" as first_year_text %}
@@ -98,6 +102,11 @@
                 {% placeholder "Divisions Column 3" %}
             </div>
         </div>
+
+        {% get_placeholder "Closing Paragraph" as closing_paragraph %}
+        {% if closing_paragraph %}
+        {{ closing_paragraph }}
+        {% endif %}
     </div>
 </div>
 

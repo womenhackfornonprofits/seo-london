@@ -169,6 +169,13 @@
         padding: 5px 15px;
         background-color: rgba($teal, $span-opacity);
       }
+
+      &.caption {
+        color: #FFF;
+        font-weight: 300;
+        font-size: 20px;
+        margin-top: 0;
+      }
     }
 
     p {

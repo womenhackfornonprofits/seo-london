@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember, Question, SingleHeader, Button, MultipleHeader, MultipleSingleHeader
+from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember, Question, SingleHeader, Button, MultipleHeader, MultipleSingleHeader, Career
 
 class RepeaterPlugin(CMSPluginBase):
     model = Repeater
@@ -41,6 +41,7 @@ class SuccessStoryPlugin(CMSPluginBase):
     model = SuccessStory
     name = 'Success Story Plugin'
     render_template = "success_story.html"
+    allow_children = True
 
     def render(self, context, instance, placeholder):
         context = super(SuccessStoryPlugin, self).render(context, instance, placeholder)
@@ -128,3 +129,15 @@ class MultipleSingleHeaderPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(MultipleSingleHeaderPlugin)
+
+class CareerPlugin(CMSPluginBase):
+    model = Career
+    name = 'Career (Outer) Plugin'
+    render_template = "career.html"
+    allow_children = True
+
+    def render(self, context, instance, placeholder):
+        context = super(CareerPlugin, self).render(context, instance, placeholder)
+        return context
+
+plugin_pool.register_plugin(CareerPlugin)

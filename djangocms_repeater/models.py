@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from cms.models.fields import PlaceholderField
+from filer.fields.image import FilerImageField
 
 from cms.models import CMSPlugin
 
@@ -35,8 +36,7 @@ class SuccessStory(CMSPlugin):
     storyId = models.CharField(max_length=10, default='Story ID')
     name = models.CharField(max_length=50, default='Candidate Name')
     excerpt = models.CharField(max_length=500, default='Excerpt')
-    text = models.TextField(default='Story Content')
-    image = models.ImageField(upload_to='success-stories/', default='success-stories/none.jpg')
+    storyImage = FilerImageField(null=True, blank=True, related_name="story_image")
 
 class TeamMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
@@ -51,7 +51,6 @@ class BoardMember(CMSPlugin):
 
 class Question(CMSPlugin):
     questionText = models.CharField(max_length=10000, default='Question')
-    answerText = PlaceholderField('answerText')
 
 HEADERCOLOURCHOICE = (
     ('W', 'White'),
@@ -67,7 +66,8 @@ HEADERALIGNMENTCHOICE = (
 )
 
 class SingleHeader(CMSPlugin):
-    quoteText = models.CharField(max_length=500, default='Placeholder')
+    quoteText = models.CharField(max_length=150, default='Placeholder')
+    captionText = models.CharField(max_length=200, default='', blank=True)
     backgroundImage = models.ImageField(upload_to='headers/', default='headers/none.jpg')
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
@@ -76,7 +76,8 @@ class MultipleHeader(CMSPlugin):
     header_name = models.CharField(max_length=100, default='Slider')
 
 class MultipleSingleHeader(CMSPlugin):
-    quoteText = models.CharField(max_length=500, default='Placeholder')
+    quoteText = models.CharField(max_length=150, default='Placeholder')
+    captionText = models.CharField(max_length=200, default='', blank=True)
     backgroundImage = models.ImageField(upload_to='headers/', default='headers/none.jpg')
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
@@ -100,3 +101,7 @@ class Button(CMSPlugin):
     buttonURL = models.URLField(blank=True)
     specialButton = models.CharField(max_length=1, choices=BUTTONTYPECHOICE, default='n')
     buttonColour = models.CharField(max_length=10, choices=BUTTONCOLOURCHOICE, default='blue')
+
+class Career(CMSPlugin):
+    name = models.CharField(max_length=100, default='Career Name')
+    URL = models.URLField()

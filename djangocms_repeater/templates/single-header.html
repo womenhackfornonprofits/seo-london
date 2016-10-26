@@ -5,6 +5,11 @@
             <h1 class="white">
                 {{ instance.quoteText }}
             </h1>
+            {% if instance.captionText %}
+            <h2 class="caption">
+                {{ instance.captionText }}
+            </h2>
+            {% endif %}
             {% for plugin in instance.child_plugin_instances %}
                 {% render_plugin plugin %}
             {% endfor %}
