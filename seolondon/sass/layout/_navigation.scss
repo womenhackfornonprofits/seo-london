@@ -1,50 +1,50 @@
 #navigation-bar {
   $animation-duration: 0.25s;
+  padding: 15px;
 
   .logo {
     display: inline-block;
 
     img {
-      height: 70px;
+      height: 55px;
     }
   }
-  padding: 15px;
 
-  .sidebar-open & {
-    background: rgba(255, 255, 255, 0) !important;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  // .sidebar-open & {
+  //   background: rgba(255, 255, 255, 0) !important;
+  //   box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
 
-    #primary-menu {
-      opacity: 0 !important;
-    }
+  //   #primary-menu {
+  //     opacity: 0 !important;
+  //   }
 
-    .ui.container {
-      @include computer {
-        width: 100%;
-        padding: 0 20px;
-      }
+  //   .ui.container {
+  //     @include computer {
+  //       width: 100%;
+  //       padding: 0 20px;
+  //     }
 
-      .logo {
-        &:hover {
-          a {
-            svg {
-              .logo-text {
-                fill: $light-blue !important;
-              }
-            }
-          }
-        }
+  //     .logo {
+  //       &:hover {
+  //         a {
+  //           svg {
+  //             .logo-text {
+  //               fill: $light-blue !important;
+  //             }
+  //           }
+  //         }
+  //       }
 
-        a {
-          svg {
-            .logo-text {
-              fill: white !important;
-            }
-          }
-        }
-      }
-    }
-  }
+  //       a {
+  //         svg {
+  //           .logo-text {
+  //             fill: white !important;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   &.scrolling {
     background: rgba(255, 255, 255, 0.98);
@@ -109,22 +109,6 @@
         &::before,
         &::after {
           background-color: $black;
-        }
-      }
-    }
-
-    .logo {
-      //padding: 0;
-
-      // @include mobile {
-      //   padding: 12px 0;
-      // }
-
-      a {
-        svg {
-          .logo-text {
-            fill: $black !important;
-          }
         }
       }
     }
@@ -323,10 +307,6 @@
     padding-right: 10px;
     transition: padding $animation-duration ease;
 
-    @include mobile {
-      padding: 20px 0;
-    }
-
     a {
       display: block;
 
@@ -422,6 +402,11 @@
   }
 }
 
+#primary-menu {
+  padding-left: 30px;
+  max-width: 900px;
+}
+
 .mobile.slice {
   position: fixed;
   left: 0;
@@ -436,28 +421,11 @@
   border-bottom: 1px solid $grey;
 
   @include not-mobile {
-    display: none !important;
+    display: none;
   }
 
   &.active {
     transition: top 0.35s ease, bottom 0.5s ease, border-color 0.2s ease 0.45s;
     border-color: white;
-  }
-
-  &.top {
-    top: -130vh;
-
-    &.active {
-      top: -49vh;
-    }
-  }
-
-  &.bottom {
-    z-index: 94;
-    bottom: -130vh;
-
-    &.active {
-      bottom: -49vh;
-    }
   }
 }
