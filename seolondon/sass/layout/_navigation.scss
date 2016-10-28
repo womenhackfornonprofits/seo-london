@@ -1,7 +1,3 @@
-body.mobile.open {
-  overflow: hidden;
-}
-
 #navigation-bar {
   $animation-duration: 0.25s;
 
@@ -9,34 +5,10 @@ body.mobile.open {
     display: inline-block;
 
     img {
-      height: 65px;
+      height: 70px;
     }
   }
-
-}
-
-body.mobile.open,
-body.sidebar-open {
-  overflow: hidden;
-}
-
-#navigation-bar {
-  $animation-duration: 0.25s;
-
-  position: absolute;
-  top: -70px;
-  margin-top: 70px;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background: rgba(255, 255, 255, 1);
-  max-height: 100vh;
-  overflow: visible;
-  will-change: background, top, left, margin-top, position;
-
-  @include mobile {
-    overflow: auto;
-  }
+  padding: 15px;
 
   .sidebar-open & {
     background: rgba(255, 255, 255, 0) !important;
@@ -97,11 +69,17 @@ body.sidebar-open {
 
   &.mobile.open {
     box-shadow: 0 0 0;
-    top: 0 !important;
-    margin-top: 0 !important;
-    opacity: 1 !important;
-    position: fixed !important;
-    transition: all $animation-duration ease;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+    transition: position $animation-duration ease;
 
     .mobile.menu.toggle {
       a {
@@ -138,9 +116,9 @@ body.sidebar-open {
     .logo {
       //padding: 0;
 
-      @include mobile {
-        padding: 12px 0;
-      }
+      // @include mobile {
+      //   padding: 12px 0;
+      // }
 
       a {
         svg {
@@ -175,6 +153,7 @@ body.sidebar-open {
   .menu {
     opacity: 1;
     transition: opacity $animation-duration ease;
+    width: 100%;
 
     &.mobile.toggle {
       display: none;
@@ -219,13 +198,14 @@ body.sidebar-open {
       }
     }
 
-    @include mobile {
+    @media (max-width: 995px) {
       &.desktop.links {
         display: none;
       }
 
       &.mobile.toggle {
         display: block;
+        width: auto;
       }
     }
 
@@ -241,18 +221,12 @@ body.sidebar-open {
         margin: 0;
         padding: 0;
         position: relative;
-        z-index: 120;
         height: 100%;
-        display: flex;
         flex-direction: column;
-        justify-content: center;
+        flex: 1 0 auto;
 
         @include tablet {
           padding: 0 10px;
-
-          &:first-child {
-            display: none;
-          }
         }
 
         &.selected {
@@ -269,7 +243,7 @@ body.sidebar-open {
           text-transform: uppercase;
           transition: all $animation-duration ease;
           will-change: color;
-          padding: 8px 14px;
+          padding: 6px 8px;
 
           &.fixed {
             background: $accent;
@@ -346,6 +320,7 @@ body.sidebar-open {
 
   .logo {
     padding: 15px 0;
+    padding-right: 10px;
     transition: padding $animation-duration ease;
 
     @include mobile {
