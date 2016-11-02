@@ -4,6 +4,8 @@
         <p>{{ instance.title }}</p>
     </div>
     <div class="overlay">
-        {{ instance.text }}
+        {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+        {% endfor %}
     </div>
 </div>
