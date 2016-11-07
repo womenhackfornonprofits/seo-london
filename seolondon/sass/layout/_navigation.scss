@@ -228,6 +228,7 @@
           transition: all $animation-duration ease;
           will-change: color;
           padding: 6px 8px;
+          text-align: center;
 
           &.fixed {
             background: $accent;

@@ -72,12 +72,15 @@
                             <p>Background:</p>
                         </div>
                         <div class="twelve wide middle aligned column">
-                            <select name="programme" class="ui dropdown">
+                            <select name="background" class="ui dropdown eligibility test">
                                 <option value="">Background</option>
-                                <option value="AL">Undergraduate</option>
-                                <option value="AK">Postgraduate</option>
-                                <option value="AL">Undergraduate</option>
-                                <option value="AK">Postgraduate</option>
+                                <option value="1">Undergraduate studying any discipline</option>
+                                <option value="2">Undergraduate in any year of study</option>
+                                <option value="3">Graduate/Postgraduate</option>
+                                <option value="4">On track for 2:1</option>
+                                <option value="5">Min. 320 UCAS points</option>
+                                <option value="6">Min. 300 UCAS points</option>
+                                <option value="7">Min. 240 UCAS points</option>
                             </select>
                         </div>
                     </div>
@@ -86,16 +89,20 @@
                             <p>Interested In:</p>
                         </div>
                         <div class="twelve wide middle aligned column with-line">
-                            <select name="programme" class="ui dropdown">
-                                <option value="">Background</option>
-                                <option value="AL">Undergraduate</option>
-                                <option value="AK">Postgraduate</option>
-                                <option value="AL">Undergraduate</option>
-                                <option value="AK">Postgraduate</option>
+                            <select name="area" class="ui dropdown eligibility area">
+                                <option value="">Area</option>
+                                <option value="1">Investment Banking</option>
+                                <option value="2">Corporate Law</option>
+                                <option value="3">Consulting</option>
+                                <option value="4">Corporates &amp; Technology</option>
+                                <option value="5">Engineering</option>
+                                <option value="6">Advertising</option>
+                                <option value="7">Civil Service</option>
+                                <option value="8">City Solicitors Horizons</option>
                             </select>
                         </div>
                     </div>
-                    <div class="row margin">
+                    <div class="row margin eligible-toggle">
                         <div class="four wide middle aligned column">
                             <p>&nbsp;</p>
                         </div>
@@ -150,12 +157,16 @@
                             <p>&nbsp;</p>
                         </div>
                         <div class="fourteen wide middle aligned column">
-                            <select name="programme" class="ui dropdown">
+                            <select name="selection-background" class="ui dropdown selection background">
                                 <option value="">Program</option>
-                                <option value="AL">Banking</option>
-                                <option value="AK">Corporate Law</option>
-                                <option value="AL">CSH</option>
-                                <option value="AK">Civil</option>
+                                <option value="1">Investment Banking</option>
+                                <option value="2">Corporate Law</option>
+                                <option value="3">Consulting</option>
+                                <option value="4">Corporates &amp; Technology</option>
+                                <option value="5">Engineering</option>
+                                <option value="6">Advertising</option>
+                                <option value="7">Civil Service</option>
+                                <option value="8">City Solicitors Horizons</option>
                             </select>
                         </div>
                     </div>
@@ -163,12 +174,70 @@
                         <div class="one wide middle aligned column">
                             <p>&nbsp;</p>
                         </div>
-                        <div class="fourteen wide middle aligned column with-line line-adjust">
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="1">
                             <ul class="steps">
-                                <li><span class="circle">1</span> This is a description of a step in our process</li>
-                                <li><span class="circle">2</span> This is a description of a step in our process</li>
-                                <li><span class="circle">3</span> This is a description of a step in our process</li>
-                                <li><span class="circle">4</span> This is a description of a step in our process</li>
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Telephone Interview</li>
+                                <li><span class="circle">4</span> Psychometric Tests</li>
+                                <li><span class="circle">5</span> Assessment Centre</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="2">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Psychometric Tests</li>
+                                <li><span class="circle">3</span> Assessment Centre</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="3">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Telephone Interview</li>
+                                <li><span class="circle">4</span> Psychometric Tests</li>
+                                <li><span class="circle">5</span> Assessment Centre</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="4">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Telephone Interview</li>
+                                <li><span class="circle">4</span> Psychometric Tests</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="5">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Telephone Interview</li>
+                                <li><span class="circle">4</span> Psychometric Tests</li>
+                                <li><span class="circle">5</span> Face-to-face Interview</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="6">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Telephone Interview</li>
+                                <li><span class="circle">4</span> Face-to-face Interview</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="7">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Psychometric Tests</li>
+                                <li><span class="circle">4</span> Assessment Centre</li>
+                            </ul>
+                        </div>
+                        <div class="fourteen wide middle aligned column with-line line-adjust selection-process" data-selection-process="8">
+                            <ul class="steps">
+                                <li><span class="circle">1</span> CV Screening</li>
+                                <li><span class="circle">2</span> Video Interview</li>
+                                <li><span class="circle">3</span> Psychometric Tests</li>
+                                <li><span class="circle">4</span> Assessment Centre</li>
                             </ul>
                         </div>
                     </div>

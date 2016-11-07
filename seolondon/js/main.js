@@ -27,7 +27,62 @@ $(document).ready(function ($) {
   $('.donate.modal')
     .modal('attach events', '.donate-modal.button');
 
-  $('.ui.dropdown').dropdown();
+  // $('.ui.dropdown').dropdown();
+
+  var eligibilityBackground = 0;
+  var eligibilityArea = 0;
+  var selectionBackground = 0;
+
+  var eligibilityBools = [
+    [true, true, true, true, true, true, true, true],
+    [true, true, true, true, true, true, true, true],
+    [false, true, true, true, false, false, false, false],
+    [true, true, true, true, true, true, true, false],
+    [false, true, false, false, false, false, false, true],
+    [true, false, true, false, true, false, false, false],
+    [false, false, false, true, false, false, false, false]
+  ];
+
+  $('.ui.dropdown.eligibility.test').dropdown(
+    {
+      action: 'activate',
+      onChange: function(value) {
+        console.log(value);
+        eligibilityBackground = value;
+      }
+    }
+  );
+
+  $('.ui.dropdown.eligibility.area').dropdown(
+    {
+      action: 'activate',
+      onChange: function(value) {
+        eligibilityArea = value;
+
+        console.log(eligibilityBackground);
+        console.log(eligibilityArea);
+
+        if (eligibilityBackground > 0) {
+          if (eligibilityBools[eligibilityBackground][eligibilityArea]) {
+            $('.eligible-toggle').css('visibility', 'visible');
+          } else {
+            $('.eligible-toggle').css('visibility', 'hidden');
+          }
+        }
+      }
+    }
+  );
+
+  $('.ui.dropdown.selection.background').dropdown(
+    {
+      action: 'activate',
+      onChange: function(value) {
+        $('*[data-selection-process="'+selectionBackground+'"]').hide();
+        selectionBackground = value;
+        $('*[data-selection-process="'+selectionBackground+'"]').show();
+      }
+    }
+  );
 
   $('#navigation-bar li li.child:contains("FAQ")').css("border-top", "3px solid #105f9b");
 

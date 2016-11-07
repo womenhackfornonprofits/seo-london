@@ -30,10 +30,6 @@
   text-transform: uppercase !important;
   padding: 12px 20px !important;
 
-  &:hover {
-    opacity: 0.8;
-  }
-
   &.white {
     background: #fff;
     color: black !important;
@@ -42,19 +38,39 @@
   &.primary,
   &.blue {
     background: $blue !important;
+    transition: 0.3s ease all !important;
+
+    &:hover {
+      background: darken($blue, 10%) !important;
+    }
   }
 
   &.secondary,
   &.orange {
     background: $orange !important;
+    transition: 0.3s ease all !important;
+
+    &:hover {
+      background: darken($orange, 10%) !important;
+    }
   }
 
   &.red {
     background: $red !important;
+    transition: 0.3s ease all !important;
+
+    &:hover {
+      background: darken($red, 10%) !important;
+    }
   }
 
   &.teal {
     background: $teal !important;
+    transition: 0.3s ease all !important;
+
+    &:hover {
+      background: darken($teal, 10%) !important;
+    }
   }
 }
 

@@ -114,12 +114,21 @@
         background: $grey;
       }
 
+      &.selection-process {
+        display: none;
+      }
+
       &.line-adjust {
         &:before {
           left: 29px;
         }
       }
     }
+  }
+
+  .eligible-toggle {
+    visibility: hidden;
+    transition: 0.4s ease all;
   }
 
   .eligible {
