@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags %}
+{% load extra_cms_tags %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
@@ -132,6 +133,11 @@
             </div>
 
         </div>
+
+        {% get_placeholder "Closing Paragraph" as closing_paragraph %}
+        {% if closing_paragraph %}
+        {{ closing_paragraph }}
+        {% endif %}
 
     </div>
 
