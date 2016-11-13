@@ -6,6 +6,7 @@ from filer.fields.image import FilerImageField
 
 from cms.models import CMSPlugin
 
+
 class Repeater(CMSPlugin):
     repeater_name = models.CharField(max_length=50)
     add_columns = models.BooleanField(default=False)
@@ -15,6 +16,7 @@ CAREERSTEPCHOICE = (
     ('o', 'Orange'),
     ('w', 'White'),
 )
+
 
 class CareerStep(CMSPlugin):
     number = models.CharField(max_length=5, default='0')
@@ -29,8 +31,10 @@ LOGOCHOICE = (
     ('3', 'SEO Connect'),
 )
 
+
 class Logo(CMSPlugin):
     logoChoice = models.CharField(max_length=1, choices=LOGOCHOICE, default='0')
+
 
 class SuccessStory(CMSPlugin):
     storyId = models.CharField(max_length=10, default='Story ID')
@@ -38,16 +42,18 @@ class SuccessStory(CMSPlugin):
     excerpt = models.CharField(max_length=500, default='Excerpt')
     storyImage = FilerImageField(null=True, blank=True, related_name="story_image")
 
+
 class TeamMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
     title = models.CharField(max_length=400, default='Job Title')
-    text = models.TextField(default='Description')
     image = models.ImageField(upload_to='team-members/', default='team-members/none.jpg')
+
 
 class BoardMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
     title = models.CharField(max_length=400, default='Job Title')
-    text = models.TextField(default='Description')
+    image = models.ImageField(upload_to='board-members/', default='board-members/none.jpg')
+
 
 class Question(CMSPlugin):
     questionText = models.CharField(max_length=10000, default='Question')
@@ -65,12 +71,14 @@ HEADERALIGNMENTCHOICE = (
     ('R', 'Right'),
 )
 
+
 class SingleHeader(CMSPlugin):
     quoteText = models.CharField(max_length=150, default='Placeholder')
     captionText = models.CharField(max_length=200, default='', blank=True)
     backgroundImage = models.ImageField(upload_to='headers/', default='headers/none.jpg')
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
+
 
 class MultipleHeader(CMSPlugin):
     header_name = models.CharField(max_length=100, default='Slider')
@@ -96,9 +104,10 @@ BUTTONTYPECHOICE = (
     ('n', 'None')
 )
 
+
 class Button(CMSPlugin):
     buttonText = models.CharField(max_length=100, default='Button Text')
-    buttonURL = models.URLField(blank=True)
+    buttonURL = models.CharField(blank=True, default="/", max_length=100)
     specialButton = models.CharField(max_length=1, choices=BUTTONTYPECHOICE, default='n')
     buttonColour = models.CharField(max_length=10, choices=BUTTONCOLOURCHOICE, default='blue')
 

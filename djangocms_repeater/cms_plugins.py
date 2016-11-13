@@ -49,10 +49,12 @@ class SuccessStoryPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(SuccessStoryPlugin)
 
+
 class TeamMemberPlugin(CMSPluginBase):
     model = TeamMember
     name = 'Team Member Plugin'
     render_template = "team_member.html"
+    allow_children = True
 
     def render(self, context, instance, placeholder):
         context = super(TeamMemberPlugin, self).render(context, instance, placeholder)
@@ -60,16 +62,19 @@ class TeamMemberPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(TeamMemberPlugin)
 
+
 class BoardMemberPlugin(CMSPluginBase):
     model = BoardMember
     name = 'Board Member Plugin'
     render_template = "board_member.html"
+    allow_children = True
 
     def render(self, context, instance, placeholder):
         context = super(BoardMemberPlugin, self).render(context, instance, placeholder)
         return context
 
 plugin_pool.register_plugin(BoardMemberPlugin)
+
 
 class QuestionPlugin(CMSPluginBase):
     model = Question
@@ -83,6 +88,7 @@ class QuestionPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(QuestionPlugin)
 
+
 class SingleHeaderPlugin(CMSPluginBase):
     model = SingleHeader
     name = 'Single Header Plugin'
@@ -95,6 +101,7 @@ class SingleHeaderPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(SingleHeaderPlugin)
 
+
 class ButtonPlugin(CMSPluginBase):
     model = Button
     name = 'Button Plugin'
@@ -105,6 +112,7 @@ class ButtonPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(ButtonPlugin)
+
 
 class MultipleHeaderPlugin(CMSPluginBase):
     model = MultipleHeader
@@ -118,6 +126,7 @@ class MultipleHeaderPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(MultipleHeaderPlugin)
 
+
 class MultipleSingleHeaderPlugin(CMSPluginBase):
     model = MultipleSingleHeader
     name = 'Multiple Single Header Plugin'
@@ -129,6 +138,7 @@ class MultipleSingleHeaderPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(MultipleSingleHeaderPlugin)
+
 
 class CareerPlugin(CMSPluginBase):
     model = Career

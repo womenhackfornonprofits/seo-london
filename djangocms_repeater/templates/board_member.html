@@ -3,6 +3,8 @@
     <h3>{{ instance.name }}</h3>
     <p>{{ instance.title }}</p>
     <hr>
+    {% placeholder "Text" %}
+
     {% for plugin in instance.child_plugin_instances %}
     {% render_plugin plugin %}
     {% endfor %}
