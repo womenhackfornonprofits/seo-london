@@ -5,8 +5,6 @@
         <p>{{ instance.title }}</p>
     </div>
     <div class="overlay">
-        {% placeholder "Text" %}
-        
         {% for plugin in instance.child_plugin_instances %}
         	{% render_plugin plugin %}
         {% endfor %}
