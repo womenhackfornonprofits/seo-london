@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath seolondon seolondon.wsgi:application
