@@ -3,6 +3,8 @@ npm-debug.log
 .idea/
 project.db
 __pycache__/
+.DS_Store
+**.pyc
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

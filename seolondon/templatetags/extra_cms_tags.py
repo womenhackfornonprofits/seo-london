@@ -1,11 +1,12 @@
+from django import template
+from django.utils.safestring import mark_safe
+
 from classytags.arguments import Argument, MultiValueArgument
 from classytags.values import StringValue
 
 from cms.templatetags.cms_tags import Placeholder, PlaceholderOptions
 from cms.models.placeholdermodel import Placeholder as PlaceholderModel
 
-from django import template
-from django.utils.safestring import mark_safe
 
 register = template.Library()
 
