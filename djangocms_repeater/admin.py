@@ -7,6 +7,7 @@ class MyModelAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
 
 admin.site.register(Question, MyModelAdmin)
 
+
 class StoryAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
     pass
 

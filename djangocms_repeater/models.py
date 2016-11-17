@@ -1,11 +1,25 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+
 from cms.models.fields import PlaceholderField
 from filer.fields.image import FilerImageField
 
 from cms.models import CMSPlugin
 
+BUTTONCOLOURCHOICE = (
+    ('teal', 'Teal'),
+    ('orange', 'Orange'),
+    ('red', 'Red'),
+    ('blue', 'Blue'),
+)
+
+BUTTONTYPECHOICE = (
+    ('d', 'Donate'),
+    ('a', 'Apply Now'),
+    ('l', 'Log in'),
+    ('n', 'None')
+)
 
 class Repeater(CMSPlugin):
     repeater_name = models.CharField(max_length=50)
@@ -83,6 +97,7 @@ class SingleHeader(CMSPlugin):
 class MultipleHeader(CMSPlugin):
     header_name = models.CharField(max_length=100, default='Slider')
 
+
 class MultipleSingleHeader(CMSPlugin):
     quoteText = models.CharField(max_length=150, default='Placeholder')
     captionText = models.CharField(max_length=200, default='', blank=True)
@@ -90,19 +105,7 @@ class MultipleSingleHeader(CMSPlugin):
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
-BUTTONCOLOURCHOICE = (
-    ('teal', 'Teal'),
-    ('orange', 'Orange'),
-    ('red', 'Red'),
-    ('blue', 'Blue'),
-)
 
-BUTTONTYPECHOICE = (
-    ('d', 'Donate'),
-    ('a', 'Apply Now'),
-    ('l', 'Log in'),
-    ('n', 'None')
-)
 
 
 class Button(CMSPlugin):

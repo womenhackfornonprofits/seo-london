@@ -32,4 +32,5 @@ Unidecode==0.4.19
 wsgiref==0.1.2
 whitenoise==3.1
 gunicorn==19.5.0
+django-s3direct==0.4.2
 

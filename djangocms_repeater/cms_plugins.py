@@ -15,6 +15,7 @@ class RepeaterPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(RepeaterPlugin)
 
+
 class CareerStepPlugin(CMSPluginBase):
     model = CareerStep
     name = 'Career Step Plugin'
@@ -26,6 +27,7 @@ class CareerStepPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(CareerStepPlugin)
 
+
 class LogoPlugin(CMSPluginBase):
     model = Logo
     name = 'Logo Plugin'
@@ -36,6 +38,7 @@ class LogoPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(LogoPlugin)
+
 
 class SuccessStoryPlugin(CMSPluginBase):
     model = SuccessStory
