@@ -133,6 +133,7 @@ INSTALLED_APPS = [
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
+    's3direct',
     'seolondon',
     'djangocms_repeater',
     'djangocms_plain_text'
@@ -224,10 +225,10 @@ THUMBNAIL_PROCESSORS = (
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # User image uploads to S3 bucket
 # AWS keys
-# AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
-# AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-# AWS_STORAGE_BUCKET_NAME = "seo-images"
-# S3DIRECT_REGION = 'eu-west-1'
+AWS_SECRET_ACCESS_KEY = os.environ["SEO_AWS_SECRET_ACCESS_KEY"]
+AWS_ACCESS_KEY_ID = os.environ["SEO_AWS_ACCESS_KEY_ID"]
+AWS_STORAGE_BUCKET_NAME = "seo-london-images"
+S3DIRECT_REGION = 'eu-west-1'
 
 S3DIRECT_DESTINATIONS = {
     # Limit uploads to jpeg's and png's.
