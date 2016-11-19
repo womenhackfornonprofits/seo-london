@@ -21,6 +21,7 @@ BUTTONTYPECHOICE = (
     ('n', 'None')
 )
 
+
 class Repeater(CMSPlugin):
     repeater_name = models.CharField(max_length=50)
     add_columns = models.BooleanField(default=False)
@@ -104,7 +105,6 @@ class MultipleSingleHeader(CMSPlugin):
     backgroundImage = models.ImageField(upload_to='headers/', default='headers/none.jpg')
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
-
 
 
 
