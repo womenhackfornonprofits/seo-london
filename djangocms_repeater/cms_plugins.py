@@ -3,6 +3,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember, Question, SingleHeader, Button, MultipleHeader, MultipleSingleHeader, Career
 
+
 class RepeaterPlugin(CMSPluginBase):
     model = Repeater
     name = 'Repeater Plugin'

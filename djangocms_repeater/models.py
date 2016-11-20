@@ -117,4 +117,4 @@ class Button(CMSPlugin):
 
 class Career(CMSPlugin):
     name = models.CharField(max_length=100, default='Career Name')
-    URL = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    careerURL = models.CharField(blank=True, default="/", max_length=100)
