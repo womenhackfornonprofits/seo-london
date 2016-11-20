@@ -1,8 +1,10 @@
 {% load cms_tags %}
-<div class="column team" style="background-image:url('/media/{{ instance.image }}')">
+<div class="column team" style="background-image:url('{{ instance.image }}')">
     <div class="content">
-        <h3>{{ instance.name }}</h3>
-        <p>{{ instance.title }}</p>
+    	<div class="content-wrapper">
+        	<h3>{{ instance.name }}</h3>
+        	<p>{{ instance.title }}</p>
+        </div>	
     </div>
     <div class="overlay">
         {% for plugin in instance.child_plugin_instances %}
