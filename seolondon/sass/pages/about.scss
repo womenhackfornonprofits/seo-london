@@ -42,7 +42,6 @@
     display: block;
   }
 
-
 .board {
 
   .content {
@@ -50,18 +49,13 @@
     flex-direction: column;
     justify-content: center;
     color: #FFF;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(16, 95, 155, 0.59) !important;
+    border: 1px solid #fff !important;
     width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
 
-  }
-
-  .content-wrapper {
-    p,h3 {
-      text-align: center;
-    }
   }
 
 
@@ -103,13 +97,6 @@
   }
 
 }
-
-  .section h2 {
-    margin-bottom: 40px;
-    font-size: 36px;
-    text-align: center;
-  }
-
   h2 {
     font-weight: 300;
     text-transform: uppercase;
@@ -146,6 +133,12 @@
   .the-team.section {
 
     padding-top: 0 !important;
+
+    h2 {
+      margin-bottom: 40px;
+      font-size: 36px;
+      text-align: center;
+    }
 
     .team.column {
       min-height: 400px;
