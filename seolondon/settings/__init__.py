@@ -58,7 +58,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 #STATICFILES_DIRS = (
 #
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SITE_ID = 1
 
