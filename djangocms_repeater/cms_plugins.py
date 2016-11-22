@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, BoardMember, Question, SingleHeader, Button, MultipleHeader, MultipleSingleHeader, Career
+from .models import Repeater, CareerStep, Logo, SuccessStory, TeamMember, Question, SingleHeader, Button, MultipleHeader, MultipleSingleHeader, Career
+
 
 class RepeaterPlugin(CMSPluginBase):
     model = Repeater
@@ -15,6 +16,7 @@ class RepeaterPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(RepeaterPlugin)
 
+
 class CareerStepPlugin(CMSPluginBase):
     model = CareerStep
     name = 'Career Step Plugin'
@@ -26,6 +28,7 @@ class CareerStepPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(CareerStepPlugin)
 
+
 class LogoPlugin(CMSPluginBase):
     model = Logo
     name = 'Logo Plugin'
@@ -36,6 +39,7 @@ class LogoPlugin(CMSPluginBase):
         return context
 
 plugin_pool.register_plugin(LogoPlugin)
+
 
 class SuccessStoryPlugin(CMSPluginBase):
     model = SuccessStory
@@ -63,17 +67,17 @@ class TeamMemberPlugin(CMSPluginBase):
 plugin_pool.register_plugin(TeamMemberPlugin)
 
 
-class BoardMemberPlugin(CMSPluginBase):
-    model = BoardMember
-    name = 'Board Member Plugin'
-    render_template = "board_member.html"
-    allow_children = True
+# class BoardMemberPlugin(CMSPluginBase):
+#     model = BoardMember
+#     name = 'Board Member Plugin'
+#     render_template = "board_member.html"
+#     allow_children = True
 
-    def render(self, context, instance, placeholder):
-        context = super(BoardMemberPlugin, self).render(context, instance, placeholder)
-        return context
+#     def render(self, context, instance, placeholder):
+#         context = super(BoardMemberPlugin, self).render(context, instance, placeholder)
+#         return context
 
-plugin_pool.register_plugin(BoardMemberPlugin)
+# plugin_pool.register_plugin(BoardMemberPlugin)
 
 
 class QuestionPlugin(CMSPluginBase):

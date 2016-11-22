@@ -47,7 +47,6 @@ $(document).ready(function ($) {
     {
       action: 'activate',
       onChange: function(value) {
-        console.log(value);
         eligibilityBackground = value;
       }
     }
@@ -58,9 +57,6 @@ $(document).ready(function ($) {
       action: 'activate',
       onChange: function(value) {
         eligibilityArea = value;
-
-        console.log(eligibilityBackground);
-        console.log(eligibilityArea);
 
         if (eligibilityBackground > 0) {
           if (eligibilityBools[eligibilityBackground][eligibilityArea]) {
@@ -88,10 +84,10 @@ $(document).ready(function ($) {
 
   $('#navigation-bar li a:contains("About Us")').parent().append(
     "<ul>" +
-    "<li class='child'><a href='/about-us#our-story'>Our Story</a></li>" +
-    "<li class='child'><a href='/about-us#today'>Today</a></li>" +
-    "<li class='child'><a href='/about-us#team'>Team</a></li>" +
-    "<li class='child'><a href='/about-us#board'>Board</a></li>" +
+    "<li class='child'><a href='#our-story'>Our Story</a></li>" +
+    "<li class='child'><a href='#today'>Today</a></li>" +
+    "<li class='child'><a href='#team'>Team</a></li>" +
+    "<li class='child'><a href='#board'>Board</a></li>" +
     "</ul>"
   );
 
@@ -111,7 +107,6 @@ $(document).ready(function ($) {
   });
 
   $("#scroll-to-top").click(function(e) {
-    console.log("HERE");
     e.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, "slow");
     return false;
@@ -125,6 +120,8 @@ $(document).ready(function ($) {
     }
   });
 });
+
+
 
 /**
  * JavaScript for the header and navigation
@@ -175,39 +172,6 @@ class Header {
     });
   }
 
-  /**
-   * Handle the window scroll event
-   */
-  scroll() {
-    // let scrollPosition = this.$window.scrollTop();
-    //
-    // if (scrollPosition > 100) {
-    //   if (this.lastScrollPosition === scrollPosition) {
-    //     return;
-    //   }
-    //
-    //   if (!this.scrolling) {
-    //     this.scrolling = true;
-    //     this.$navbar.addClass('scrolling');
-    //   } else if (this.lastScrollPosition < scrollPosition || scrollPosition < 200) {
-    //     this.$navbar.addClass('slide-up').removeClass('slide-down');
-    //   } else {
-    //     this.$navbar.removeClass('slide-up').addClass('slide-down');
-    //   }
-    // } else {
-    //   if (this.scrolling) {
-    //     this.scrolling = false;
-    //
-    //     // prevent animations from occurring
-    //     this.$navbar
-    //       .removeClass('scrolling')
-    //       .removeClass('slide-up')
-    //       .removeClass('slide-down');
-    //   }
-    // }
-    //
-    // this.lastScrollPosition = scrollPosition;
-  }
 
   /**
    * Show/hide the mobile menu

@@ -13,10 +13,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+#PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+#PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 gettext = lambda s: s
-DATA_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -52,20 +53,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+#STATICFILES_DIRS = (
+#
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'seolondon', 'static'),
-)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 SITE_ID = 1
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'seolondon', 'templates'), ],
+        'DIRS': [os.path.join(PROJECT_ROOT, 'seolondon', 'templates'), ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -133,7 +133,10 @@ INSTALLED_APPS = [
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
+    's3direct',
     'seolondon',
+    'djangocms_repeater',
+    'djangocms_plain_text'
 ]
 
 LANGUAGES = (
@@ -214,8 +217,63 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-INSTALLED_APPS.extend([
-    # add your project specific apps here
-    'djangocms_repeater',
-    'djangocms_plain_text'
-])
+# INSTALLED_APPS.extend([
+#     # add your project specific apps here
+#     'djangocms_repeater',
+#     'djangocms_plain_text'
+# ])
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# User image uploads to S3 bucket
+# AWS keys
+AWS_SECRET_ACCESS_KEY = os.environ["SEO_AWS_SECRET_ACCESS_KEY"]
+AWS_ACCESS_KEY_ID = os.environ["SEO_AWS_ACCESS_KEY_ID"]
+AWS_STORAGE_BUCKET_NAME = "seo-london-images"
+S3DIRECT_REGION = 'eu-west-1'
+
+S3DIRECT_DESTINATIONS = {
+    # Limit uploads to jpeg's and png's.
+    'user-profile-images': {
+        'key': 'images',
+        'allowed': ['image/jpeg', 'image/png', 'image/jpg', 'image/svg'],
+        'cache_control': 'max-age=2592000',
+    },
+}
+
+FILER_STORAGES = {
+    'public': {
+        'main': {
+            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': '/path/to/media/filer',
+                'base_url': '/media/filer/',
+            },
+            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+            'UPLOAD_TO_PREFIX': 'filer_public',
+        },
+        'thumbnails': {
+            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'OPTIONS': {
+                'location': '/path/to/media/filer_thumbnails',
+                'base_url': '/media/filer_thumbnails/',
+            },
+        },
+    },
+    'private': {
+        'main': {
+            'ENGINE': 'filer.storage.PrivateFileSystemStorage',
+            'OPTIONS': {
+                'location': '/path/to/smedia/filer',
+                'base_url': '/smedia/filer/',
+            },
+            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+            'UPLOAD_TO_PREFIX': 'filer_public',
+        },
+        'thumbnails': {
+            'ENGINE': 'filer.storage.PrivateFileSystemStorage',
+            'OPTIONS': {
+                'location': '/path/to/smedia/filer_thumbnails',
+                'base_url': '/smedia/filer_thumbnails/',
+            },
+        },
+    },
+}

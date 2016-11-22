@@ -1,9 +1,13 @@
-{% load cms_tags %}
-<div class="sixteen wide mobile sixteen wide talet eight wide computer column">
-    <h3>{{ instance.name }}</h3>
-    <p>{{ instance.title }}</p>
-    <hr>
-    {% for plugin in instance.child_plugin_instances %}
-        {% render_plugin plugin %}
-    {% endfor %}
+<!-- {% load cms_tags %}
+<div class="column team">
+    <div class="content-centered">
+        <h3>{{ instance.name }}</h3>
+        <p>{{ instance.title }}</p>
+    </div>
+    <div class="overlay">
+        {% for plugin in instance.child_plugin_instances %}
+        	{% render_plugin plugin %}
+        {% endfor %}
+    </div>
 </div>
+ -->
