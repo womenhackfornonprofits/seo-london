@@ -1,4 +1,5 @@
 $(document).ready(function ($) {
+
   $('.slider').unslider({
     animation: 'horizontal'
   });
@@ -24,8 +25,11 @@ $(document).ready(function ($) {
   });
 
   // open second modal on first modal buttons
-  $('.donate.modal')
-    .modal('attach events', '.donate-modal.button');
+  let $donateEl = $('.donate.modal');
+
+if ($donateEl.length) {
+    $donateEl.modal('attach events', '.donate-modal.button');
+}
 
   // $('.ui.dropdown').dropdown();
 
@@ -91,21 +95,6 @@ $(document).ready(function ($) {
     "</ul>"
   );
 
-  $('a[href*="#"]:not([href="#"])').click(function (e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top - 50
-        }, 500);
-
-        e.preventDefault();
-      }
-    }
-  });
-
   $("#scroll-to-top").click(function(e) {
     e.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -139,8 +128,6 @@ class Header {
     this.menuLastToggled = new Date(0);
 
     this.bind();
-    this.scroll();
-
     if (this.$window.scrollTop() >= 200) {
       this.$navbar.addClass('slide-down');
     }
@@ -150,7 +137,7 @@ class Header {
    * Bind the header to scroll and toggle events
    */
   bind() {
-    this.$window.scroll(this.scroll.bind(this));
+    //this.$window.scroll(this.scroll.bind(this));
 
     this.$window.resize(() => {
       if (this.$navbar.hasClass('mobile open') && this.$window.width() >= 768) {
@@ -171,8 +158,6 @@ class Header {
       }
     });
   }
-
-
   /**
    * Show/hide the mobile menu
    */
@@ -218,7 +203,6 @@ class Header {
     setTimeout(() => {
       this.$navbar.removeClass('mobile open');
       $('.mobile.slice').removeClass('active');
-      this.scroll();
     }, 300);
   }
 }
