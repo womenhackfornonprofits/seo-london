@@ -5,8 +5,6 @@
 <head>
     <title>{% block title %}This is my new project home page{% endblock title %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'dist/styles.min.css' %}"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
-    <script src="{% static 'dist/scripts.min.js' %}"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     {% render_block "css" %}
 </head>
@@ -188,5 +186,7 @@
 <a id="scroll-to-top"><i class="angle up icon"></i></a>
 
 {% render_block "js" %}
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+<script src="{% static 'dist/scripts.min.js' %}"></script>
 </body>
 </html>
