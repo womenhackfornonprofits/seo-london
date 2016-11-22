@@ -21,7 +21,7 @@ Note: To help do this automatically on every new shell you open add the line abo
 14. Make sure the Postgres Server is up and running:
 	- If using the App simply start the server from there
 	- If using command line:` brew services start postgresql`
-15. Create a new database: `createdb seolondon`
+15. Create a new database: `createdb seolondon` -> do not run migrations as we will import the whole database
 
 
 
@@ -32,7 +32,9 @@ Note: To help do this automatically on every new shell you open add the line abo
 4. In a new concole also run `python manage.py runserver`
 
 ## Getting the database setup locally
-
+1. Get a dump from Heroku: `heroku pg:backups capture`
+2. Fetch the database dump to your machine: `curl -o latest.dump `heroku pg:backups public-url`
+3. Import the database into the local empty database:  `pg_restore -U seolondon -d seolondon latest.dump`
 
 ## Troubleshooting
 
