@@ -78,11 +78,6 @@ class TeamMember(CMSPlugin):
     image = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
 
 
-# class BoardMember(CMSPlugin):
-#     name = models.CharField(max_length=200, default='Name')
-#     title = models.CharField(max_length=400, default='Job Title')
-
-
 class Question(CMSPlugin):
     questionText = models.CharField(max_length=10000, default='Question')
 

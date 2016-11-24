@@ -67,19 +67,6 @@ class TeamMemberPlugin(CMSPluginBase):
 plugin_pool.register_plugin(TeamMemberPlugin)
 
 
-# class BoardMemberPlugin(CMSPluginBase):
-#     model = BoardMember
-#     name = 'Board Member Plugin'
-#     render_template = "board_member.html"
-#     allow_children = True
-
-#     def render(self, context, instance, placeholder):
-#         context = super(BoardMemberPlugin, self).render(context, instance, placeholder)
-#         return context
-
-# plugin_pool.register_plugin(BoardMemberPlugin)
-
-
 class QuestionPlugin(CMSPluginBase):
     model = Question
     name = 'Question Plugin'
