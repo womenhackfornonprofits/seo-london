@@ -88,10 +88,10 @@ if ($donateEl.length) {
 
   $('#navigation-bar li a:contains("About Us")').parent().append(
     "<ul>" +
-    "<li class='child'><a href='#our-story'>Our Story</a></li>" +
-    "<li class='child'><a href='#today'>Today</a></li>" +
-    "<li class='child'><a href='#team'>Team</a></li>" +
-    "<li class='child'><a href='#board'>Board</a></li>" +
+    "<li class='child'><a href='/about-us/#our-story'>Our Story</a></li>" +
+    "<li class='child'><a href='/about-us/#today'>Today</a></li>" +
+    "<li class='child'><a href='/about-us/#team'>Team</a></li>" +
+    "<li class='child'><a href='/about-us/#board'>Board</a></li>" +
     "</ul>"
   );
 
