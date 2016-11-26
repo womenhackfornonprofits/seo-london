@@ -51,15 +51,14 @@
                             <p>Background:</p>
                         </div>
                         <div class="twelve wide middle aligned column">
-                            <select name="background" class="ui dropdown eligibility test">
+                            <select name="background" class="ui dropdown eligibility test js-eligibility-background">
                                 <option value="">Background</option>
-                                <option value="1">Undergraduate studying any discipline</option>
-                                <option value="2">Undergraduate in any year of study</option>
-                                <option value="3">Graduate/Postgraduate</option>
-                                <option value="4">On track for 2:1</option>
-                                <option value="5">Min. 320 UCAS points</option>
-                                <option value="6">Min. 300 UCAS points</option>
-                                <option value="7">Min. 240 UCAS points</option>
+                                <option value="0">Undergraduate (in any year of study) with min 320 UCAS points</option>
+                                <option value="1">Undergraduate (in any year of study) with min. 300 UCAS points'</option>
+                                <option value="2">Undergraduate (in any year of study) with min. 240 UCAS points'</option>
+                                <option value="3">Graduated with a 2:1 or higher and min. 320 UCAS points</option>
+                                <option value="4">Graduated with a 2:1 or higher and min. 300 UCAS points</option>
+                                <option value="5">Graduated with a 2:1 or higher and min. 240 UCAS points</option>
                             </select>
                         </div>
                     </div>
@@ -68,16 +67,15 @@
                             <p>Interested In:</p>
                         </div>
                         <div class="twelve wide middle aligned column with-line">
-                            <select name="area" class="ui dropdown eligibility area">
+                            <select name="area" class="ui dropdown eligibility area js-eligibility-area">
                                 <option value="">Area</option>
-                                <option value="1">Investment Banking</option>
-                                <option value="2">Corporate Law</option>
-                                <option value="3">Consulting</option>
-                                <option value="4">Corporates &amp; Technology</option>
-                                <option value="5">Engineering</option>
-                                <option value="6">Advertising</option>
-                                <option value="7">Civil Service</option>
-                                <option value="8">City Solicitors Horizons</option>
+                                <option value="0">Investment Banking</option>
+                                <option value="1">Corporate Law</option>
+                                <option value="2">Consulting</option>
+                                <option value="3">Corporates &amp; Technology</option>
+                                <option value="4">Engineering</option>
+                                <option value="5">Civil Service</option>
+                                <option value="6">City Solicitors Horizons</option>
                             </select>
                         </div>
                     </div>
@@ -86,7 +84,10 @@
                             <p>&nbsp;</p>
                         </div>
                         <div class="twelve wide middle aligned column with-line">
-                            <div class="eligible">You are eligible <i class="check icon"></i></div>
+                            <div class="eligible eligible--true hidden">You are eligible <i class="check icon"></i>
+                            </div>  
+                             <div class="eligible eligible--false hidden">You are not eligible <i class="x icon"></i>
+                            </div>                       
                         </div>
                     </div>
                 </div>

@@ -130,18 +130,6 @@ class MultipleSingleHeaderPlugin(CMSPluginBase):
 
 plugin_pool.register_plugin(MultipleSingleHeaderPlugin)
 
-# class TickBoxes(CMSPluginBase):
-#     model = MultipleSingleHeader
-#     name = 'Multiple Single Header Plugin'
-#     render_template = "multiple-single-header.html"
-#     allow_children = True
-
-#     def render(self, context, instance, placeholder):
-#         context = super(MultipleSingleHeaderPlugin, self).render(context, instance, placeholder)
-#         return context
-
-#plugin_pool.register_plugin(MultipleSingleHeaderPlugin)
-
 
 class CareerPlugin(CMSPluginBase):
     model = Career

@@ -33,19 +33,21 @@ if ($donateEl.length) {
 
   // $('.ui.dropdown').dropdown();
 
+/** Eligibility checker **/
   var eligibilityBackground = 0;
   var eligibilityArea = 0;
   var selectionBackground = 0;
 
   var eligibilityBools = [
-    [true, true, true, true, true, true, true, true],
-    [true, true, true, true, true, true, true, true],
-    [false, true, true, true, false, false, false, false],
-    [true, true, true, true, true, true, true, false],
-    [false, true, false, false, false, false, false, true],
-    [true, false, true, false, true, false, false, false],
-    [false, false, false, true, false, false, false, false]
+    // Discipline | Investment Banking| Corporate Law | Consulting |Corp & Tech| Eng | Civil Service| City Solicitors Horizons
+    [true, true, true, true, true, true, true], // Undergraduate (in any year of study) with min.
+    [true, false, true, true, true, true, true], // Undergraduate (in any year of study) with min. 300 UCAS points
+    [false, false, false, true, false, false, false], // Undergraduate (in any year of study) with min. 240 UCAS points
+    [false, true, true, true, true, true, false], // Graduated with a 2:1 or higher and min. 320 UCAS points
+    [false, false, true, true, true, true, false], // Graduated with a 2:1 or higher and min. 300 UCAS points
+    [false, false, false, true, false, false, false] // Graduated with a 2:1 or higher and min. 240 UCAS points
   ];
+
 
   $('.ui.dropdown.eligibility.test').dropdown(
     {
@@ -61,14 +63,18 @@ if ($donateEl.length) {
       action: 'activate',
       onChange: function(value) {
         eligibilityArea = value;
+        console.log(eligibilityBackground);
+        console.log(eligibilityArea);
+        console.log(eligibilityBools[eligibilityBackground][eligibilityArea]);
 
-        if (eligibilityBackground > 0) {
           if (eligibilityBools[eligibilityBackground][eligibilityArea]) {
-            $('.eligible-toggle').css('visibility', 'visible');
+
+            $('.eligible--true').removeClass('hidden');
+            $('.eligible--false').addClass('hidden');
           } else {
-            $('.eligible-toggle').css('visibility', 'hidden');
+            $('.eligible--true').addClass('hidden');
+            $('.eligible--false').removeClass('hidden');
           }
-        }
       }
     }
   );
