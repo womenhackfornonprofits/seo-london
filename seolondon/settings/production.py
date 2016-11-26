@@ -13,6 +13,8 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ['staging-seo.herokuapp.com', 'www.seo-london.org']
 
+PREPEND_WWW = True
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
