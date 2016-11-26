@@ -3,7 +3,7 @@
 Created and built by [Mindspray](http://www.mindspray.co.uk/), [Glendelm Design](https://www.glendelmdesign.co.uk/), [Spoke](http://www.wearespoke.co.uk/) and Women Hack For Non-Profits
 
 ## Set up requirements
-1. Install Python: `brew install python3`
+1. Install Python: `brew install python`
 2. Upgrade pip & setup tools: `pip install --upgrade pip setuptools wheel`
 3. Install virtualenv: `pip install virtualenv`
 4. Install virtualenvwrapper: `pip install virtualenvwrapper`
@@ -35,7 +35,7 @@ Note: To help do this automatically on every new shell you open add the line abo
 
 ## Getting the database setup locally
 1. Get a dump from Heroku: `heroku pg:backups capture`
-2. Fetch the database dump to your machine: `curl -o latest.dump `heroku pg:backups public-url`
+2. Fetch the database dump to your machine: `curl -o latest.dump ``heroku pg:backups public-url`` `
 3. Import the database into the local empty database:  `pg_restore -U seolondon -d seolondon latest.dump`
 
 ## Troubleshooting
