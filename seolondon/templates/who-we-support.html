@@ -15,11 +15,10 @@
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>To receive our support, you must fit into one of our two beneficiary groups:</p>
-                <ul>
-                    <li>Students of black or minority ethnic origin</li>
-                    <li>Students of all ethnicities who meet our social mobility criteria*</li>
-                </ul>
+                {% placeholder "Who do we support section LEFT" %}
+            </div>
+            <div class="sixteen wide mobile eight wide tablet eight wide computer column">
+                {% placeholder "Who do we support section RIGHT" %}
             </div>
         </div>
     </div>
@@ -29,23 +28,10 @@
                 <h1 class="teal caps-title">Social Mobility Criteria</h1>
             </div>
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>We support students who went to a selective or non-selective state-funded secondary school (i.e.
-                    non-fee paying) and were either:</p>
-                <ul>
-                    <li>Eligible for free school meals or some other form of income-related financial assistance</li>
-                    <li>The first generation of their immediate family to go to university</li>
-                    <li>Have been in care</li>
-                </ul>
+                {% placeholder "Social mobility criteria section LEFT" %}
             </div>
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>If none of the circumstances above apply to you, but you come from a low socio-economic background
-                    that has put you at a significant disadvantage, you will have the opportunity to tell us about this
-                    on your application form. <strong>We may need to ask you for other relevant information to be able
-                        to
-                        consider your application.</strong></p>
-
-                <p><strong>All of the information you provide will be treated confidentially and in line with data
-                    protection.</strong></p>
+                {% placeholder "Social mobility criteria section RIGHT" %}
             </div>
         </div>
     </div>
@@ -56,9 +42,7 @@
                 <h1 class="teal caps-title">Academic Eligibility</h1>
             </div>
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>This is for your guidance only as requirements may vary depending on industry or business area.
-                </p>
-                <p>Please select the program you are interested in to determine your eligbility:</p>
+                {% placeholder "Academic eligibility section RIGHT" %}
             </div>
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
                 <div class="ui grid">
@@ -67,15 +51,14 @@
                             <p>Background:</p>
                         </div>
                         <div class="twelve wide middle aligned column">
-                            <select name="background" class="ui dropdown eligibility test">
+                            <select name="background" class="ui dropdown eligibility test js-eligibility-background">
                                 <option value="">Background</option>
-                                <option value="1">Undergraduate studying any discipline</option>
-                                <option value="2">Undergraduate in any year of study</option>
-                                <option value="3">Graduate/Postgraduate</option>
-                                <option value="4">On track for 2:1</option>
-                                <option value="5">Min. 320 UCAS points</option>
-                                <option value="6">Min. 300 UCAS points</option>
-                                <option value="7">Min. 240 UCAS points</option>
+                                <option value="0">Undergraduate (in any year of study) with min 320 UCAS points</option>
+                                <option value="1">Undergraduate (in any year of study) with min. 300 UCAS points'</option>
+                                <option value="2">Undergraduate (in any year of study) with min. 240 UCAS points'</option>
+                                <option value="3">Graduated with a 2:1 or higher and min. 320 UCAS points</option>
+                                <option value="4">Graduated with a 2:1 or higher and min. 300 UCAS points</option>
+                                <option value="5">Graduated with a 2:1 or higher and min. 240 UCAS points</option>
                             </select>
                         </div>
                     </div>
@@ -84,16 +67,15 @@
                             <p>Interested In:</p>
                         </div>
                         <div class="twelve wide middle aligned column with-line">
-                            <select name="area" class="ui dropdown eligibility area">
+                            <select name="area" class="ui dropdown eligibility area js-eligibility-area">
                                 <option value="">Area</option>
-                                <option value="1">Investment Banking</option>
-                                <option value="2">Corporate Law</option>
-                                <option value="3">Consulting</option>
-                                <option value="4">Corporates &amp; Technology</option>
-                                <option value="5">Engineering</option>
-                                <option value="6">Advertising</option>
-                                <option value="7">Civil Service</option>
-                                <option value="8">City Solicitors Horizons</option>
+                                <option value="0">Investment Banking</option>
+                                <option value="1">Corporate Law</option>
+                                <option value="2">Consulting</option>
+                                <option value="3">Corporates &amp; Technology</option>
+                                <option value="4">Engineering</option>
+                                <option value="5">Civil Service</option>
+                                <option value="6">City Solicitors Horizons</option>
                             </select>
                         </div>
                     </div>
@@ -102,7 +84,10 @@
                             <p>&nbsp;</p>
                         </div>
                         <div class="twelve wide middle aligned column with-line">
-                            <div class="eligible">You are eligible <i class="check icon"></i></div>
+                            <div class="eligible eligible--true hidden">You are eligible <i class="check icon"></i>
+                            </div>  
+                             <div class="eligible eligible--false hidden">You are not eligible <i class="x icon"></i>
+                            </div>                       
                         </div>
                     </div>
                 </div>
@@ -116,34 +101,22 @@
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>We treat each applicant as an individual. If you have experienced mitigating circumstances during
-                    your studies that significantly affected your academic performance, you can still apply but it’s
-                    important that you make us aware of this in your application.</p>
+                 {% placeholder "Mitigating Circumstances section LEFT" %}
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>If you managed to get good grades given the context of your school or year group’s performance,
-please put this on your CV.  Examples of how you could do this would be: “achieved highest GCSE
-grades within my year group” or “ranked first in my class” or “rank: 10/120 (Top 10%)”.</p>
-
-                <p><strong>All of the information you provide will be treated confidentially and in line with data
-                    protection laws.</strong></p>
+                {% placeholder "Mitigating Circumstances section RIGHT" %}
             </div>
         </div>
     </div>
     <div class="section">
         <div class="ui very relaxed grid container">
             <div class="sixteen wide column">
-                <h1 class="teal caps-title">How we select you</h1>
+                <h1 class="teal caps-title">How we assess you</h1>
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>This is for your guidance only as the selection process to become an SEO candidate may vary slightly
-                    from programme to programme.</p>
-
-                <p>Please select the program you are interested in to view your interview process</p>
-
-                <p><a class="ui primary button" href="http://www.seolondon-careers.com/profile">Apply Now</a></p>
+                {% placeholder "How we assess you section LEFT" %}
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
@@ -248,26 +221,11 @@ grades within my year group” or “ranked first in my class” or “rank: 10/
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <ul>
-                    <li>We support candidates in all years of study, reading any degree discipline, who come from black,
-                        minority ethnic or low socio-economic backgrounds.
-                    </li>
-                    <li>We also support graduates. For most programmes this will mean those who have graduated within
-                        the last two years.
-                    </li>
-                </ul>
+                 {% placeholder "Additional guidance section LEFT" %}
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <ul>
-                    <li>The Corporate Law Programme will accept any eligible graduates, regardless of their year of
-                        graduation.
-                    </li>
-                    <li>For help when completing your application, you can use our Application Guide.</li>
-                    <li>Once you submit your application and are awaiting our response, please continue to monitor your
-                        junk email folder to ensure our response hasn’t been directed there.
-                    </li>
-                </ul>
+                {% placeholder "Additional guidance section RIGHT" %}
             </div>
         </div>
     </div>
@@ -278,24 +236,11 @@ grades within my year group” or “ranked first in my class” or “rank: 10/
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>If you are applying to the Corporate Law Programme you should ideally:</p>
-                <ul>
-                    <li>Have ABB/320 UCAS points not including General Studies, at A-Level (or equivalent).</li>
-                    <li>Be on course for or have achieved a 2.1 (or equivalent) at university.</li>
-                </ul>
-                <p><a class="ui primary button" href="http://www.seolondon-careers.com/profile">Apply Now</a></p>
+                {% placeholder "Corporate Law section LEFT" %}
             </div>
 
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
-                <p>We know that, if you are applying to the First Year Programme, you may not have your university
-                    grades yet (e.g. if you are about to start your degree). However, you should include your A-Level
-                    grades (or equivalent) on your application.</p>
-
-                <p>If you are applying to the Vacation Scheme &amp; Training Contract Programme, we will require your
-                    A-Level grades (or equivalent) in addition to all module grades for university exams you have
-                    taken.</p>
-
-                <p>For the Corporate Law CV Guide &amp; Template please click here</p>
+                {% placeholder "Corporate Law section RIGHT" %}
             </div>
         </div>
     </div>

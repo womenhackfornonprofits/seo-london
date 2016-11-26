@@ -1,5 +1,7 @@
 # SEO London Django Website
 
+Created and built by [Mindspray](http://www.mindspray.co.uk/), [Glendelm Design](https://www.glendelmdesign.co.uk/), [Spoke](http://www.wearespoke.co.uk/) and Women Hack For Non-Profits
+
 ## Set up requirements
 1. Install Python: `brew install python3`
 2. Upgrade pip & setup tools: `pip install --upgrade pip setuptools wheel`

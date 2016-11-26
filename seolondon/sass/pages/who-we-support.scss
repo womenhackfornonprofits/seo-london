@@ -88,10 +88,10 @@
   }
 
   .ui.dropdown {
-    width: 450px;
+    width: 100%;
 
     @include not-computer {
-      width: auto;
+      width: 100%;
     }
   }
 
@@ -125,19 +125,28 @@
     }
   }
 
+
   .eligible-toggle {
-    visibility: hidden;
+    //visibility: hidden;
     transition: 0.4s ease all;
   }
 
   .eligible {
     background: $light-grey;
-    border: 1px solid $teal;
-    padding: 10px 15px;
-    color: $teal;
     font-weight: 600;
     width: auto;
-    display: inline-block;
+    transition: 0.4s ease all;
+    padding: 10px 15px;
+
+    &--false {
+      border: 1px solid $red;
+      color: $red;
+    }
+
+    &--true {
+      border: 1px solid $teal;
+      color: $teal;
+    }
   }
 
   ul.steps {
