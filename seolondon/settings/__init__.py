@@ -217,11 +217,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-# INSTALLED_APPS.extend([
-#     # add your project specific apps here
-#     'djangocms_repeater',
-#     'djangocms_plain_text'
-# ])
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # User image uploads to S3 bucket
 # AWS keys
