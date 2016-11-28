@@ -16,18 +16,18 @@
     <meta name="author" content="SEO London" />
     <meta name="copyright" content="All text content and images copyright of togetherintheuk.co.uk" />
     <meta name="company" content="TogetherintheUK" />
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@SEOLondonInfo">
-	<meta name="twitter:creator" content="@SEOLondonInfo">
-	<meta name="twitter:title" content="{% page_attribute "title" %}">
-	<meta name="twitter:description" content="View our {% page_attribute "title" %} content in SEOLondon ">
-	<meta name="twitter:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,q_auto:good,w_237/v1479587920/team/logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@SEOLondonInfo">
+    <meta name="twitter:creator" content="@SEOLondonInfo">
+    <meta name="twitter:title" content="{% page_attribute "title" %}">
+    <meta name="twitter:description" content="View our {% page_attribute "title" %} content in SEOLondon ">
+    <meta name="twitter:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,q_auto:good,w_237/v1479587920/team/logo.png">
 
-	<meta property="og:url" content="http://{{ request.site }}{{ request.path }}" />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="{% page_attribute "title" %}" />
-	<meta property="og:description" content="View our {% page_attribute "title" %} content in SEOLondon" />
-	<meta property="og:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,q_auto:good,w_237/v1479587920/team/logo.png" />
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{% page_attribute "title" %}" />
+    <meta property="og:description" content="View our {% page_attribute "title" %} content in SEOLondon" />
+    <meta property="og:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,q_auto:good,w_237/v1479587920/team/logo.png" />
 
     <link rel="shortcut icon" href="https://res.cloudinary.com/seo-london/image/upload/v1479917993/favicon_or2xu4.ico" type="image/x-icon" />
     {% render_block "css" %}
