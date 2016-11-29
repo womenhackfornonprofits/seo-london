@@ -85,6 +85,7 @@ class SingleHeaderPlugin(CMSPluginBase):
     name = 'Single Header Plugin'
     render_template = "single-header.html"
     allow_children = True
+    child_classes = ['ButtonPlugin']
 
     def render(self, context, instance, placeholder):
         context = super(SingleHeaderPlugin, self).render(context, instance, placeholder)
@@ -110,6 +111,8 @@ class MultipleHeaderPlugin(CMSPluginBase):
     name = 'Multiple Header Plugin'
     render_template = "multiple-header.html"
     allow_children = True
+    child_classes = ['MultipleSingleHeaderPlugin']
+
 
     def render(self, context, instance, placeholder):
         context = super(MultipleHeaderPlugin, self).render(context, instance, placeholder)
@@ -123,6 +126,7 @@ class MultipleSingleHeaderPlugin(CMSPluginBase):
     name = 'Multiple Single Header Plugin'
     render_template = "multiple-single-header.html"
     allow_children = True
+    child_classes = ['ButtonPlugin']
 
     def render(self, context, instance, placeholder):
         context = super(MultipleSingleHeaderPlugin, self).render(context, instance, placeholder)
