@@ -23,47 +23,49 @@
         <div class="ui grid container">
             <div class="sixteen wide mobile fourteen wide tablet twelve wide computer centered column">
                 <h1 class="teal caps-title">Have you got a story you'd like to share?</h1>
-                <form >
-                    <div class="ui grid">
-                        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column ui form">
-                            <div class="field">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" placeholder="Sam">
+                    <form method="POST" action="//formspree.io/info@seo-london.org.com">
+                        <div class="ui grid">
+                            <div class="sixteen wide mobile sixteen wide tablet eight wide computer column ui form">
+                                <div class="field">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" placeholder="Sam" required>
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="_replyto" placeholder="sam@example.com" required/>
+                                </div>
+                                <div class="field">
+                                    <label for="programme">SEO Industry Programme (optional)</label>
+                                    <select name="programme" class="ui dropdown">
+                                        <option value="">Programme</option>
+                                        <option value="banking">Banking</option>
+                                        <option value="corporate-law">Corporate Law</option>
+                                        <option value="csh">CSH</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label for="class">Class Of (optional)</label>
+                                    <input type="number" name="class" placeholder="2016">
+                                </div>
                             </div>
-                            <div class="field">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" placeholder="sam@example.com">
-                            </div>
-                            <div class="field">
-                                <label>SEO Industry Programme</label>
-                                <select name="programme" class="ui dropdown">
-                                    <option value="">Programme</option>
-                                    <option value="AL">Banking</option>
-                                    <option value="AK">Corporate Law</option>
-                                    <option value="AZ">CSH</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label>Class Of</label>
-                                <input type="text" name="last-name" placeholder="Class Of">
+                            <div class="sixteen wide mobile sixteen wide tablet eight wide computer column ui form">
+                                <div class="field">
+                                    <label>Current Position (optional)</label>
+                                    <input type="text" name="position" placeholder="Current Position">
+                                </div>
+                                <div class="field">
+                                    <label for="story">Story</label>
+                                    <textarea name="message"></textarea>
+                                    <input type="hidden" name="_subject" value="New Submission: WHFN Website Contact Form"/>
+                                    <input type="text" name="_gotcha" style="display:none" aria-hidden="true"/>
+                                </div>
+                                <button class="ui orange button" type="submit">Submit</button>
                             </div>
                         </div>
-                        <div class="sixteen wide mobile sixteen wide tablet eight wide computer column ui form">
-                            <div class="field">
-                                <label>Current Position</label>
-                                <input type="text" name="last-name" placeholder="Current Position">
-                            </div>
-                            <div class="field">
-                                <label>Story</label>
-                                <textarea></textarea>
-                            </div>
-                            <button class="ui orange button" type="submit">Submit</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock content %}
