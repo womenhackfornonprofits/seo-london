@@ -1,6 +1,10 @@
 {% load cms_tags %}
 
+{% if instance.storyImage %}
 <div class="column story" style="background-image:url('{{instance.storyImage}}')">
+{% else %}
+<div class="column story" style="background-image:url('{{instance.image}}')">
+{% endif %}
     <div class="content">
         <h2>{{ instance.name }}</h2>
         <p>{{ instance.excerpt }}</p>

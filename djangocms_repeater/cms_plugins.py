@@ -46,10 +46,11 @@ class SuccessStoryPlugin(CMSPluginBase):
     name = 'Success Story Plugin'
     render_template = "success_story.html"
     allow_children = True
+    admin_preview = True
 
     def render(self, context, instance, placeholder):
         context = super(SuccessStoryPlugin, self).render(context, instance, placeholder)
-        return context
+        return context       
 
 plugin_pool.register_plugin(SuccessStoryPlugin)
 

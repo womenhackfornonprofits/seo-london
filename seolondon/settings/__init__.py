@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-#PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-#PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 gettext = lambda s: s
@@ -55,8 +53,7 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-#STATICFILES_DIRS = (
-#
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -206,9 +203,6 @@ else:
         }
     }
 
-MIGRATION_MODULES = {
-
-}
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
@@ -217,58 +211,69 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-# User image uploads to S3 bucket
-# AWS keys
-AWS_SECRET_ACCESS_KEY = os.environ["SEO_AWS_SECRET_ACCESS_KEY"]
-AWS_ACCESS_KEY_ID = os.environ["SEO_AWS_ACCESS_KEY_ID"]
-AWS_STORAGE_BUCKET_NAME = "seo-london-images"
-S3DIRECT_REGION = 'eu-west-1'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
 
 S3DIRECT_DESTINATIONS = {
     # Limit uploads to jpeg's and png's.
-    'user-profile-images': {
-        'key': 'images',
-        'allowed': ['image/jpeg', 'image/png', 'image/jpg', 'image/svg'],
+    'images': {
+        'key': 'images/',
+        'allowed': ['image/jpeg', 'image/png'],
+        'cache_control': 'max-age=2592000',
+    },
+        # Limit uploads to jpeg's and png's.
+    'images': {
+        'key': 'images/',
+        'allowed': ['image/jpeg', 'image/png'],
         'cache_control': 'max-age=2592000',
     },
 }
 
-FILER_STORAGES = {
-    'public': {
-        'main': {
-            'ENGINE': 'filer.storage.PublicFileSystemStorage',
-            'OPTIONS': {
-                'location': '/path/to/media/filer',
-                'base_url': '/media/filer/',
-            },
-            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-            'UPLOAD_TO_PREFIX': 'filer_public',
-        },
-        'thumbnails': {
-            'ENGINE': 'filer.storage.PublicFileSystemStorage',
-            'OPTIONS': {
-                'location': '/path/to/media/filer_thumbnails',
-                'base_url': '/media/filer_thumbnails/',
-            },
-        },
-    },
-    'private': {
-        'main': {
-            'ENGINE': 'filer.storage.PrivateFileSystemStorage',
-            'OPTIONS': {
-                'location': '/path/to/smedia/filer',
-                'base_url': '/smedia/filer/',
-            },
-            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-            'UPLOAD_TO_PREFIX': 'filer_public',
-        },
-        'thumbnails': {
-            'ENGINE': 'filer.storage.PrivateFileSystemStorage',
-            'OPTIONS': {
-                'location': '/path/to/smedia/filer_thumbnails',
-                'base_url': '/smedia/filer_thumbnails/',
-            },
-        },
-    },
-}
+
+# User image uploads to S3 bucket
+# AWS keys
+AWS_SECRET_ACCESS_KEY = 'v8uzUMvIyh7hUTZ0exbgS/8pC8GR+zRoZ6RNGpPo' #os.environ["_AWS_SECRET_ACCESS_KEY"]
+AWS_ACCESS_KEY_ID = 'AKIAJMKB2AO76WG46OOA' #os.environ["AWS_ACCESS_KEY_ID"]
+AWS_STORAGE_BUCKET_NAME = "seo-london-images"
+S3DIRECT_REGION = 'eu-west-1'
+#MEDIA_URL = 'http://seo-london-images.s3-website-eu-west-1.amazonaws.com/'
+
+
+# FILER_STORAGES = {
+#     'public': {
+#         'main': {
+#             'ENGINE': 'filer.storage.PublicFileSystemStorage',
+#             'OPTIONS': {
+#                 'location': '/path/to/media/filer',
+#                 'base_url': '/media/filer/',
+#             },
+#             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+#             'UPLOAD_TO_PREFIX': 'filer_public',
+#         },
+#         'thumbnails': {
+#             'ENGINE': 'filer.storage.PublicFileSystemStorage',
+#             'OPTIONS': {
+#                 'location': '/path/to/media/filer_thumbnails',
+#                 'base_url': '/media/filer_thumbnails/',
+#             },
+#         },
+#     },
+#     'private': {
+#         'main': {
+#             'ENGINE': 'filer.storage.PrivateFileSystemStorage',
+#             'OPTIONS': {
+#                 'location': '/path/to/smedia/filer',
+#                 'base_url': '/smedia/filer/',
+#             },
+#             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+#             'UPLOAD_TO_PREFIX': 'filer_public',
+#         },
+#         'thumbnails': {
+#             'ENGINE': 'filer.storage.PrivateFileSystemStorage',
+#             'OPTIONS': {
+#                 'location': '/path/to/smedia/filer_thumbnails',
+#                 'base_url': '/smedia/filer_thumbnails/',
+#             },
+#         },
+#     },
+# }

@@ -4,6 +4,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 from cms.models.fields import PlaceholderField
 from filer.fields.image import FilerImageField
+from s3direct.fields import S3DirectField
 
 from cms.models import CMSPlugin
 
@@ -60,6 +61,9 @@ class CareerStep(CMSPlugin):
     style = models.CharField(max_length=1, choices=CAREERSTEPCHOICE,
                              default='w')
 
+    def __str__(self):
+        return '%s' % (self.title)
+
 
 class Logo(CMSPlugin):
     logoChoice = models.CharField(max_length=1, choices=LOGOCHOICE, default='0')
@@ -70,16 +74,27 @@ class SuccessStory(CMSPlugin):
     name = models.CharField(max_length=50, default='Candidate Name')
     excerpt = models.CharField(max_length=500, default='Excerpt')
     storyImage = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    image = models.ImageField(upload_to='team-members/', default='team-members/none.jpg')
+    storyImageUpload = FilerImageField(null=True, blank=True, related_name="sucess_stories")
+
+    def __str__(self):
+        return '%s' % (self.name)
 
 
 class TeamMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
     title = models.CharField(max_length=400, default='Job Title')
     image = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+  
+    def __str__(self):
+        return '%s' % (self.title)
 
 
 class Question(CMSPlugin):
     questionText = models.CharField(max_length=10000, default='Question')
+
+    def __str__(self):
+        return '%s' % (self.questionText)
 
 
 class SingleHeader(CMSPlugin):
@@ -89,9 +104,15 @@ class SingleHeader(CMSPlugin):
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
+    def __str__(self):
+        return '%s' % (self.quoteText)
+
 
 class MultipleHeader(CMSPlugin):
     header_name = models.CharField(max_length=100, default='Slider')
+
+    def __str__(self):
+        return '%s' % (self.header_name)
 
 
 class MultipleSingleHeader(CMSPlugin):
@@ -101,6 +122,9 @@ class MultipleSingleHeader(CMSPlugin):
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
+    def __str__(self):
+        return '%s' % (self.quoteText)
+
 
 class Button(CMSPlugin):
     buttonText = models.CharField(max_length=100, default='Button Text')
@@ -108,7 +132,11 @@ class Button(CMSPlugin):
     specialButton = models.CharField(max_length=1, choices=BUTTONTYPECHOICE, default='n')
     buttonColour = models.CharField(max_length=10, choices=BUTTONCOLOURCHOICE, default='blue')
 
+    def __str__(self):
+        return '%s' % (self.buttenText)
+
 
 class Career(CMSPlugin):
     name = models.CharField(max_length=100, default='Career Name')
     careerURL = models.CharField(blank=True, default="/", max_length=100)
+    
