@@ -54,7 +54,7 @@ class Repeater(CMSPlugin):
     add_columns = models.BooleanField(default=False)
 
     def __str__(self):
-        return '%s' % (self.repeater_name)
+        return self.repeater_name
 
 
 class CareerStep(CMSPlugin):
@@ -65,14 +65,14 @@ class CareerStep(CMSPlugin):
                              default='w')
 
     def __str__(self):
-        return '%s' % (self.title)
+        return self.title
 
 
 class Logo(CMSPlugin):
     logoChoice = models.CharField(max_length=1, choices=LOGOCHOICE, default='0')
 
     def __str__(self):
-        return '%s' % (self.logoChoice)
+        return self.logoChoice
 
 
 class SuccessStory(CMSPlugin):
@@ -82,7 +82,7 @@ class SuccessStory(CMSPlugin):
     storyImage = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
 
     def __str__(self):
-        return '%s' % (self.name)
+        return self.name
 
 
 class TeamMember(CMSPlugin):
@@ -91,14 +91,14 @@ class TeamMember(CMSPlugin):
     image = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
 
     def __str__(self):
-        return '%s' % (self.title)
+        return self.title
 
 
 class Question(CMSPlugin):
     questionText = models.CharField(max_length=10000, default='Question')
 
     def __str__(self):
-        return '%s' % (self.questionText)
+        return self.questionText
 
 
 class SingleHeader(CMSPlugin):
@@ -109,14 +109,14 @@ class SingleHeader(CMSPlugin):
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
     def __str__(self):
-        return '%s' % (self.quoteText)
+        return self.quoteText
 
 
 class MultipleHeader(CMSPlugin):
     header_name = models.CharField(max_length=100, default='Slider')
 
     def __str__(self):
-        return '%s' % (self.header_name)
+        return self.header_name
 
 
 class MultipleSingleHeader(CMSPlugin):
@@ -127,7 +127,7 @@ class MultipleSingleHeader(CMSPlugin):
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
     def __str__(self):
-        return '%s' % (self.quoteText)
+        return self.quoteText
 
 
 class Button(CMSPlugin):
@@ -137,7 +137,7 @@ class Button(CMSPlugin):
     buttonColour = models.CharField(max_length=10, choices=BUTTONCOLOURCHOICE, default='blue')
 
     def __str__(self):
-        return '%s' % (self.buttenText)
+        return self.buttenText
 
 
 class Career(CMSPlugin):
@@ -145,4 +145,4 @@ class Career(CMSPlugin):
     careerURL = models.CharField(blank=True, default="/", max_length=100)
 
     def __str__(self):
-        return '%s' % (self.name)
+        return self.name
