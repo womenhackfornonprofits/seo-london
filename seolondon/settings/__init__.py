@@ -143,6 +143,8 @@ LANGUAGES = (
     ('en', gettext('en')),
 )
 
+CMS_MAX_PAGE_PUBLISH_REVERSIONS = 5
+
 CMS_LANGUAGES = {
     1: [
         {
