@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <meta name="created" content='1st October 2016 04:37' />
-    <meta name="description" content=""/>
+    <meta name="description" content="{% block "head__meta_description" %} {{ request.current_page.get_meta_description }} {% endblock "head__meta_description" %}"/>
     <meta name="keywords" content="summer internships 201,  undergraduate internship, internships, summer internships, graduate internship, internships in london, internships uk, summer internship, paid internships, finance internships, graduate internships, international internships, fashion internships london, internships for students, internship abroad, internships london, internships abroad, publishing internships, undergraduate summer internships, internship in uk, london internships, internship jobs, journalism internships, internship in london, investment banking internships, media internships, uk internship, internship london, paid summer internship, paid internship, internships summer 2011, fashion internships, marketing internships london, what is an internship, it internship, student internships, marketing internships, banking internships, sport internships, charity internships, design internships, internships in uk, kpmg internship, summer internships london, summer internships uk, unhcr internship, magazine internships, law internships, internships in america, marketing internship, un internships, music internships london, google internship, american internships, pr internships london, photography internships, advertising internships, international development internships, ibm internship, bp internship, graphic design internships, museum internships, gap year internships, graduate internships london, paid internships abroad, legal internships, tefl internships, interior design internships, paid internships london, human rights internships, internship cover letter, pwc internship, london internship, unpaid internships, film internships uk, event management internships, accounting internships, product design internships, charity internships london, fashion internship london, deloitte internship, pr internships, internship summer, political internships, eu internships, engineering internships, internship definition, law internship, graduate internships uk, deutsche bank internship, internship finder, tourism internships, art internships, journalism internship, publishing internships uk, photography internships uk, music internships uk, journalism internships london, science internships, public relations internships" />
     <meta name="rights" content="SEO London Ltd." />
     <meta name="language" content="en-GB" />
@@ -17,21 +17,24 @@
     <meta name="copyright" content="All text content and images copyright of togetherintheuk.co.uk" />
     <meta name="company" content="TogetherintheUK" />
 
+    {% block "head__social_cards" %}
+        {% if request.current_page %}
+            {% with meta_description_default="View our "|add:request.current_page.get_title|add:" content in SEO London" %}
+                <meta name="twitter:card" content="summary_large_image">
+                <meta name="twitter:site" content="@SEOLondonInfo">
+                <meta name="twitter:creator" content="@SEOLondonInfo">
+                <meta name="twitter:title" content="{% page_attribute "title" %}">
+                <meta name="twitter:description" content="{{ request.current_page.get_meta_description|default:meta_description_default }}">
+                <meta name="twitter:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_700/v1480544713/Social_Media_Card1_rkwzom.png" />
 
-    {% with meta_description_default="View our "|add:request.current_page.get_title|add:" content in SEO London" %}
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@SEOLondonInfo">
-        <meta name="twitter:creator" content="@SEOLondonInfo">
-        <meta name="twitter:title" content="{% page_attribute "title" %}">
-        <meta name="twitter:description" content="{{ request.current_page.get_meta_description|default:meta_description_default }}">
-        <meta name="twitter:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_700/v1480544713/Social_Media_Card1_rkwzom.png" />
-
-        <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="{% page_attribute "title" %}" />
-        <meta property="og:description" content="{{ request.current_page.get_meta_description|default:meta_description_default }}" />
-        <meta property="og:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_700/v1480544713/Social_Media_Card1_rkwzom.png" />
-    {% endwith %}
+                <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="{% page_attribute "title" %}" />
+                <meta property="og:description" content="{{ request.current_page.get_meta_description|default:meta_description_default }}" />
+                <meta property="og:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_700/v1480544713/Social_Media_Card1_rkwzom.png" />
+           {% endwith %}
+        {% endif %}
+    {% endblock "head__social_cards" %}
 
     <link rel="shortcut icon" href="https://res.cloudinary.com/seo-london/image/upload/v1479917993/favicon_or2xu4.ico" type="image/x-icon" />
     {% render_block "css" %}
