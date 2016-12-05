@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load cms_tags %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block title %}
+    {% page_attribute "page_title" as page_title %}
+    {{ page_title|default:"404: Error 404" }}
+{% endblock title %}
 
 {% block content %}
 
@@ -10,7 +13,10 @@
 <div class="section">
     <div class="ui grid container">
         <div class="sixteen wide column">
-            {% placeholder "content" %}
+            {% placeholder "content" or %}
+                <b>Error 404</b> The requested page is not found.
+                Please try our <a href="/">home page</a>
+            {% endplaceholder %}
         </div>
     </div>
 </div>
