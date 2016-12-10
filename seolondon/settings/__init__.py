@@ -78,7 +78,8 @@ TEMPLATES = [
                 'django.core.context_processors.tz',
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
-                'cms.context_processors.cms_settings'
+                'cms.context_processors.cms_settings',
+                'seolondon.context_processors.google_analytics'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -222,8 +223,8 @@ THUMBNAIL_PROCESSORS = (
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # User image uploads to S3 bucket
 # AWS keys
-AWS_SECRET_ACCESS_KEY = os.environ["SEO_AWS_SECRET_ACCESS_KEY"]
-AWS_ACCESS_KEY_ID = os.environ["SEO_AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ.get("SEO_AWS_SECRET_ACCESS_KEY", '')
+AWS_ACCESS_KEY_ID = os.environ.get("SEO_AWS_ACCESS_KEY_ID", '')
 AWS_STORAGE_BUCKET_NAME = "seo-london-images"
 S3DIRECT_REGION = 'eu-west-1'
 
@@ -274,3 +275,5 @@ FILER_STORAGES = {
         },
     },
 }
+
+GOOGLE_ANALYTICS_TRACKING_CODE = os.environ.get('GOOGLE_ANALYTICS_TRACKING_CODE', '')
