@@ -107,6 +107,19 @@ if ($donateEl.length) {
     return false;
   });
 
+  $("#footer .dropdown.column .title").click(function(ev){
+    ev.preventDefault();
+    var $dropdownColumn = $(ev.target).parent('.dropdown.column');
+    var $content = $(ev.target).next('.content');
+    if ($dropdownColumn.hasClass('open')){
+      $dropdownColumn.removeClass('open');
+    }
+    else if ($content.is(':hidden')){
+      $dropdownColumn.addClass('open');
+    }
+
+  });
+
   $(window).scroll(function() {
     if ($(window).scrollTop() > 200)  {
       $("#scroll-to-top").addClass('visible');
