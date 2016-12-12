@@ -79,7 +79,7 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
                 'cms.context_processors.cms_settings',
-                'seolondon.context_processors.google_analytics'
+                'seolondon.context_processors.google_tracking'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -277,3 +277,4 @@ FILER_STORAGES = {
 }
 
 GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get('GOOGLE_ANALYTICS_TRACKING_ID', '')
+GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
