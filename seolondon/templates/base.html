@@ -3,6 +3,7 @@
 <!doctype html>
 <html>
 <head>
+{% include '_include/google_gtm_head.html' %}
     <title>{% block title %}SEO London{% endblock title %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'dist/styles.min.css' %}"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -40,6 +41,7 @@
     {% render_block "css" %}
 </head>
 <body>
+{% include '_include/google_gtm_body.html' %}
 {% cms_toolbar %}
 <div id="navigation-bar">
     <div class="ui container">
@@ -219,5 +221,6 @@
 {% render_block "js" %}
 <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
 <script src="{% static 'dist/scripts.min.js' %}"></script>
+{% include '_include/google_analytics.html' %}
 </body>
 </html>

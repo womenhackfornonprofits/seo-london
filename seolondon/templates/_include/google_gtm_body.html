@@ -1,0 +1,13 @@
+{% comment %}
+expected context variable:
+GOOGLE_GTM_CONTAINER_ID
+{% endcomment %}
+
+{% if GOOGLE_GTM_CONTAINER_ID %}
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GOOGLE_GTM_CONTAINER_ID }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+{% endif %} {# GOOGLE_GTM_CONTAINER_ID #}
