@@ -216,9 +216,12 @@
           padding-right: 2rem;
           padding-bottom: 1rem;
           margin: 0;
-          cursor: pointer;
 
-          &:after {
+          &:first-child {
+              cursor: pointer;
+          }
+
+          &:first-child:after {
             position: absolute;
             right: 0.5em;
             content: '\f107';
@@ -233,7 +236,7 @@
 
         &.open {
           .title {
-            &:after {
+            &:first-child:after {
               content: '\f106';
             }
           }
