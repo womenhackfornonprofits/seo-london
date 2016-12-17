@@ -1,5 +1,5 @@
 {% load cms_tags %}
-<li class="masthead careers-page" style="background-image:url('{{instance.backgroundImage}}')">
+<li class="masthead careers-page" style="background-image:url('{% firstof instance.new_background_image.url instance.backgroundImage %}')">
     <div class="ui grid container middle aligned">
         <div class="sixteen wide mobile sixteen wide tablet eight wide computer column">
             <h1 class="white">
