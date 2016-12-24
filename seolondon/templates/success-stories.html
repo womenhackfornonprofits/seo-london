@@ -35,27 +35,33 @@
                                     <input type="email" name="_replyto" placeholder="sam@example.com" required/>
                                 </div>
                                 <div class="field">
-                                    <label for="programme">SEO Industry Programme (optional)</label>
-                                    <select name="programme" class="ui dropdown">
+                                    <label for="programme">SEO Industry Programme</label>
+                                    <select name="programme" class="ui dropdown" required>
                                         <option value="">Programme</option>
-                                        <option value="banking">Banking</option>
+                                        <option value="banking">Investment Banking</option>
                                         <option value="corporate-law">Corporate Law</option>
                                         <option value="csh">CSH</option>
+                                        <option value="civil-service">Civil Service</option>
+                                        <option value="consulting">Consulting</option>
+                                        <option value="corp-and-tech">Corporates &amp; Technology</option>
+                                        <option value="engineering">Engineering</option>
+                                        <option value="house-of-commons">House of Commons</option>
+                                        <option value="other">Other (please specify in your story)</option>
                                     </select>
                                 </div>
                                 <div class="field">
-                                    <label for="class">Class Of (optional)</label>
-                                    <input type="number" name="class" placeholder="2016">
+                                    <label for="class">Class Of</label>
+                                    <input type="number" name="class" placeholder="2016" min='1930' max='2099' required>
                                 </div>
                             </div>
                             <div class="sixteen wide mobile sixteen wide tablet eight wide computer column ui form">
                                 <div class="field">
-                                    <label>Current Position (optional)</label>
-                                    <input type="text" name="position" placeholder="Current Position">
+                                    <label>Current Position</label>
+                                    <input type="text" name="position" placeholder="Current Position" required>
                                 </div>
                                 <div class="field">
                                     <label for="story">Story</label>
-                                    <textarea name="message"></textarea>
+                                    <textarea name="message" required></textarea>
                                     <input type="hidden" name="_subject" value="New Submission: WHFN Website Contact Form"/>
                                     <input type="text" name="_gotcha" style="display:none" aria-hidden="true"/>
                                 </div>

@@ -45,7 +45,7 @@ if ($donateEl.length) {
     [false, false, false, true, false, false, false], // Undergraduate (in any year of study) with min. 240 UCAS points
     [false, true, true, true, true, true, false], // Graduated with a 2:1 or higher and min. 320 UCAS points
     [false, false, true, true, true, true, false], // Graduated with a 2:1 or higher and min. 300 UCAS points
-    [false, false, false, true, false, false, false] // Graduated with a 2:1 or higher and min. 240 UCAS points
+    [false, false, false, true, false, true, false] // Graduated with a 2:1 or higher and min. 240 UCAS points
   ];
 
 
