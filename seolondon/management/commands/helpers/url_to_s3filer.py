@@ -11,22 +11,28 @@ def copy_url_to_filer(instance, url_field_name, filer_field_nane):
     resp = requests.get(url)
 
     base_filename = url.rsplit('/', 1)[1]
+    base_path = '__'.join(url.rsplit('/', 3)[1:])
     user = User.objects.get(username='admin')
     folder, _ = Folder.objects.get_or_create(name='cloudinary_to_s3')
 
-    cf = ContentFile(resp.content)
-    image = Image(
-        owner=user,
-        original_filename = base_filename,
-        folder=folder)
     prefix = settings.FILER_STORAGES['public']['main']['UPLOAD_TO_PREFIX']
 
-    filename = '{0}/cloudinary_to_s3/{1}'.format(prefix, base_filename)
+    filename = '{0}/cloudinary_to_s3/{1}'.format(prefix, base_path)
 
-    image.file = image.file.storages['public'].save(filename, cf)
-    image.save()
+    image = Image.objects.filter(file=filename).first()
+
+    if image is None:
+        cf = ContentFile(resp.content)
+        image = Image(
+            owner=user,
+            original_filename = base_filename,
+            folder=folder)
+
+        image.file = image.file.storages['public'].save(filename, cf)
+        image.save()
 
     setattr(instance, filer_field_nane, image)
 
     instance.save()
+    image.icons
 

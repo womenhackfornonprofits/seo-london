@@ -6,7 +6,6 @@ from django.db.models.loading import get_model
 from seolondon.management.commands.helpers.url_to_s3filer import copy_url_to_filer
 
 
-
 class Command(BaseCommand):
     help = 'temporary command: migrate filer images'
 
@@ -27,7 +26,7 @@ class Command(BaseCommand):
             except Exception as exc:
                 self.stdout.write('FAILED: {} of {}'.format(
                     instance.id, model_name))
-                self.stdout.write(exc)
+                self.stdout.write(str(exc))
 
     def handle(self, *args, **options):
         configs = [
