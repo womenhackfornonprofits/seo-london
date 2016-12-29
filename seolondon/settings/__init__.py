@@ -226,6 +226,8 @@ THUMBNAIL_PROCESSORS = (
 AWS_SECRET_ACCESS_KEY = os.environ.get("SEO_AWS_SECRET_ACCESS_KEY", '')
 AWS_ACCESS_KEY_ID = os.environ.get("SEO_AWS_ACCESS_KEY_ID", '')
 AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME", "seo-london-images")
+AWS_PRIVATE_STORAGE_BUCKET_NAME = os.environ.get(
+        "SEO_AWS_STORAGE_BUCKET_NAME", AWS_STORAGE_BUCKET_NAME)
 AWS_S3_REGION_NAME = os.environ.get('SEO_AWS_S3_REGION_NAME', None)
 
 FILER_STORAGES = {
@@ -261,7 +263,7 @@ FILER_STORAGES = {
             'OPTIONS': {
                 'access_key': AWS_ACCESS_KEY_ID,
                 'secret_key': AWS_SECRET_ACCESS_KEY,
-                'bucket_name': AWS_STORAGE_BUCKET_NAME,
+                'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
@@ -274,7 +276,7 @@ FILER_STORAGES = {
             'OPTIONS': {
                 'access_key': AWS_ACCESS_KEY_ID,
                 'secret_key': AWS_SECRET_ACCESS_KEY,
-                'bucket_name': AWS_STORAGE_BUCKET_NAME,
+                'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
