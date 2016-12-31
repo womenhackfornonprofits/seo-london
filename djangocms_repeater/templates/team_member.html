@@ -1,5 +1,5 @@
 {% load cms_tags %}
-<div class="column team" style="background-image:url('{% firstof instance.new_image.url instance.image %}')">
+<div class="column team" style="background-image:url('{% firstof instance.image.url instance.oldImage %}')">
     <div class="content">
     	<div class="content-wrapper">
         	<h3>{{ instance.name }}</h3>

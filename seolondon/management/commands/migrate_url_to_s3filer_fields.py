@@ -33,27 +33,15 @@ class Command(BaseCommand):
             {
                 'app_label': 'djangocms_repeater',
                 'model_name':'SuccessStory',
-                'url_field_name':'storyImage',
-                's3filer_field_name':'new_story_image',
+                'url_field_name':'oldStoryImage',
+                's3filer_field_name':'story_image',
             },
             {
                 'app_label': 'djangocms_repeater',
                 'model_name': 'TeamMember',
-                'url_field_name': 'image',
-                's3filer_field_name': 'new_image',
+                'url_field_name': 'oldImage',
+                's3filer_field_name': 'image',
             },
-            {
-                'app_label': 'djangocms_repeater',
-                'model_name': 'SingleHeader',
-                'url_field_name': 'backgroundImage',
-                's3filer_field_name': 'new_background_image',
-            },
-            {
-                'app_label': 'djangocms_repeater',
-                'model_name': 'MultipleSingleHeader',
-                'url_field_name': 'backgroundImage',
-                's3filer_field_name': 'new_background_image',
-            }
         ]
 
         for config in configs:

@@ -79,12 +79,12 @@ class SuccessStory(CMSPlugin):
     storyId = models.CharField(max_length=10, default='Story ID')
     name = models.CharField(max_length=50, default='Candidate Name')
     excerpt = models.CharField(max_length=500, default='Excerpt')
-    storyImage = models.URLField(
+    oldStoryImage = models.URLField(
         max_length=200,
         blank=True,
         help_text='legacy field',
         default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
-    new_story_image = FilerImageField(null=True, blank=True)
+    story_image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -93,12 +93,12 @@ class SuccessStory(CMSPlugin):
 class TeamMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
     title = models.CharField(max_length=400, default='Job Title')
-    image = models.URLField(
+    oldImage = models.URLField(
         max_length=200,
         blank=True,
         help_text='legacy field',
         default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
-    new_image = FilerImageField(null=True, blank=True)
+    image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -116,10 +116,8 @@ class SingleHeader(CMSPlugin):
     captionText = models.CharField(max_length=200, default='', blank=True)
     backgroundImage = models.URLField(
         max_length=200,
-        blank=True,
-        help_text='legacy field',
+        blank='True',
         default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
-    new_background_image = FilerImageField(null=True, blank=True)
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
@@ -139,10 +137,8 @@ class MultipleSingleHeader(CMSPlugin):
     captionText = models.CharField(max_length=200, default='', blank=True)
     backgroundImage = models.URLField(
         max_length=200,
-        blank=True,
-        help_text='legacy field',
+        blank='True',
         default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
-    new_background_image = FilerImageField(null=True, blank=True)
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 

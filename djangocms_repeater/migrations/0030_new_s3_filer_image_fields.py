@@ -14,33 +14,18 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='multiplesingleheader',
-            name='backgroundImage',
-            field=models.URLField(default=b'http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png', help_text=b'legacy field', blank=True),
-        ),
-        migrations.AddField(
-            model_name='multiplesingleheader',
-            name='new_background_image',
-            field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
-        ),
-        migrations.AlterField(
-            model_name='singleheader',
-            name='backgroundImage',
-            field=models.URLField(default=b'http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png', help_text=b'legacy field', blank=True),
-        ),
-        migrations.AddField(
-            model_name='singleheader',
-            name='new_background_image',
-            field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
-        ),
-        migrations.AlterField(
             model_name='successstory',
             name='storyImage',
             field=models.URLField(default=b'http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png', help_text=b'legacy field', blank=True),
         ),
-migrations.AddField(
+        migrations.RenameField(
             model_name='successstory',
-            name='new_story_image',
+            old_name='storyImage',
+            new_name='oldStoryImage',
+        ),
+        migrations.AddField(
+            model_name='successstory',
+            name='story_image',
             field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
         ),
         migrations.AlterField(
@@ -48,9 +33,14 @@ migrations.AddField(
             name='image',
             field=models.URLField(default=b'http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png', help_text=b'legacy field', blank=True),
         ),
+        migrations.RenameField(
+            model_name='teammember',
+            old_name='image',
+            new_name='oldImage',
+        ),
         migrations.AddField(
             model_name='teammember',
-            name='new_image',
+            name='image',
             field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
         ),
     ]
