@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 
 #PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 #PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -22,6 +23,8 @@ gettext = lambda s: s
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 ALLOWED_HOSTS = []
+if os.environ.get('SEO_ALLOWED_HOST', None):
+    ALLOWED_HOSTS.append(os.environ.get('SEO_ALLOWED_HOST'))
 
 DEBUG = True
 
@@ -197,6 +200,10 @@ if 'RDS_DB_NAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
+elif 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
 else:
     DATABASES = {
         'default': {
@@ -220,7 +227,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # User image uploads to S3 bucket
 # AWS keys
 AWS_SECRET_ACCESS_KEY = os.environ.get("SEO_AWS_SECRET_ACCESS_KEY", '')
@@ -229,6 +235,10 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME", "seo-lon
 AWS_PRIVATE_STORAGE_BUCKET_NAME = os.environ.get(
         "SEO_AWS_STORAGE_BUCKET_NAME", AWS_STORAGE_BUCKET_NAME)
 AWS_S3_REGION_NAME = os.environ.get('SEO_AWS_S3_REGION_NAME', None)
+
+AWS_HEADERS = {
+    'Cache-Control': 'max-age=86400',
+}
 
 FILER_STORAGES = {
     'public': {
@@ -239,6 +249,8 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
+                'querystring_auth': False,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
             },
@@ -252,6 +264,8 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
+                'querystring_auth': False,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
             },
@@ -265,6 +279,7 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
             },
@@ -278,6 +293,7 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
 
