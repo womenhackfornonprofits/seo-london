@@ -98,7 +98,7 @@ if ($donateEl.length) {
     "<li class='child'><a href='/about-us/#today'>Today</a></li>" +
     "<li class='child'><a href='/about-us/#team'>Team</a></li>" +
     "<li class='child'><a href='/about-us/#board'>Board</a></li>" +
-    "<li class='child'><a href='/about-us/#alumini-board'>Alumini Advisory Board</a></li>" +
+    "<li class='child'><a href='/about-us/#alumni-board'>Alumni Advisory Board</a></li>" +
     "<li class='child'><a href='/about-us/#join'>Join The Team</a></li>" +
     "<li class='child'><a href='/about-us/#contact'>Contact Us</a></li>" +
     "</ul>"
