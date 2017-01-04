@@ -13,30 +13,41 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='successstory',
-            name='storyImage',
-            field=models.URLField(default=b'http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png', help_text=b'legacy field', blank=True),
+        migrations.RenameField(
+            model_name='multiplesingleheader',
+            old_name='backgroundImage',
+            new_name='background_image_url',
         ),
+        migrations.AddField(
+            model_name='multiplesingleheader',
+            name='background_image',
+            field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
+        ),
+        migrations.RenameField(
+            model_name='singleheader',
+            old_name='backgroundImage',
+            new_name='background_image_url',
+        ),
+        migrations.AddField(
+            model_name='singleheader',
+            name='background_image',
+            field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
+        ),
+
         migrations.RenameField(
             model_name='successstory',
             old_name='storyImage',
-            new_name='oldStoryImage',
+            new_name='story_image_url',
         ),
         migrations.AddField(
             model_name='successstory',
             name='story_image',
             field=filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True),
         ),
-        migrations.AlterField(
-            model_name='teammember',
-            name='image',
-            field=models.URLField(default=b'http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png', help_text=b'legacy field', blank=True),
-        ),
         migrations.RenameField(
             model_name='teammember',
             old_name='image',
-            new_name='oldImage',
+            new_name='image_url',
         ),
         migrations.AddField(
             model_name='teammember',
