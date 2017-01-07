@@ -79,7 +79,11 @@ class SuccessStory(CMSPlugin):
     storyId = models.CharField(max_length=10, default='Story ID')
     name = models.CharField(max_length=50, default='Candidate Name')
     excerpt = models.CharField(max_length=500, default='Excerpt')
-    storyImage = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    story_image_url = models.URLField(
+        max_length=200,
+        blank='True',
+        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    story_image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -88,7 +92,11 @@ class SuccessStory(CMSPlugin):
 class TeamMember(CMSPlugin):
     name = models.CharField(max_length=200, default='Name')
     title = models.CharField(max_length=400, default='Job Title')
-    image = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    image_url = models.URLField(
+        max_length=200,
+        blank='True',
+        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -104,7 +112,11 @@ class Question(CMSPlugin):
 class SingleHeader(CMSPlugin):
     quoteText = models.CharField(max_length=150, default='Placeholder')
     captionText = models.CharField(max_length=200, default='', blank=True)
-    backgroundImage = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    background_image_url = models.URLField(
+        max_length=200,
+        blank='True',
+        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    background_image = FilerImageField(null=True, blank=True)
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 
@@ -122,7 +134,11 @@ class MultipleHeader(CMSPlugin):
 class MultipleSingleHeader(CMSPlugin):
     quoteText = models.CharField(max_length=150, default='Placeholder')
     captionText = models.CharField(max_length=200, default='', blank=True)
-    backgroundImage = models.URLField(max_length=200, blank='True', default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    background_image_url = models.URLField(
+        max_length=200,
+        blank='True',
+        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+    background_image = FilerImageField(null=True, blank=True)
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
 

@@ -1,6 +1,6 @@
 {% load cms_tags %}
 
-<div class="column story" style="background-image:url('{{instance.storyImage}}')">
+<div class="column story" style="background-image:url('{% firstof instance.story_image.url instance.story_image_url %}')">
     <div class="content">
         <h2>{{ instance.name }}</h2>
         <p>{{ instance.excerpt }}</p>

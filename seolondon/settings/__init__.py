@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 
 #PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 #PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -22,6 +23,8 @@ gettext = lambda s: s
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 ALLOWED_HOSTS = []
+if os.environ.get('SEO_ALLOWED_HOST', None):
+    ALLOWED_HOSTS.append(os.environ.get('SEO_ALLOWED_HOST'))
 
 DEBUG = True
 
@@ -134,10 +137,10 @@ INSTALLED_APPS = [
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
-    's3direct',
     'seolondon',
     'djangocms_repeater',
-    'djangocms_plain_text'
+    'djangocms_plain_text',
+    'storages',
 ]
 
 LANGUAGES = (
@@ -197,6 +200,10 @@ if 'RDS_DB_NAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
+elif 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
 else:
     DATABASES = {
         'default': {
@@ -220,57 +227,76 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # User image uploads to S3 bucket
 # AWS keys
 AWS_SECRET_ACCESS_KEY = os.environ.get("SEO_AWS_SECRET_ACCESS_KEY", '')
 AWS_ACCESS_KEY_ID = os.environ.get("SEO_AWS_ACCESS_KEY_ID", '')
-AWS_STORAGE_BUCKET_NAME = "seo-london-images"
-S3DIRECT_REGION = 'eu-west-1'
+AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME", "seo-london-images")
+AWS_PRIVATE_STORAGE_BUCKET_NAME = os.environ.get(
+        "SEO_AWS_STORAGE_BUCKET_NAME", AWS_STORAGE_BUCKET_NAME)
+AWS_S3_REGION_NAME = os.environ.get('SEO_AWS_S3_REGION_NAME', None)
 
-S3DIRECT_DESTINATIONS = {
-    # Limit uploads to jpeg's and png's.
-    'user-profile-images': {
-        'key': 'images',
-        'allowed': ['image/jpeg', 'image/png', 'image/jpg', 'image/svg'],
-        'cache_control': 'max-age=2592000',
-    },
+AWS_HEADERS = {
+    'Cache-Control': 'max-age=86400',
 }
 
 FILER_STORAGES = {
     'public': {
         'main': {
-            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
             'OPTIONS': {
-                'location': '/path/to/media/filer',
-                'base_url': '/media/filer/',
+                'access_key': AWS_ACCESS_KEY_ID,
+                'secret_key': AWS_SECRET_ACCESS_KEY,
+                'bucket_name': AWS_STORAGE_BUCKET_NAME,
+                'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
+                'querystring_auth': False,
+                'addressing_style': 'auto',
+                'signature_version': 's3v4'
             },
             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
             'UPLOAD_TO_PREFIX': 'filer_public',
         },
         'thumbnails': {
-            'ENGINE': 'filer.storage.PublicFileSystemStorage',
+            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
             'OPTIONS': {
-                'location': '/path/to/media/filer_thumbnails',
-                'base_url': '/media/filer_thumbnails/',
+                'access_key': AWS_ACCESS_KEY_ID,
+                'secret_key': AWS_SECRET_ACCESS_KEY,
+                'bucket_name': AWS_STORAGE_BUCKET_NAME,
+                'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
+                'querystring_auth': False,
+                'addressing_style': 'auto',
+                'signature_version': 's3v4'
             },
         },
     },
     'private': {
         'main': {
-            'ENGINE': 'filer.storage.PrivateFileSystemStorage',
+            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
             'OPTIONS': {
-                'location': '/path/to/smedia/filer',
-                'base_url': '/smedia/filer/',
+                'access_key': AWS_ACCESS_KEY_ID,
+                'secret_key': AWS_SECRET_ACCESS_KEY,
+                'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
+                'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
+                'addressing_style': 'auto',
+                'signature_version': 's3v4'
             },
             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-            'UPLOAD_TO_PREFIX': 'filer_public',
+            'UPLOAD_TO_PREFIX': 'filer_private',
         },
         'thumbnails': {
-            'ENGINE': 'filer.storage.PrivateFileSystemStorage',
+            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
             'OPTIONS': {
-                'location': '/path/to/smedia/filer_thumbnails',
-                'base_url': '/smedia/filer_thumbnails/',
+                'access_key': AWS_ACCESS_KEY_ID,
+                'secret_key': AWS_SECRET_ACCESS_KEY,
+                'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
+                'region_name': AWS_S3_REGION_NAME,
+                'headers': AWS_HEADERS,
+                'addressing_style': 'auto',
+                'signature_version': 's3v4'
+
             },
         },
     },
