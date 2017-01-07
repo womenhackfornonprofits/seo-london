@@ -63,9 +63,6 @@ if ($donateEl.length) {
       action: 'activate',
       onChange: function(value) {
         eligibilityArea = value;
-        console.log(eligibilityBackground);
-        console.log(eligibilityArea);
-        console.log(eligibilityBools[eligibilityBackground][eligibilityArea]);
 
           if (eligibilityBools[eligibilityBackground][eligibilityArea]) {
 
