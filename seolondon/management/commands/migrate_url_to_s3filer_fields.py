@@ -37,6 +37,14 @@ class Command(BaseCommand):
                 'url_field_name': 'background_image_url',
                 's3filer_field_name': 'background_image',
             },
+        'filer_image':
+            {
+                'app_label': 'cmsplugin_filer_image',
+                'model_name': 'filerimage',
+                'url_field_name': 'image_url',
+                's3filer_field_name': 'image',
+            }
+
         }
 
     def _update_model_url_s3filer(self,
