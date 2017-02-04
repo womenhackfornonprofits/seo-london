@@ -236,8 +236,8 @@ AWS_PRIVATE_STORAGE_BUCKET_NAME = os.environ.get(
         "SEO_AWS_STORAGE_BUCKET_NAME", AWS_STORAGE_BUCKET_NAME)
 AWS_S3_REGION_NAME = os.environ.get('SEO_AWS_S3_REGION_NAME', None)
 
-AWS_HEADERS = {
-    'Cache-Control': 'max-age=86400',
+AWS_S3_OBJECT_PARAMETERS = {
+     'CacheControl': 'max-age=31536000, public',
 }
 
 FILER_STORAGES = {
@@ -249,7 +249,7 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
-                'headers': AWS_HEADERS,
+                'object_parameters': AWS_S3_OBJECT_PARAMETERS,
                 'querystring_auth': False,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
@@ -264,7 +264,7 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
-                'headers': AWS_HEADERS,
+                'object_parameters': AWS_S3_OBJECT_PARAMETERS,
                 'querystring_auth': False,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
@@ -279,7 +279,6 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
-                'headers': AWS_HEADERS,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
             },
@@ -293,7 +292,6 @@ FILER_STORAGES = {
                 'secret_key': AWS_SECRET_ACCESS_KEY,
                 'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 'region_name': AWS_S3_REGION_NAME,
-                'headers': AWS_HEADERS,
                 'addressing_style': 'auto',
                 'signature_version': 's3v4'
 
