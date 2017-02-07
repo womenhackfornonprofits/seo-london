@@ -1,5 +1,6 @@
 {% load cms_tags menu_tags sekizai_tags %}
 {% load staticfiles %}
+{% load aws_static_url_tags %}
 <!doctype html>
 <html>
 <head>
@@ -26,18 +27,18 @@
                 <meta name="twitter:creator" content="@SEOLondonInfo">
                 <meta name="twitter:title" content="{% page_attribute "title" %}">
                 <meta name="twitter:description" content="{{ request.current_page.get_meta_description|default:meta_description_default }}">
-                <meta name="twitter:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_700/v1480544713/Social_Media_Card1_rkwzom.png" />
+                <meta name="twitter:image" content="{% aws_static_url "Social_Media_Card1_rkwzom.png" %}" />
 
                 <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="{% page_attribute "title" %}" />
                 <meta property="og:description" content="{{ request.current_page.get_meta_description|default:meta_description_default }}" />
-                <meta property="og:image" content="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_700/v1480544713/Social_Media_Card1_rkwzom.png" />
+                <meta property="og:image" content="{% aws_static_url "/Social_Media_Card1_rkwzom.png" %}" />
            {% endwith %}
         {% endif %}
     {% endblock "head__social_cards" %}
 
-    <link rel="shortcut icon" href="https://res.cloudinary.com/seo-london/image/upload/v1479917993/favicon_or2xu4.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% aws_static_url "/favicon_or2xu4.ico" %}" type="image/x-icon" />
     {% render_block "css" %}
 </head>
 <body>
@@ -74,7 +75,7 @@
         <div class="row">
             <nav class="column top">
                 <ul class="breadcrumbs">
-                    <li class="logo"><a href="/"><img src="http://res.cloudinary.com/seo-london/image/upload/c_scale,w_100/v1479587920/team/logo.png" alt="SEO London logo image"></a></li>
+                    <li class="logo"><a href="/"><img src="{% aws_static_url "/logo.png" %}" alt="SEO London logo image"></a></li>
                     <li>Home</li>
                 </ul>
                 <ul class="top-links">

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
@@ -48,6 +49,8 @@ LOGOCHOICE = (
     ('3', 'SEO Connect'),
 )
 
+_DEFAULT_IMAGE_URL = '{}{}'.format(
+    settings.AWS_STATIC_URL, 'placeholder_aewrin.png')
 
 class Repeater(CMSPlugin):
     repeater_name = models.CharField(max_length=50)
@@ -82,7 +85,7 @@ class SuccessStory(CMSPlugin):
     story_image_url = models.URLField(
         max_length=200,
         blank='True',
-        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+        default=_DEFAULT_IMAGE_URL)
     story_image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
@@ -95,7 +98,7 @@ class TeamMember(CMSPlugin):
     image_url = models.URLField(
         max_length=200,
         blank='True',
-        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+        default=_DEFAULT_IMAGE_URL)
     image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
@@ -115,7 +118,7 @@ class SingleHeader(CMSPlugin):
     background_image_url = models.URLField(
         max_length=200,
         blank='True',
-        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+        default=_DEFAULT_IMAGE_URL)
     background_image = FilerImageField(null=True, blank=True)
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
@@ -137,7 +140,7 @@ class MultipleSingleHeader(CMSPlugin):
     background_image_url = models.URLField(
         max_length=200,
         blank='True',
-        default='http://res.cloudinary.com/seo-london/image/upload/v1479601119/placeholder_aewrin.png')
+        default=_DEFAULT_IMAGE_URL)
     background_image = FilerImageField(null=True, blank=True)
     colour = models.CharField(max_length=1, choices=HEADERCOLOURCHOICE, default='W')
     alignment = models.CharField(max_length=1, choices=HEADERALIGNMENTCHOICE, default='L')
