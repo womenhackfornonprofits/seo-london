@@ -240,6 +240,12 @@ AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=31536000, public',
 }
 
+# this are for 'hard coded' files stored in AWS
+AWS_STATIC_URL = 'https://s3.{region_name}.amazonaws.com/{bucket_name}/static/'.format(
+    region_name=AWS_S3_REGION_NAME, bucket_name=AWS_STORAGE_BUCKET_NAME)
+AWS_STATIC_URL = os.environ.get('SEO_AWS_STATIC_URL', AWS_STATIC_URL)
+
+
 FILER_STORAGES = {
     'public': {
         'main': {

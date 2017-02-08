@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags %}
+{% load aws_static_url_tags %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
@@ -10,7 +11,7 @@
 <div class="services section ui three column stackable relaxed grid container">
     <div class="column scholars">
         <div class="services-wrapper">
-            <img src="http://res.cloudinary.com/drdmdqahj/image/upload/q_auto:good/v1479585305/logo-scholars_imtodz.png" alt="SEO Scholars logo image">
+            <img src="{% aws_static_url "/logo-scholars_imtodz.png" %}" alt="SEO Scholars logo image">
             <p>{% placeholder "Scholars Intro" %}</p>
             <a href="/scholars" class="ui primary button">Find out more</a>
         </div>
@@ -18,7 +19,7 @@
 
     <div class="column careers">
         <div class="services-wrapper">
-            <img src="http://res.cloudinary.com/drdmdqahj/image/upload/q_auto:good/v1479585105/logo-careers_b2fq91.png" alt="SEO Careers logo image">
+            <img src="{% aws_static_url "/logo-careers_b2fq91.png" %}" alt="SEO Careers logo image">
             <p>{% placeholder "Careers Intro" %}</p>
             <a href="/careers" class="ui secondary button">Find out more</a>
         </div>
@@ -26,7 +27,7 @@
 
     <div class="column connect">
         <div class="services-wrapper">
-            <img src="http://res.cloudinary.com/drdmdqahj/image/upload/q_auto:good/v1479585301/logo-connect_ed7f77.png" alt="SEO Connect logo image">
+            <img src="{% aws_static_url "/logo-connect_ed7f77.png" %}" alt="SEO Connect logo image">
             <p>{% placeholder "Connect Intro" %}</p>
             <a href="/connect" class="ui primary button">Find out more</a>
         </div>
@@ -34,7 +35,7 @@
 </div>
 
 <div class="infographic">
-    <img src="https://res.cloudinary.com/seo-london/image/upload/v1479846096/SeoLondonInfoGraphic_p99pc0.png" alt="Inforgraphic">
+    <img src="{% aws_static_url "/SeoLondonInfoGraphic_p99pc0.png" %}" alt="Inforgraphic">
 </div>
 
 <div class="donations section ui grid container">

@@ -1,17 +1,18 @@
+{% load aws_static_url_tags %}
 {% if instance.logoChoice == '1' %}
 <div class="logo item">
-    <a href="/"><img src="http://res.cloudinary.com/drdmdqahj/image/upload/q_auto:good/v1479585105/logo-careers_b2fq91.png" alt="Logo image for SEO Careers"></a>
+    <a href="/"><img src="{% aws_static_url "logo-careers_b2fq91.png" %}" alt="Logo image for SEO Careers"></a>
 </div>
 {% elif instance.logoChoice == '2' %}
 <div class="logo item">
-    <a href="/"><img src="http://res.cloudinary.com/drdmdqahj/image/upload/q_auto:good/v1479585305/logo-scholars_imtodz.png" alt="Logo image for SEO Scholars"></a>
+    <a href="/"><img src="{% aws_static_url "logo-scholars_imtodz.png" %}" alt="Logo image for SEO Scholars"></a>
 </div>
 {% elif instance.logoChoice == '3' %}
 <div class="logo item">
-    <a href="/"><img src="http://res.cloudinary.com/drdmdqahj/image/upload/q_auto:good/v1479585301/logo-connect_ed7f77.png" alt="Logo image for SEO Connect"></a>
+    <a href="/"><img src="{% aws_static_url "logo-connect_ed7f77.png" %}" alt="Logo image for SEO Connect"></a>
 </div>
 {% else %}
 <div class="logo item">
-    <a href="/"><img src="http://res.cloudinary.com/seo-london/image/upload/c_scale,q_auto:good,w_237/v1479587920/team/logo.png" alt="Logo image for SEO London"></a>
+    <a href="/"><img src="{% aws_static_url "logo.png" %}" alt="Logo image for SEO London"></a>
 </div>
 {% endif %}
