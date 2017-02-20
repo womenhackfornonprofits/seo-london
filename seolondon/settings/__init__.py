@@ -138,6 +138,7 @@ INSTALLED_APPS = [
     'djangocms_link',
     'reversion',
     'seolondon',
+    'seo_post',
     'djangocms_repeater',
     'djangocms_plain_text',
     'storages',
