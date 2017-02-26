@@ -6,11 +6,13 @@ import datetime
 import djangocms_text_ckeditor.fields
 import django.db.models.deletion
 from django.conf import settings
+import filer.fields.image
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('filer', '0006_auto_20160623_1627'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -37,7 +39,8 @@ class Migration(migrations.Migration):
                 ('date_expire', models.DateTimeField(null=True, blank=True)),
                 ('body', djangocms_text_ckeditor.fields.HTMLField()),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, null=True)),
-                ('categories', models.ManyToManyField(related_name='blogs', to='seo_post.Category')),
+                ('categories', models.ManyToManyField(related_name='blogs', to='seo_post.Category', blank=True)),
+                ('hero_image', filer.fields.image.FilerImageField(blank=True, to='filer.Image', null=True)),
             ],
         ),
     ]

@@ -133,6 +133,7 @@ INSTALLED_APPS = [
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_utils',
     'cmsplugin_filer_video',
+    'ckeditor_filebrowser_filer',
     'djangocms_googlemap',
     'djangocms_inherit',
     'djangocms_link',
@@ -188,7 +189,9 @@ CMS_TEMPLATES = (
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    '': {'TextHolder'}
+}
 
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
@@ -309,3 +312,18 @@ FILER_STORAGES = {
 
 GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get('GOOGLE_ANALYTICS_TRACKING_ID', '')
 GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
+
+
+CKEDITOR_CONFIGS_SEOPOST = {
+    'extraPlugins': 'filerimage',
+    'removePlugins': 'image',
+    'toolbar': 'Custom',
+    'toolbar_Custom': [
+        ['Undo', 'Redo'],
+        ['ShowBlocks'],
+        ['Format', 'Styles'],
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
+        ['FilerImage']
+    ]
+}
+

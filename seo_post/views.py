@@ -9,18 +9,20 @@ from seo_post.models import Post
 class PostList(generic.ListView):
 
     model = Post
-    post_type = None
-    category_slug = None
 
     def get_queryset(self):
         qs = super(PostList, self).get_queryset()
-        if self.post_type:
-            qs = qs.filter(post_type=self.post_type)
-        if self.category_slug:
-            qs = qs.filter(categories__slug=self.category_slug)
-        return qs
+        if 'post_type' in self.kwargs:
+            qs = qs.filter(post_type=self.kwargs['post_type'])
+        if 'category' in self.kwargs:
+            qs = qs.filter(categories__slug=self.kwargs['category'])
+        return qs.published()
 
 
 class PostDetail(generic.DetailView):
 
     model = Post
+
+    def get_queryset(self):
+        qs = super(PostDetail, self).get_queryset()
+        return qs.published()

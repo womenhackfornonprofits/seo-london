@@ -3,6 +3,7 @@ dj-database-url==0.4.1
 Django==1.8.14
 django-appconf==1.0.2
 django-classy-tags==0.8.0
+django-ckeditor-filebrowser-filer==0.2.1
 django-cms==3.2.5
 django-filer==1.2.5
 django-formtools==1.0

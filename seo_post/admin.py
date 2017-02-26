@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 
 from django.contrib import admin
+from cms.admin.placeholderadmin import PlaceholderAdminMixin
+
 from seo_post import models
 
 
@@ -12,7 +14,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(models.Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'date_publish', 'author')
 
     fieldsets = (
@@ -20,7 +22,9 @@ class PostAdmin(admin.ModelAdmin):
             'fields': ('post_type', 'title', 'body', )
         }),
         ('Basic Options', {
-            'fields': ('date_publish', 'date_expire', 'categories'),
+            'fields': (
+                'hero_image', 'date_publish', 'date_expire', 'categories'
+            ),
         }),
         ('Advance Options', {
             'classes': ('collapse',),

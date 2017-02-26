@@ -2,9 +2,9 @@
 
 {% block content %}
 
+    <img src="{{ post.hero_image.url }}">
+
     {{ post.title }}
-
-    {{ post.body|safe }}
-
+    {{ post.body }}
 
 {% endblock content %}
