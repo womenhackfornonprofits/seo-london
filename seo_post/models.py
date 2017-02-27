@@ -66,5 +66,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'seo_post:post_detail', kwargs={'slug':self.slug}
+            'seo_post:post_detail',
+            kwargs={'post_type': self.post_type, 'slug':self.slug}
         )

@@ -1,13 +1,32 @@
 {% extends "base.html" %}
-
+{% load thumbnail %}
 {% block content %}
 
-{% for post in post_list %}
-    <a href="{{ post.get_absolute_url }}">
-        {{ post.title }}
-    </a>
-{% endfor %}
-
+<div class="ui container segment">
+    <div class="row">
+        <div class="ten wide column ">
+            <div class="ui divided items">
+                {% for post in post_list %}
+                    <div class="ui item">
+                        <div class="ui small image">
+                            {% if post.hero_image %}
+                            <img src="{% thumbnail post.hero_image 300x300 crop %}">
+                            {% endif %}
+                        </div>
+                        <div class="content">
+                            <a href="{{ post.get_absolute_url }}">
+                                {{ post.title }}
+                            </a>
+                            <div class="description">
+                                {{ post.body }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 
 
