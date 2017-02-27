@@ -13,9 +13,9 @@
                             <img src="{% thumbnail post.hero_image 300x300 crop %}">
                             {% endif %}
                         </div>
-                        <div class="content">
+                        <div class="content" style="overflow-y: hidden; max-height:150px">
                             <a href="{{ post.get_absolute_url }}">
-                                {{ post.title }}
+                                <h4>{{ post.title }}</h4>
                             </a>
                             <div class="description">
                                 {{ post.body }}
