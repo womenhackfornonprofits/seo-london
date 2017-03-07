@@ -14,8 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import dj_database_url
 
-#PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-#PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 gettext = lambda s: s
@@ -58,8 +57,7 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-#STATICFILES_DIRS = (
-#
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -235,7 +233,8 @@ THUMBNAIL_PROCESSORS = (
 # AWS keys
 AWS_SECRET_ACCESS_KEY = os.environ.get("SEO_AWS_SECRET_ACCESS_KEY", '')
 AWS_ACCESS_KEY_ID = os.environ.get("SEO_AWS_ACCESS_KEY_ID", '')
-AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME", "seo-london-images")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME",
+                                         "seo-london-images")
 AWS_PRIVATE_STORAGE_BUCKET_NAME = os.environ.get(
         "SEO_AWS_STORAGE_BUCKET_NAME", AWS_STORAGE_BUCKET_NAME)
 AWS_S3_REGION_NAME = os.environ.get('SEO_AWS_S3_REGION_NAME', None)
@@ -245,8 +244,11 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 # this are for 'hard coded' files stored in AWS
-AWS_STATIC_URL = 'https://s3.{region_name}.amazonaws.com/{bucket_name}/static/'.format(
-    region_name=AWS_S3_REGION_NAME, bucket_name=AWS_STORAGE_BUCKET_NAME)
+AWS_STATIC_URL = \
+    'https://s3.{region_name}.amazonaws.com/{bucket_name}/static/'.format(
+        region_name=AWS_S3_REGION_NAME,
+        bucket_name=AWS_STORAGE_BUCKET_NAME
+    )
 AWS_STATIC_URL = os.environ.get('SEO_AWS_STATIC_URL', AWS_STATIC_URL)
 
 
@@ -310,9 +312,10 @@ FILER_STORAGES = {
     },
 }
 
-GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get('GOOGLE_ANALYTICS_TRACKING_ID', '')
+GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get(
+    'GOOGLE_ANALYTICS_TRACKING_ID', ''
+)
 GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
-
 
 CKEDITOR_CONFIGS_SEOPOST = {
     'extraPlugins': 'filerimage',
@@ -320,10 +323,19 @@ CKEDITOR_CONFIGS_SEOPOST = {
     'toolbar': 'Custom',
     'toolbar_Custom': [
         ['Undo', 'Redo'],
-        ['ShowBlocks'],
         ['Format', 'Styles'],
-        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', 'RemoveFormat'],
-        ['FilerImage']
+        [
+            'Bold', 'Italic', 'Underline',
+            '-', 'Link', 'Unlink', 'Anchor',
+            '-', 'RemoveFormat',
+        ],
+        ['FilerImage'],
+        [
+            'HorizontalRule',
+            '-', 'Table',
+            '-', 'BulletedList', 'NumberedList',
+            '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+        ],
+        ['ShowBlocks', 'Source']
     ]
 }
-
