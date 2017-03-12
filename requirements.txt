@@ -39,3 +39,4 @@ django-storages==1.5.1
 boto3==1.4.2
 requests==2.12.4
 django-extensions==1.7.5
+django-ckeditor==5.2.1
