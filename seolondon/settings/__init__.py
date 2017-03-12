@@ -137,10 +137,11 @@ INSTALLED_APPS = [
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
+    'storages',
+    'django_extensions',
     'seolondon',
     'djangocms_repeater',
     'djangocms_plain_text',
-    'storages',
 ]
 
 LANGUAGES = (
