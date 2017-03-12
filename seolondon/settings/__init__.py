@@ -319,7 +319,7 @@ GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get(
 GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
 
 CKEDITOR_CONFIGS_SEOPOST = {
-    'extraPlugins': 'filerimage',
+    'extraPlugins': 'filerimage,preview',
     'removePlugins': 'image',
     'toolbar': 'Custom',
     'toolbar_Custom': [
@@ -337,6 +337,6 @@ CKEDITOR_CONFIGS_SEOPOST = {
             '-', 'BulletedList', 'NumberedList',
             '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
         ],
-        ['ShowBlocks', 'Source']
+        ['Preview', 'ShowBlocks', 'Source']
     ]
 }
