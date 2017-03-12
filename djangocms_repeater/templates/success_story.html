@@ -11,7 +11,7 @@
 <div class="ui success story modal {{ instance.storyId }}">
     <div class="header">{{ instance.name }}</div>
     <div class="content">
-        <img src="{{ instance.storyImage }}" alt="{{ instance.name }} Story">
+        <img src="{% firstof instance.story_image.url instance.story_image_url %}" alt="{{ instance.name }} Story">
         {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}
         {% endfor %}
