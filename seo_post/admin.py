@@ -23,12 +23,14 @@ class PostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
         }),
         ('Basic Options', {
             'fields': (
-                'hero_image', 'date_publish', 'date_expire', 'categories'
+                'hero_image', 'author', 'author_image',
+                'date_publish', 'date_expire', 'categories',
+
             ),
         }),
         ('Advance Options', {
             'classes': ('collapse',),
-            'fields': ('slug', 'author'),
+            'fields': ('slug', ),
         }),
     )
 

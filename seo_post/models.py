@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
@@ -37,20 +36,57 @@ class Post(models.Model):
 
     BLOG = 'blog'
     NEWS = 'news'
-    POST_TYPES = ((BLOG, 'Blog'), (NEWS, 'News'))
+    POST_TYPES = (
+        (BLOG, 'Blog'),
+        (NEWS, 'News')
+    )
 
-    post_type = models.CharField(max_length=20, choices=POST_TYPES)
-
-    title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50, unique=True)
-    date_publish = models.DateTimeField(default=timezone.datetime.now)
-    date_expire = models.DateTimeField(null=True, blank=True)
-    categories = models.ManyToManyField(Category, blank=True,
-                                        related_name='blogs')
-    body = RichTextField(config_name='seopost_ckeditor')
-    hero_image = FilerImageField(null=True, blank=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                               on_delete=models.SET_NULL, null=True)
+    post_type = models.CharField(
+        max_length=20,
+        choices=POST_TYPES
+    )
+    title = models.CharField(
+        max_length=50
+    )
+    subtitle = models.CharField(
+        max_length=150,
+        blank=True
+    )
+    slug = models.SlugField(
+        max_length=50,
+        unique=True
+    )
+    date_publish = models.DateTimeField(
+        default=timezone.datetime.now
+    )
+    date_expire = models.DateTimeField(
+        null=True,
+        blank=True
+    )
+    categories = models.ManyToManyField(
+        Category,
+        blank=True,
+        related_name='blogs'
+    )
+    body = RichTextField(
+	config_name='seopost_ckeditor'
+    )
+    hero_image = FilerImageField(
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL
+    )
+    author = models.CharField(
+        max_length=100,
+        default='SEO London'
+    )
+    author_image = FilerImageField(
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL
+    )
 
     objects = PostQuerySet.as_manager()
 
@@ -67,5 +103,5 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse(
             'seo_post:post_detail',
-            kwargs={'post_type': self.post_type, 'slug':self.slug}
+            kwargs={'post_type': self.post_type, 'slug': self.slug}
         )
