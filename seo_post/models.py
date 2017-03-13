@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.text import slugify
 
-from djangocms_text_ckeditor.fields import HTMLField
+from ckeditor.fields import RichTextField
 from filer.fields.image import FilerImageField
 
 from seo_post.querysets import PostQuerySet
@@ -47,7 +47,7 @@ class Post(models.Model):
     date_expire = models.DateTimeField(null=True, blank=True)
     categories = models.ManyToManyField(Category, blank=True,
                                         related_name='blogs')
-    body = HTMLField(configuration='CKEDITOR_CONFIGS_SEOPOST')
+    body = RichTextField(config_name='seopost_ckeditor')
     hero_image = FilerImageField(null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.SET_NULL, null=True)

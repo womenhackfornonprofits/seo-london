@@ -11,13 +11,13 @@
                     <div class="ui divider"></div>
                     <div class="ui content">
                         <img class="ui image left floated" src="{% thumbnail post.hero_image 100x100 crop %}">
-                        {{ post.body }}
+                        {{ post.body|safe }}
                     </div>
                 {% else %}
                     <img class="ui fluid image" src="{% thumbnail post.hero_image 600x300 crop %}">
                     <div class="ui huge header">{{ post.title }}</div>
                     <div class="ui divider"></div>
-                    <div class="ui content">{{ post.body }}</div>
+                    <div class="ui content">{{ post.body|safe }}</div>
                 {% endif %}
             </article>
             {% if post.categories.exists %}

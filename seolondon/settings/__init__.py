@@ -137,6 +137,7 @@ INSTALLED_APPS = [
     'djangocms_link',
     'reversion',
     'storages',
+    'ckeditor',
     'django_extensions',
     'seolondon',
     'seo_post',
@@ -318,25 +319,27 @@ GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get(
 )
 GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
 
-CKEDITOR_CONFIGS_SEOPOST = {
-    'extraPlugins': 'filerimage,preview',
-    'removePlugins': 'image',
-    'toolbar': 'Custom',
-    'toolbar_Custom': [
-        ['Undo', 'Redo'],
-        ['Format', 'Styles'],
-        [
-            'Bold', 'Italic', 'Underline',
-            '-', 'Link', 'Unlink', 'Anchor',
-            '-', 'RemoveFormat',
-        ],
-        ['FilerImage'],
-        [
-            'HorizontalRule',
-            '-', 'Table',
-            '-', 'BulletedList', 'NumberedList',
-            '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
-        ],
-        ['Preview', 'ShowBlocks', 'Source']
-    ]
+CKEDITOR_CONFIGS = {
+    'seopost_ckeditor': {
+        'extraPlugins': 'filerimage,preview,embed',
+        'removePlugins': 'image',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Undo', 'Redo'],
+            ['Format', 'Styles'],
+            [
+                'Bold', 'Italic', 'Underline',
+                '-', 'Link', 'Unlink', 'Anchor',
+                '-', 'RemoveFormat',
+            ],
+            ['FilerImage'],
+            [
+                'HorizontalRule',
+                '-', 'Table',
+                '-', 'BulletedList', 'NumberedList',
+                '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+            ],
+            ['Preview', 'Embed', 'ShowBlocks', 'Source']
+        ]
+    },
 }
