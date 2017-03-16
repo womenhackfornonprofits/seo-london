@@ -8,8 +8,8 @@ from cms.admin.placeholderadmin import PlaceholderAdminMixin
 from seo_post import models
 
 
-@admin.register(models.Category)
-class CategoryAdmin(admin.ModelAdmin):
+@admin.register(models.PostCategory)
+class PostCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
 
@@ -19,13 +19,12 @@ class PostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('post_type', 'title', 'body', )
+            'fields': ('post_type', 'title', 'body', 'is_public')
         }),
         ('Basic Options', {
             'fields': (
-                'hero_image', 'author', 'author_image',
+                'hero_image', 'author', 'author_image', 'excerpt',
                 'date_publish', 'date_expire', 'categories',
-
             ),
         }),
         ('Advance Options', {

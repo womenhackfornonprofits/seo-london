@@ -11,5 +11,6 @@ class PostQuerySet(QuerySet):
         return self.filter(
             Q(date_expire__isnull=True)|
             Q(date_expire__gte=timezone.now()),
-            Q(date_publish__lte=timezone.now())
+            date_publish__lte=timezone.now(),
+            is_public=True
         )

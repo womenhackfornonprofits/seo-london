@@ -14,7 +14,7 @@ from seo_post.querysets import PostQuerySet
 
 
 @python_2_unicode_compatible
-class Category(models.Model):
+class PostCategory(models.Model):
 
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
@@ -28,7 +28,7 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         if self.slug is None:
             self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
+        super(PostCategory, self).save(*args, **kwargs)
 
 
 @python_2_unicode_compatible
@@ -64,12 +64,15 @@ class Post(models.Model):
         blank=True
     )
     categories = models.ManyToManyField(
-        Category,
+        PostCategory,
         blank=True,
-        related_name='blogs'
+        related_name='posts'
     )
     body = RichTextField(
-	config_name='seopost_ckeditor'
+        config_name='seopost_ckeditor'
+    )
+    excerpt = models.TextField(
+        blank=True
     )
     hero_image = FilerImageField(
         null=True,
@@ -87,6 +90,7 @@ class Post(models.Model):
         related_name='+',
         on_delete=models.SET_NULL
     )
+    is_public = models.BooleanField(default=False)
 
     objects = PostQuerySet.as_manager()
 
