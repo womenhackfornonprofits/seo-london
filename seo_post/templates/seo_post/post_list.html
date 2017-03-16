@@ -1,33 +1,102 @@
 {% extends "base.html" %}
+{% load cms_tags %}
+{% load seo_post_tags %}
 {% load thumbnail %}
-{% block content %}
 
-<div class="ui container segment">
-    <div class="row">
-        <div class="ten wide column ">
-            <div class="ui divided items">
-                {% for post in post_list %}
-                    <div class="ui item">
-                        <div class="ui small image">
-                            {% if post.hero_image %}
-                            <img src="{% thumbnail post.hero_image 300x300 crop %}">
+
+{% block header_logo %}
+    {% static_placeholder 'blog_news_logo' %}
+{% endblock header_logo %}
+
+
+{% block content %}
+    {% if post.post_type == 'blog' %}
+        {% static_placeholder 'blog_list_banner' %}
+    {% else %}
+        {% static_placeholder 'news_list_banner' %}
+    {% endif %}
+    <div class="ui section">
+    <div class="ui centered container  grid">
+        <div class="row">
+            <div class="ten wide column ">
+                <div class="ui divided items segment">
+                    {% for post in post_list %}
+                        <div class="ui item">
+                            {% if post.post_type == 'blog' %}
+                                {% if post.author_image %}
+                                    <div class="ui small image">
+                                        <img  style="border-radius: 500rem;" src="{% thumbnail post.author_image 300x300 crop %}">
+                                        <div class="ui basic label ">{{ post.author }}</div>
+                                    </div>
+                                {% endif %}
+
+                            {% else %}
+                                {% if post.hero_image %}
+                                    <div class="ui small image">
+                                        <img src="{% thumbnail post.hero_image 300x300 crop=True %}">
+                                    </div>
+                                {% endif %}
                             {% endif %}
-                        </div>
-                        <div class="content" style="overflow-y: hidden; max-height:150px">
-                            <a href="{{ post.get_absolute_url }}">
-                                <h4>{{ post.title }}</h4>
-                            </a>
-                            <div class="description">
-                                {{ post.body|safe }}
+
+                            <div class="content">
+                                <a class="header" href="{{ post.get_absolute_url }}">
+                                    {{ post.title }}
+                                </a>
+
+                                <div class="meta">
+                                    {% if post.subtitle %}
+                                        <div>
+                                        {{ post.subtitle }}
+                                        </div>
+                                    {% endif %}
+
+                                    <div>
+                                        <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
+                                        {% if post.post_type != 'blog' %}
+                                            <div class="ui tiny basic label">{{ post.author }}</div>
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+
+                                <div class="description">
+                                    <div style="overflow-y: hidden; max-height:70px">
+                                    {% firstof post.excerpt post.body|safe %}
+                                    </div>
+                                </div>
+
+                                <div class="extra">
+                                    <a class="ui right floated mini basic button" href="{{ post.get_absolute_url }}">more</a>
+                                    {% if post.categories.exists %}
+                                        <div>
+                                            {% for category in post.categories.all %}
+                                                <a class="ui basic label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui segment">
+                    <div>Tags</div>
+                    {% get_post_categories as categories %}
+                    <ul class="ui list">
+                    {% for category in categories %}
+                        <li value="-"><a href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
 {% endblock content %}
+
+
 
 
 

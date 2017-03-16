@@ -1,35 +1,49 @@
 {% extends "base.html" %}
+{% load cms_tags %}
 {% load thumbnail %}
-{% block content %}
 
-<div class="ui container segment">
-    <div class="row">
-        <div class="ten wide column ">
-            <article>
-                {% if post.post_type == 'blog' %}
-                    <div class="ui huge header">{{ post.title }}</div>
-                    <div class="ui divider"></div>
-                    <div class="ui content">
-                        <img class="ui image left floated" src="{% thumbnail post.hero_image 100x100 crop %}">
-                        {{ post.body|safe }}
-                    </div>
-                {% else %}
-                    <img class="ui fluid image" src="{% thumbnail post.hero_image 600x300 crop %}">
-                    <div class="ui huge header">{{ post.title }}</div>
-                    <div class="ui divider"></div>
-                    <div class="ui content">{{ post.body|safe }}</div>
-                {% endif %}
-            </article>
-            {% if post.categories.exists %}
-            <div class="ui divider"></div>
-            <aside>
-                {% for category in post.categories.all %}
-                    <a href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
-                {% endfor %}
-            </aside>
-            {% endif %}
+{% block header_logo %}
+    {% static_placeholder 'blog_news_logo' %}
+{% endblock header_logo %}
+
+{% block content %}
+{% if post.post_type == 'blog' %}
+    {% static_placeholder 'blog_detail_banner' %}
+{% else %}
+    {% static_placeholder 'news_detail_banner' %}
+{% endif %}
+<div class="ui section">
+    <div class="ui container">
+        <div class="ui centered grid">
+            <div class="row">
+                <div class="ten wide column segment ">
+                    <article>
+                        <div class="caps-title">{{ post.title }}</div>
+                        <div class="ui divider"></div>
+                        {% if post.post_type == 'blog' %}
+                            <img class="ui image left floated circular" src="{% thumbnail post.author_image 100x100 crop=True %}">
+                        {% endif %}
+                        {% if post.subtitle %}
+                            <div>
+                            {{ post.subtitle }}
+                            </div>
+                        {% endif %}
+                        <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
+                        {% if post.categories.exists %}
+                            <div>
+                                {% for category in post.categories.all %}
+                                    <a class="ui basic label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <img class="ui fluid image" src="{% thumbnail post.hero_image 600x200 crop=True %}">
+                        <div class="ui divider"></div>
+                        <div class="ui content">{{ post.body|safe }}</div>
+                    </article>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 {% endblock content %}
