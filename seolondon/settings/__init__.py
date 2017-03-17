@@ -319,8 +319,12 @@ GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get(
 )
 GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
 
+IFRAMELY_API_KEY = os.environ.get('IFRAMELY_API_KEY', '')
+
+
 CKEDITOR_CONFIGS = {
     'seopost_ckeditor': {
+
         'extraPlugins': 'filerimage,preview,embed',
         'removePlugins': 'image',
         'toolbar': 'Custom',
@@ -343,3 +347,12 @@ CKEDITOR_CONFIGS = {
         ]
     },
 }
+
+if IFRAMELY_API_KEY:
+    CKEDITOR_CONFIGS['seopost_ckeditor'].update({
+        'embed_provider': (
+            '//iframe.ly/api/oembed?url={{url}}&'
+            'callback={{callback}}&api_key={api_key}'.format(
+                api_key=IFRAMELY_API_KEY
+            ))
+        })
