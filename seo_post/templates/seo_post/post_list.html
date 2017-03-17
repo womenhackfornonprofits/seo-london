@@ -16,7 +16,8 @@
         {% static_placeholder 'news_list_banner' %}
     {% endif %}
     <div class="ui section">
-    <div class="ui centered container  grid">
+        <div class="ui container">
+    <div class="ui stackable centered grid">
         <div class="row">
             <div class="ten wide column ">
                 <div class="ui divided items segment">
@@ -60,7 +61,7 @@
                                 </div>
 
                                 <div class="description">
-                                    <div style="overflow-y: hidden; max-height:70px">
+                                    <div style="overflow-y: hidden; height:70px">
                                     {% firstof post.excerpt post.body|safe %}
                                     </div>
                                 </div>
@@ -92,6 +93,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
 {% endblock content %}

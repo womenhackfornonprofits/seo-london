@@ -14,7 +14,7 @@
 {% endif %}
 <div class="ui section">
     <div class="ui container">
-        <div class="ui centered grid">
+        <div class="ui stackable centered grid">
             <div class="row">
                 <div class="ten wide column segment ">
                     <article>
@@ -28,6 +28,7 @@
                             {{ post.subtitle }}
                             </div>
                         {% endif %}
+                        <div class="ui small basic label">by {{ post.author }}</div>
                         <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
                         {% if post.categories.exists %}
                             <div>
