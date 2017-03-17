@@ -10,10 +10,12 @@
 
 
 {% block content %}
-    {% if post.post_type == 'blog' %}
+    {% if view.kwargs.post_type == 'blog' %}
         {% static_placeholder 'blog_list_banner' %}
-    {% else %}
+    {% elif view.kwargs.post_type == 'news' %}
         {% static_placeholder 'news_list_banner' %}
+    {% else %}
+        {% static_placeholder 'blog_news_list_banner' %}
     {% endif %}
     <div class="ui section">
         <div class="ui container">
