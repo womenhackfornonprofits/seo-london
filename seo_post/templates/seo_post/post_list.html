@@ -26,7 +26,7 @@
                             {% if post.post_type == 'blog' %}
                                 {% if post.author_image %}
                                     <div class="ui small image">
-                                        <img  style="border-radius: 500rem;" src="{% thumbnail post.author_image 300x300 crop %}">
+                                        <img  style="border-radius: 500rem;" src="{% thumbnail post.author_image 300x300 crop=True %}">
                                         <div class="ui basic label ">{{ post.author }}</div>
                                     </div>
                                 {% endif %}
