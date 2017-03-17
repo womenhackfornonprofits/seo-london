@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^(?P<post_type>[\w-]+)/$', PostList.as_view(),
         name='post_list_by_type'),
     url(r'^$', PostList.as_view(), name='post_list'),
-    url(r'^(?P<post_type>[\w-]+)/(?P<slug>[\w-]+)/$', PostDetail.as_view(), name='post_detail')
+    url(r'^(?P<post_type>[\w-]+)/(?P<slug>[\w-]+)/$',
+        PostDetail.as_view(), name='post_detail')
 ]
