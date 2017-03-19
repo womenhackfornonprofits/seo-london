@@ -321,10 +321,6 @@
         user-select: none;
 
         > li {
-          // hide the get in touch since we include it manually
-          &:last-child {
-            display: none;
-          }
 
           a {
             position: relative;
