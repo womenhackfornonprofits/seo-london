@@ -28,7 +28,8 @@ class PostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
         }),
         ('Basic Options', {
             'fields': (
-                'hero_image', 'author', 'author_image', 'excerpt',
+                'hero_image', 'author', 'author_image',
+                'subtitle', 'excerpt',
                 'date_publish', 'date_expire', 'categories',
             ),
         }),
