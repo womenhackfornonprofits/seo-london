@@ -27,8 +27,8 @@
                         <div class="ui item">
                             {% if post.post_type == 'blog' %}
                                 {% if post.author_image %}
-                                    <div class="ui small image">
-                                        <img style="border-radius: 500rem;" src="{% thumbnail post.author_image 300x300 crop=True upscale=True %}">
+                                    <div class="ui small image post_list__item__image">
+                                        <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True %}">
                                         <div class="ui basic label ">{{ post.author }}</div>
                                     </div>
                                 {% endif %}

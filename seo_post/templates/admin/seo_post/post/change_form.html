@@ -6,7 +6,7 @@
     </li>
     {% if original.pk %}
         <li>
-            <a href="{% url 'admin:preview_post' pk=original.pk %}?toolbar_off">Preview</a>
+            <a href="{% url 'admin:preview_post' pk=original.pk %}?toolbar_off">View Saved Post</a>
         </li>
     {% endif %}
 {% endblock %}

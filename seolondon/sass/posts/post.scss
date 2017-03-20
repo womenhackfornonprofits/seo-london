@@ -1,0 +1,30 @@
+
+@mixin mixin_post_list__item__image {
+  .ui.items > .item > .image.post_list__item__image{
+    text-align: center;
+    max-height: 300em!important;
+
+    > img {
+      border-radius: 10em;
+    }
+
+    .label {
+      display: inline-block;
+    }
+
+  }
+
+}
+
+
+@include mixin_post_list__item__image;
+
+@media only screen and (max-width: 767px){
+
+  @include mixin_post_list__item__image;
+
+}
+
+.post_detail__content{
+  clear: both;
+}
