@@ -2,6 +2,7 @@
 
 from django.conf import settings
 
+
 def google_tracking(request):
 
     context = {}
@@ -12,4 +13,16 @@ def google_tracking(request):
         context['GOOGLE_ANALYTICS_TRACKING_ID'] = \
             settings.GOOGLE_ANALYTICS_TRACKING_ID
 
+    return context
+
+
+def constant_email(request):
+
+    context = {}
+    if getattr(settings, 'CONSTANT_CONTACT_CA_ID', ''):
+        context['CONSTANT_CONTACT_CA_ID'] = \
+            settings.CONSTANT_CONTACT_CA_ID
+    if getattr(settings, 'CONSTANT_CONTACT_LIST_ID', ''):
+        context['CONSTANT_CONTACT_LIST_ID'] = \
+            settings.CONSTANT_CONTACT_LIST_ID
     return context

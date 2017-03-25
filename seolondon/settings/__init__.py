@@ -80,7 +80,8 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
                 'cms.context_processors.cms_settings',
-                'seolondon.context_processors.google_tracking'
+                'seolondon.context_processors.google_tracking',
+                'seolondon.context_processors.constant_email'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -356,3 +357,7 @@ if IFRAMELY_API_KEY:
                 api_key=IFRAMELY_API_KEY
             ))
         })
+
+
+CONSTANT_CONTACT_CA_ID = os.environ.get('CONSTANT_CONTACT_CA_ID', '')
+CONSTANT_CONTACT_LIST_ID = os.environ.get('CONSTANT_CONTACT_LIST_ID', '')

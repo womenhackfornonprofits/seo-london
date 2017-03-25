@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}Thank You for signing up the news letter{% endblock title %}
+
+{% block content %}
+
+{% static_placeholder "Newsletter Thank You Header"  %}
+
+
+<div class="section">
+    <div class="ui grid container">
+        <div class="sixteen wide column">
+            {% static_placeholder "Newsletter Thank You Content" or %}
+              Thank you for signing up the newsletter
+            {% endstatic_placeholder %}    
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
