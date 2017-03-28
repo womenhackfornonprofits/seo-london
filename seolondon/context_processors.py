@@ -22,7 +22,10 @@ def constant_email(request):
     if getattr(settings, 'CONSTANT_CONTACT_CA_ID', ''):
         context['CONSTANT_CONTACT_CA_ID'] = \
             settings.CONSTANT_CONTACT_CA_ID
-    if getattr(settings, 'CONSTANT_CONTACT_LIST_ID', ''):
-        context['CONSTANT_CONTACT_LIST_ID'] = \
-            settings.CONSTANT_CONTACT_LIST_ID
+    if getattr(settings, 'CONSTANT_CONTACT_DEFAULT_LIST_ID', ''):
+        context['CONSTANT_CONTACT_DEFAULT_LIST_ID'] = \
+            settings.CONSTANT_CONTACT_DEFAULT_LIST_ID
+    if getattr(settings, 'CONSTANT_CONTACT_ALUMNI_LIST_ID', ''):
+        context['CONSTANT_CONTACT_ALUMNI_LIST_ID'] = \
+            settings.CONSTANT_CONTACT_ALUMNI_LIST_ID
     return context
