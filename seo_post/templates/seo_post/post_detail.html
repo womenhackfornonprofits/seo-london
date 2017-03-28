@@ -7,11 +7,6 @@
 {% endblock header_logo %}
 
 {% block content %}
-{% if post.post_type == 'blog' %}
-    {% static_placeholder 'blog_detail_banner' %}
-{% else %}
-    {% static_placeholder 'news_detail_banner' %}
-{% endif %}
 <div class="ui section">
     <div class="ui container">
         <div class="ui stackable centered grid">
@@ -19,18 +14,17 @@
                 <div class="ten wide column segment ">
                     <article>
                         <div class="ui text container">
-                            <div class="caps-title">{{ post.title }}</div>
+                            <div class="caps-title {% if post.post_type == 'blog' %} ui red {% elif post.post_type == 'news' %} ui blue {% endif %}">{{ post.title }}</div>
                             {% if post.subtitle %}
                                 <div class="segment">
                                 {{ post.subtitle }}
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="ui divider"></div>
+                        <div class="ui {% if post.post_type == 'blog' %} red {% elif post.post_type == 'news' %} blue {% endif %} divider"></div>
                         {% if post.post_type == 'blog' %}
                             <img class="ui image left floated circular" src="{% thumbnail post.author_image 100x100 crop=True upscale=True %}">
                         {% endif %}
-
                         <div class="ui small basic label">by {{ post.author }}</div>
                         <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
                         {% if post.categories.exists %}
