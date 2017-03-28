@@ -153,14 +153,35 @@
                 <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-92 mc4wp-ajax" method="post" action="https://visitor2.constantcontact.com/api/signup" data-id="92" data-name="Subscribe Footer">
                     <div class="mc4wp-form-fields">
                         <div class="subscribe-footer">
-                            <input type="email" name="email" placeholder="sam@example.com">
+                            <input type="email" name="email" required placeholder="sam@example.com">
                             <button class="primary submit"><span class="visuallyhidden">Submit</span></button>
+                        </div>
+
+                        <div class="ui form">
+                              <div class="inline fields">
+
+                                    <label>Are you a Alumni?</label>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input data-id="list:input" type="radio" name="list"
+                                                   value="{{ CONSTANT_CONTACT_DEFAULT_LIST_ID }}">
+                                            <label>Yes</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input data-id="list:input" type="radio" name="list" checked="checked"
+                                                    value="{{ CONSTANT_CONTACT_ALUMNI_LIST_ID }}">
+                                            <label>No</label>
+                                        </div>
+                                    </div>
+
+                              </div>
                         </div>
                         <div style="display: none;">
                             <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off">
                         </div>
                         <input data-id="ca:input" type="hidden" name="ca" value="{{ CONSTANT_CONTACT_CA_ID }}">
-                        <input data-id="list:input" type="hidden" name="list" value="{{ CONSTANT_CONTACT_LIST_ID }}">
                         <input data-id="url:input" type="hidden" name="url" value="{{ request.scheme }}://{{ request.get_host }}{% url 'newsletter_thank_you' %}">
                     </div>
                     <div class="mc4wp-response"></div>
