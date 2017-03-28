@@ -22,7 +22,7 @@
                                 {% if post.author_image %}
                                     <div class="ui small image post_list__item__image">
                                         <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True %}">
-                                        <div class="ui basic label ">{{ post.author }}</div>
+                                        <div class="ui basic label ">By {{ post.author }}</div>
                                     </div>
                                 {% endif %}
 
@@ -49,7 +49,7 @@
                                     <div>
                                         <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
                                         {% if post.post_type != 'blog' %}
-                                            <div class="ui tiny basic label">{{ post.author }}</div>
+                                            <div class="ui tiny basic label">By {{ post.author }}</div>
                                         {% endif %}
                                     </div>
 
