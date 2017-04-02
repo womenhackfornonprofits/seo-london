@@ -34,6 +34,11 @@
                                 {% endfor %}
                             </div>
                         {% endif %}
+                        <div>
+                            <a class="ui basic label" href="{% url 'seo_post:post_list_by_type' post_type=post.post_type  %}">
+                                See All {{ post.post_type|title }}{% if post.post_type != 'news' %}s{% endif %}
+                            </a>
+                        </div>
 
                         <img class="ui fluid image" src="{% thumbnail post.hero_image 600x200 crop=True %}">
                         <div class="ui divider"></div>
