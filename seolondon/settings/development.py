@@ -42,3 +42,10 @@ LOGGING = {
         }
     }
 }
+
+try:
+    from local_settings import *
+except ImportError as e:
+    if 'No module named local_setting' not in str(e):
+        raise
+    print (str(e))
