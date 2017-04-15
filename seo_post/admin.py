@@ -41,11 +41,6 @@ class PostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
 
     prepopulated_fields = {"slug": ("title",)}
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(PostAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['author'].initial = request.user.id
-        return form
-
     def get_urls(self):
         urls = super(PostAdmin, self).get_urls()
         my_urls = [
