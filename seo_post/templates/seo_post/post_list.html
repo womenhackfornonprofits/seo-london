@@ -11,12 +11,12 @@
 
 {% block content %}
     <div class="ui section">
-        <div class="ui container">
+    <div class="ui container">
     <div class="ui stackable centered grid">
         <div class="row">
             <div class="ten wide column ">
                 <div class="ui divided items segment">
-                    {% for post in post_list %}
+                    {% for post in page_obj.object_list %}
                         <div class="ui item">
                             {% if post.post_type == 'blog' %}
                                 {% if post.author_image %}
@@ -25,7 +25,6 @@
                                         <div class="ui basic label ">By {{ post.author }}</div>
                                     </div>
                                 {% endif %}
-
                             {% else %}
                                 {% if post.hero_image %}
                                     <div class="ui small image">
@@ -75,6 +74,7 @@
                         </div>
                     {% endfor %}
                 </div>
+                <div>{% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}</div>
             </div>
             <div class="four wide column">
                 <div class="ui segment">

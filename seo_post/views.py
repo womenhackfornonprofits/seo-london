@@ -9,6 +9,7 @@ from seo_post.models import Post
 class PostList(generic.ListView):
 
     model = Post
+    paginate_by = 14
 
     def get_queryset(self):
         qs = super(PostList, self).get_queryset()
