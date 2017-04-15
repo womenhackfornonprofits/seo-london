@@ -3,10 +3,10 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
-from cms.toolbar_pool import toolbar_pool
-from cms.toolbar.items import Break
 from cms.cms_toolbars import ADMIN_MENU_IDENTIFIER, ADMINISTRATION_BREAK
+from cms.toolbar_pool import toolbar_pool
 from cms.toolbar_base import CMSToolbar
+from cms.toolbar.items import Break
 
 
 @toolbar_pool.register
@@ -22,3 +22,8 @@ class PostToolbar(CMSToolbar):
         url = reverse('admin:seo_post_post_changelist')
         menu.add_link_item(_('Blog/News overview'), url=url)
         admin_menu.add_break('post-break', position=menu)
+
+        menu.add_modal_item(
+            name=_('Add new Blog/News'),
+            url=reverse('admin:seo_post_post_add'),
+        )
