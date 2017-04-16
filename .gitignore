@@ -12,4 +12,5 @@ __pycache__/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+web/media
 local_settings.py
