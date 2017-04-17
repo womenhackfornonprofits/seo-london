@@ -7,6 +7,7 @@ import requests
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from filer.models.filemodels import File
+from filer.models.imagemodels import Image
 
 from django.conf import settings
 
@@ -29,6 +30,9 @@ def download_and_save_file(filer_file):
     resp.raise_for_status()
     cf = ContentFile(resp.content)
     filer_file.file.storages['public'].save(file_name, cf)
+    if isinstance(filer_file, Image):
+        filer_file.file.delete_thumbnails()
+        filer_file.icons
 
 
 def save_filer_files():
