@@ -42,3 +42,6 @@ LOGGING = {
         }
     }
 }
+
+AWS_STATIC_URL=\
+    'https://s3.eu-west-2.amazonaws.com/seo-london-web-media/static/'
