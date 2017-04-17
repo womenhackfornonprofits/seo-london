@@ -74,7 +74,9 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div>{% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}</div>
+                <div>
+                    {% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}
+                </div>
             </div>
             <div class="four wide column">
                 <div class="ui segment">
