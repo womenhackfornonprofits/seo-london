@@ -46,7 +46,9 @@
 {% cms_toolbar %}
 <div id="navigation-bar">
     <div class="ui container">
-        {% placeholder "Logo" %}
+        {% block header_logo %}
+            {% placeholder "Logo" %}
+        {% endblock header_logo %}
         <nav id="primary-menu" class="desktop links menu">
             <ul>
                 {% show_menu 0 100 100 100 %}
