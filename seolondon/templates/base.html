@@ -46,7 +46,9 @@
 {% cms_toolbar %}
 <div id="navigation-bar">
     <div class="ui container">
-        {% placeholder "Logo" %}
+        {% block header_logo %}
+            {% placeholder "Logo" %}
+        {% endblock header_logo %}
         <nav id="primary-menu" class="desktop links menu">
             <ul>
                 {% show_menu 0 100 100 100 %}
@@ -63,6 +65,10 @@
         <nav id="primary-menu" class="mobile vertical links">
             <ul>
                 {% show_menu 0 100 100 100 %}
+                {# here the Apply / Log in element should be similar to the rest of items in terms of styling #}
+                <li class="child sibling">
+                    <a class="fixed" target="_blank" href="http://www.seolondon-careers.com/profile">Apply / Log In</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -92,7 +98,7 @@
                         <li><a href="/about-us/">About Us</a></li>
                         <li><a href="http://www.seolondon-careers.com/profile">Apply to SEO</a></li>
                         <li><a href="/get-involved/">Get Involved</a></li>
-                        <li><a href="/scholars/">Scholars</a></li>
+                        <li><a href="/schools/">Schools</a></li>
                         <li><a href="/careers/">Careers</a></li>
                         <li><a href="/connect/">Connect</a></li>
                     </ul>
@@ -104,22 +110,18 @@
                     <ul>
                         <li>SEO London</li>
                         <li>
-                            <a href="https://www.facebook.com/seolondoninfo/"><span class="visuallyhidden">@seolondoninnfo</span><i class="facebook square icon"></i></a>
-                            <a href="https://twitter.com/SEOLondonInfo"><span class="visuallyhidden">@SEOLondonInfo</span><i class="twitter square icon"></i></a>
-                            <a href="https://www.linkedin.com/company/seo-london"><span class="visuallyhidden">SEO London LinkedIn</span><i class="linkedin square icon"></i></a></li>
-                        <li>SEO Careers</li>
-                        <li>
-                            <a href="https://twitter.com/seo_careers"><span class="visuallyhidden">@seo_careers</span><i class="twitter square icon"></i></a>
-                        </li>
+                            <a target="_blank" href="https://www.facebook.com/SEOCareersLondon"><span class="visuallyhidden">@seolondoninnfo</span><i class="facebook square icon"></i></a>
+                            <a target="_blank" href="https://twitter.com/SEOLondonInfo"><span class="visuallyhidden">@SEOLondonInfo</span><i class="twitter square icon"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/seo-london"><span class="visuallyhidden">SEO London LinkedIn</span><i class="linkedin square icon"></i></a></li>
                         <li>SEO Connect</li>
                         <li>
-                            <a href="https://www.linkedin.com/groups/4566040/profile"><span class="visuallyhidden">SEO Connect LinkedIn</span><i class="linkedin square icon"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/groups/4566040/profile"><span class="visuallyhidden">SEO Connect LinkedIn</span><i class="linkedin square icon"></i></a>
                         </li>
                         <li>SEO Scholars</li>
                         <li>
-                            <a href="https://www.facebook.com/SEOScholarsLondon/?fref=ts"><span class="visuallyhidden">@SEOScholarsLondon</span><i class="facebook square icon"></i></a>
-                            <a href="https://twitter.com/seoscholarslond"><span class="visuallyhidden">@SEOScholarsLond</span><i class="twitter square icon"></i></a>
-                            <a href="https://www.linkedin.com/groups/4059268/profile"><span class="visuallyhidden"></span><i class="linkedin square icon"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/SEOScholarsLondon/?fref=ts"><span class="visuallyhidden">@SEOScholarsLondon</span><i class="facebook square icon"></i></a>
+                            <a target="_blank" href="https://twitter.com/seoscholarslond"><span class="visuallyhidden">@SEOScholarsLond</span><i class="twitter square icon"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/seoscholars/?hl=en"><span class="visuallyhidden"></span><i class="instagram square icon"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -145,18 +147,39 @@
 
                 <p>Sign up to our newsletter to receive continued support and information.</p>
 
-                <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-92 mc4wp-ajax" method="post" data-id="92" data-name="Subscribe Footer">
+                <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-92 mc4wp-ajax" method="post" action="https://visitor2.constantcontact.com/api/signup" data-id="92" data-name="Subscribe Footer">
                     <div class="mc4wp-form-fields">
                         <div class="subscribe-footer">
-                            <input type="email" name="email" placeholder="sam@example.com">
+                            <input type="email" name="email" required placeholder="sam@example.com">
                             <button class="primary submit"><span class="visuallyhidden">Submit</span></button>
+                        </div>
+
+                        <div class="ui form">
+                              <div class="inline fields">
+
+                                    <label>Are you an Alumni?</label>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input data-id="list:input" type="radio" name="list"
+                                                   value="{{ CONSTANT_CONTACT_DEFAULT_LIST_ID }}">
+                                            <label>Yes</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input data-id="list:input" type="radio" name="list" checked="checked"
+                                                    value="{{ CONSTANT_CONTACT_ALUMNI_LIST_ID }}">
+                                            <label>No</label>
+                                        </div>
+                                    </div>
+
+                              </div>
                         </div>
                         <div style="display: none;">
                             <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off">
                         </div>
-                        <input type="hidden" name="_mc4wp_timestamp" value="1472202159">
-                        <input type="hidden" name="_mc4wp_form_id" value="92">
-                        <input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1">
+                        <input data-id="ca:input" type="hidden" name="ca" value="{{ CONSTANT_CONTACT_CA_ID }}">
+                        <input data-id="url:input" type="hidden" name="url" value="{{ request.scheme }}://{{ request.get_host }}{% url 'newsletter_thank_you' %}">
                     </div>
                     <div class="mc4wp-response"></div>
                 </form>
@@ -199,19 +222,20 @@
 
         <div class="ui three column stackable grid margin-top-15">
             <div class="column">
-                <a href="http://www.sponsorme.co.uk/your-donation/mydonation.aspx?CR=CT51047&CN=Sponsors%20for%20Educational%20Opportunity%20Limited&PR=1000"
-                   target="_blank" class="ui primary button margin-bottom-15">Donate Online</a>
-                <p>All online donations are administered by the Charities Trust (sponsorme.co.uk) on behalf of SEO
+                <a href="https://www.justgiving.com/seo-london"
+                   target="_blank" class="ui blue button margin-bottom-15">Donate Online</a>
+                <p>All online donations are administered by JustGiving on behalf of SEO
                     London.</p>
             </div>
             <div class="column">
-                <a class="ui primary button margin-bottom-15">Donate by Text</a>
-                <p>More information coming soon.</p>
+                <h3 class="ui black disabled button margin-bottom-15">Donate by Text</h3>
+                <p>Please text SEOL01, followed by the amount you wish to give (up to £10) to 70070</p>
             </div>
             <div class="column">
-                <h3>Give as you earn, matched funding, or direct debit</h3>
-                <p>Please contact Bhadresh on bhadresh.devchand@seo-london.org for further details on payroll giving or
-                    direct debit.</p>
+                <a href="https://www.easyfundraising.org.uk/causes/seolondon/"
+                   target="_blank" class="ui blue button margin-bottom-15">Easy Fundraising</a>
+
+                <p>Sign up and raise a free donation for SEO London every time you shop online.</p>
             </div>
         </div>
     </div>

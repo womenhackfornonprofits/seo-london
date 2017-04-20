@@ -1,0 +1,30 @@
+{% load paginator_tags %}
+
+{% if page_obj  %}
+    {% get_pagination_numbers page_obj as page_numbers %}
+
+    {% if page_obj.has_previous %}
+        <div class="ui basic label"><a href="?page={{ page_obj.previous_page_number }}">previous</a></div>
+    {% endif %}
+
+    {% if page_numbers %}
+        {% for page_number in page_numbers %}
+            <div class="ui basic label">
+            {% if page_number %}
+                {% if page_number == page_obj.number %}
+                    {{ page_number }}
+                {% else %}
+                    <a href="?page={{ page_number }}">{{ page_number }}</a>
+                {% endif %}
+            {% else %}
+                ...
+            {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if page_obj.has_next %}
+        <div class="ui basic label"><a href="?page={{ page_obj.next_page_number }}">next</a></div>
+    {% endif %}
+
+{% endif %}

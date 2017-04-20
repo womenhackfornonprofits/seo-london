@@ -42,3 +42,14 @@ LOGGING = {
         }
     }
 }
+
+try:
+    from local_settings import *
+except ImportError as e:
+    if 'No module named local_setting' not in str(e):
+        raise
+    print (str(e))
+
+
+AWS_STATIC_URL=\
+    'https://s3.eu-west-2.amazonaws.com/seo-london-web-media/static/'

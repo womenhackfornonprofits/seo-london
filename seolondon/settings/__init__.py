@@ -14,9 +14,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import dj_database_url
 
-#PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-#PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_ROOT)
 
 gettext = lambda s: s
 
@@ -58,8 +58,7 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-#STATICFILES_DIRS = (
-#
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -82,7 +81,8 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
                 'cms.context_processors.cms_settings',
-                'seolondon.context_processors.google_tracking'
+                'seolondon.context_processors.google_tracking',
+                'seolondon.context_processors.constant_email'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -133,14 +133,18 @@ INSTALLED_APPS = [
     'cmsplugin_filer_teaser',
     'cmsplugin_filer_utils',
     'cmsplugin_filer_video',
+    'ckeditor_filebrowser_filer',
     'djangocms_googlemap',
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
+    'storages',
+    'ckeditor',
+    'django_extensions',
     'seolondon',
+    'seo_post',
     'djangocms_repeater',
     'djangocms_plain_text',
-    'storages',
 ]
 
 LANGUAGES = (
@@ -187,7 +191,9 @@ CMS_TEMPLATES = (
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    '': {'TextHolder'}
+}
 
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
@@ -231,80 +237,121 @@ THUMBNAIL_PROCESSORS = (
 # AWS keys
 AWS_SECRET_ACCESS_KEY = os.environ.get("SEO_AWS_SECRET_ACCESS_KEY", '')
 AWS_ACCESS_KEY_ID = os.environ.get("SEO_AWS_ACCESS_KEY_ID", '')
-AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME", "seo-london-images")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("SEO_AWS_STORAGE_BUCKET_NAME",
+                                         "seo-london-images")
 AWS_PRIVATE_STORAGE_BUCKET_NAME = os.environ.get(
         "SEO_AWS_STORAGE_BUCKET_NAME", AWS_STORAGE_BUCKET_NAME)
 AWS_S3_REGION_NAME = os.environ.get('SEO_AWS_S3_REGION_NAME', None)
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_ADDRESSING_STYLE = 'auto'
 
-AWS_S3_OBJECT_PARAMETERS = {
+_AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=31536000, public',
 }
 
 # this are for 'hard coded' files stored in AWS
-AWS_STATIC_URL = 'https://s3.{region_name}.amazonaws.com/{bucket_name}/static/'.format(
-    region_name=AWS_S3_REGION_NAME, bucket_name=AWS_STORAGE_BUCKET_NAME)
+AWS_STATIC_URL = \
+    'https://s3.{region_name}.amazonaws.com/{bucket_name}/static/'.format(
+        region_name=AWS_S3_REGION_NAME,
+        bucket_name=AWS_STORAGE_BUCKET_NAME
+    )
 AWS_STATIC_URL = os.environ.get('SEO_AWS_STATIC_URL', AWS_STATIC_URL)
 
+USE_AWS_STORAGE = bool(os.environ.get('SEO_USE_AWS_STORAGE', ''))
 
-FILER_STORAGES = {
-    'public': {
-        'main': {
-            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
-            'OPTIONS': {
-                'access_key': AWS_ACCESS_KEY_ID,
-                'secret_key': AWS_SECRET_ACCESS_KEY,
-                'bucket_name': AWS_STORAGE_BUCKET_NAME,
-                'region_name': AWS_S3_REGION_NAME,
-                'object_parameters': AWS_S3_OBJECT_PARAMETERS,
-                'querystring_auth': False,
-                'addressing_style': 'auto',
-                'signature_version': 's3v4'
-            },
-            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-            'UPLOAD_TO_PREFIX': 'filer_public',
-        },
-        'thumbnails': {
-            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
-            'OPTIONS': {
-                'access_key': AWS_ACCESS_KEY_ID,
-                'secret_key': AWS_SECRET_ACCESS_KEY,
-                'bucket_name': AWS_STORAGE_BUCKET_NAME,
-                'region_name': AWS_S3_REGION_NAME,
-                'object_parameters': AWS_S3_OBJECT_PARAMETERS,
-                'querystring_auth': False,
-                'addressing_style': 'auto',
-                'signature_version': 's3v4'
-            },
-        },
-    },
-    'private': {
-        'main': {
-            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
-            'OPTIONS': {
-                'access_key': AWS_ACCESS_KEY_ID,
-                'secret_key': AWS_SECRET_ACCESS_KEY,
-                'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
-                'region_name': AWS_S3_REGION_NAME,
-                'addressing_style': 'auto',
-                'signature_version': 's3v4'
-            },
-            'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-            'UPLOAD_TO_PREFIX': 'filer_private',
-        },
-        'thumbnails': {
-            'ENGINE': 'storages.backends.s3boto3.S3Boto3Storage',
-            'OPTIONS': {
-                'access_key': AWS_ACCESS_KEY_ID,
-                'secret_key': AWS_SECRET_ACCESS_KEY,
-                'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
-                'region_name': AWS_S3_REGION_NAME,
-                'addressing_style': 'auto',
-                'signature_version': 's3v4'
+if all([AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY_ID,
+        AWS_STORAGE_BUCKET_NAME, AWS_S3_REGION_NAME, USE_AWS_STORAGE]):
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    FILER_STORAGES = {
+        'public': {
+            'main': {
+                'ENGINE': DEFAULT_FILE_STORAGE,
+                'OPTIONS': {
+                    'object_parameters': _AWS_S3_OBJECT_PARAMETERS,
+                    'querystring_auth': False,
 
+                },
+                'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+                'UPLOAD_TO_PREFIX': 'filer_public',
+            },
+            'thumbnails': {
+                'ENGINE': DEFAULT_FILE_STORAGE,
+                'OPTIONS': {
+                    'object_parameters': _AWS_S3_OBJECT_PARAMETERS,
+                    'querystring_auth': False,
+
+                },
             },
         },
+        'private': {
+            'main': {
+                'ENGINE': DEFAULT_FILE_STORAGE,
+                'OPTIONS': {
+                    'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
+                },
+                'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
+                'UPLOAD_TO_PREFIX': 'filer_private',
+            },
+            'thumbnails': {
+                'ENGINE': DEFAULT_FILE_STORAGE,
+                'OPTIONS': {
+                    'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
+                },
+            },
+        },
+    }
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'web/media')
+    MEDIA_URL = '/media/'
+
+
+GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get(
+    'GOOGLE_ANALYTICS_TRACKING_ID', ''
+)
+GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
+
+IFRAMELY_API_KEY = os.environ.get('IFRAMELY_API_KEY', '')
+
+
+CKEDITOR_CONFIGS = {
+    'seopost_ckeditor': {
+
+        'extraPlugins': 'filerimage,preview,embed',
+        'removePlugins': 'image',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Undo', 'Redo'],
+            ['Format', 'Styles'],
+            [
+                'Bold', 'Italic', 'Underline',
+                '-', 'Link', 'Unlink', 'Anchor',
+                '-', 'RemoveFormat',
+            ],
+            ['FilerImage'],
+            [
+                'HorizontalRule',
+                '-', 'Table',
+                '-', 'BulletedList', 'NumberedList',
+                '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+            ],
+            ['Preview', 'Embed', 'ShowBlocks', 'Source']
+        ]
     },
 }
 
-GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get('GOOGLE_ANALYTICS_TRACKING_ID', '')
-GOOGLE_GTM_CONTAINER_ID = os.environ.get('GOOGLE_GTM_CONTAINER_ID', '')
+if IFRAMELY_API_KEY:
+    CKEDITOR_CONFIGS['seopost_ckeditor'].update({
+        'embed_provider': (
+            '//iframe.ly/api/oembed?url={{url}}&'
+            'callback={{callback}}&api_key={api_key}'.format(
+                api_key=IFRAMELY_API_KEY
+            ))
+        })
+
+
+CONSTANT_CONTACT_CA_ID = os.environ.get('CONSTANT_CONTACT_CA_ID', '')
+CONSTANT_CONTACT_DEFAULT_LIST_ID = os.environ.get(
+    'CONSTANT_CONTACT_DEFAULT_LIST_ID', '')
+CONSTANT_CONTACT_ALUMNI_LIST_ID = os.environ.get(
+    'CONSTANT_CONTACT_ALUMNI_LIST_ID',
+    CONSTANT_CONTACT_DEFAULT_LIST_ID)

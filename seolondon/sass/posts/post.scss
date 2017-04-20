@@ -1,0 +1,42 @@
+
+@mixin mixin_post_list__item__image {
+  .ui.items > .item > .image.post_list__item__image{
+    text-align: center;
+    max-height: 300em!important;
+    > img {
+      border-radius: 10em;
+    }
+    .label {
+      display: inline-block;
+      margin-top: 0.5em;
+    }
+  }
+}
+
+
+@include mixin_post_list__item__image;
+
+@media only screen and (max-width: 767px){
+  @include mixin_post_list__item__image;
+}
+
+.post_detail__content{
+  clear: both;
+
+  img {
+    max-width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  img[align="left"]{
+    margin-left: 0;
+  }
+
+  img[align="right"]{
+    margin-right: 0;
+  }
+
+}
