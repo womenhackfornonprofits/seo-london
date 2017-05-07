@@ -27,14 +27,11 @@
                         {% endif %}
                         <div class="ui small basic label">By {{ post.author }}</div>
                         <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
-                        {% if post.categories.exists %}
-                            <div>
-                                {% for category in post.categories.all %}
-                                    <a class="ui basic label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+
                         <div>
+                            {% for category in post.categories.all %}
+                                <a class="ui basic label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
+                            {% endfor %}
                             <a class="ui basic label" href="{% url 'seo_post:post_list_by_type' post_type=post.post_type  %}">
                                 See All {{ post.post_type|title }}{% if post.post_type != 'news' %}s{% endif %}
                             </a>
