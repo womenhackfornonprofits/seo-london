@@ -10,11 +10,11 @@
 
 
 {% block content %}
-
+    {% with header_color=view.kwargs.post_type|get_header_color %}
     <div class="ui section">
         <div class="ui grid container">
-            <div class="ten wide column">
-                <div class="caps-title {% if view.kwargs.post_type == 'blog' %} ui red {% elif view.kwargs.post_type == 'news' %} ui blue {% else %} ui blue {% endif %}">
+            <div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
+                <div class="caps-title ui {{ header_color }} ">
                     {% if view.kwargs.post_type == 'blog' %}
                         Blog
                     {% elif view.kwargs.post_type == 'news' %}
@@ -23,7 +23,7 @@
                         Blog / News
                     {% endif %}
                 </div>
-                <div class="ui {% if view.kwargs.post_type == 'blog' %} red {% elif view.kwargs.post_type == 'news' %} blue {% else %} blue {% endif %} divider"></div>
+                <div class="ui {{ header_color }} divider"></div>
                 <div class="ui section">
                     <div class="ui divided items">
                         {% for post in page_obj.object_list %}
@@ -32,7 +32,7 @@
                                     {% if post.author_image %}
                                         <div class="ui small image post_list__item__image">
                                             <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True %}">
-                                            <div class="ui basic label ">By {{ post.author }}</div>
+                                            <div class="ui basic black label ">by {{ post.author }}</div>
                                         </div>
                                     {% endif %}
                                 {% else %}
@@ -48,38 +48,39 @@
                                 {% endif %}
 
                                 <div class="content">
-                                    <a class="header" href="{{ post.get_absolute_url }}">
-                                        {{ post.title }}
-                                    </a>
-
-                                    <div class="meta">
-                                        {% if post.subtitle %}
-                                            <div>
-                                            {{ post.subtitle }}
-                                            </div>
-                                        {% endif %}
-
-                                        <div>
-                                            <div class="ui tiny basic label">{{ post.date_publish|date:'d M Y' }} </div>
+                                    <div class="post_list__content__top">
+                                        <a class="ui  caps-title small {{ header_color }}" href="{{ post.get_absolute_url }}">
+                                            {{ post.title }}
+                                        </a>
+                                        <div class="meta">
+                                            <span class="ui small right floated">
+                                                {{ post.date_publish|date:'d M Y' }}
+                                            </span>
                                             {% if post.post_type != 'blog' %}
-                                                <div class="ui tiny basic label">By {{ post.author }}</div>
+                                                <span  class="ui right floated tiny ">(by {{ post.author }})</span>
+                                            {% endif %}
+
+                                            {% if post.subtitle %}
+                                                <div>
+                                                    {{ post.subtitle }}
+                                                </div>
                                             {% endif %}
                                         </div>
 
-                                    </div>
-
-                                    <div class="description">
-                                        <div style="overflow-y: hidden; height:70px">
-                                        {% firstof post.excerpt post.body|safe %}
+                                        <div class="description" style="clear: both;">
+                                            <div >
+                                            {% firstof post.excerpt post.body|safe %}
+                                            </div>
                                         </div>
                                     </div>
-
                                     <div class="extra">
-                                        <a class="ui right floated mini basic button" href="{{ post.get_absolute_url }}">more</a>
+
+                                        <a class="ui right floated mini  {{ header_color }}  button" href="{{ post.get_absolute_url }}">more</a>
+
                                         {% if post.categories.exists %}
                                             <div>
                                                 {% for category in post.categories.all %}
-                                                    <a class="ui basic label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
+                                                    <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
                                                 {% endfor %}
                                             </div>
                                         {% endif %}
@@ -88,18 +89,17 @@
                             </div>
                         {% endfor %}
                     </div>
-
+                    <div class="ui {{ header_color }} divider"></div>
                     <div>
                         {% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}
                     </div>
                 </div>
             </div>
-            <div class="four wide right floated column">
-
-                <div class="caps-title {% if view.kwargs.post_type == 'blog' %} ui red {% elif view.kwargs.post_type == 'news' %} ui blue {% else %} ui blue {% endif %}">
+            <div class="sixteen wide mobile sixteen wide tablet four wide computer column right floated ">
+                <div class="caps-title ui {{ header_color }}">
                     Tags
                 </div>
-                <div class="ui {% if view.kwargs.post_type == 'blog' %} red {% elif view.kwargs.post_type == 'news' %} blue {% else %} blue {% endif %} divider"></div>
+                <div class="ui {{ header_color }} divider"></div>
                     <div class="ui section">
                         {% get_post_categories as categories %}
                         <ul class="ui list">
@@ -112,6 +112,7 @@
             </div>
         </div>
     </div>
+    {% endwith %}
 {% endblock content %}
 
 

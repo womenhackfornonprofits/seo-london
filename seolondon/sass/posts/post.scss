@@ -13,6 +13,17 @@
   }
 }
 
+.post_list__content__top{
+  overflow-y: hidden;
+  height:150px;
+  padding-top: 5px;
+}
+
+@media only screen and (max-width: 767px){
+  .post_list__content__top{
+    height:250px;
+  }
+}
 
 @include mixin_post_list__item__image;
 
