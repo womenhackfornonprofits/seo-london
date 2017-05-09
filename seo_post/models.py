@@ -74,7 +74,13 @@ class Post(models.Model):
     excerpt = models.TextField(
         blank=True
     )
-    hero_image = FilerImageField(
+    main_image = FilerImageField(
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL
+    )
+    listing_image = FilerImageField(
         null=True,
         blank=True,
         related_name='+',
