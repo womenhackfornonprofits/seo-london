@@ -36,7 +36,7 @@
 
                                 <div>
                                     {% for category in post.categories.all %}
-                                        <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
+                                        <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">{{ category.name }}</a>
                                     {% endfor %}
                                     <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_type' post_type=post.post_type  %}">
                                         All {{ post.post_type|title }}{% if post.post_type != 'news' %}s{% endif %}

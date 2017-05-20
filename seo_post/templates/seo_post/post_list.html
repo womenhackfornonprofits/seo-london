@@ -23,6 +23,11 @@
                         Blog / News
                     {% endif %}
                 </h1>
+                {% if category %}
+                    <div class="{{ header_color }}">
+                        {{ category.name }}
+                    </div>
+                {% endif %}
                 <div class="ui {{ header_color }} divider"></div>
                 <div class="ui section">
                     <div class="ui divided items">
@@ -80,7 +85,7 @@
                                         {% if post.categories.exists %}
                                             <div>
                                                 {% for category in post.categories.all %}
-                                                    <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">{{ category.name }}</a>
+                                                    <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">{{ category.name }}</a>
                                                 {% endfor %}
                                             </div>
                                         {% endif %}
@@ -105,10 +110,10 @@
                         <ul class="ui list">
                             {% for category in categories %}
                                 <li>
-                                    {% if view.kwargs.category == category %}
+                                    {% if view.kwargs.category_slug == category.slug %}
                                         {{ category.name }}
                                     {% else %}
-                                        <a href="{% url 'seo_post:post_list_by_category' category=category.slug  %}">
+                                        <a href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">
                                             {{ category.name }}
                                         </a>
                                     {% endif %}

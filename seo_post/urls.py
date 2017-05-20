@@ -8,7 +8,7 @@ from seo_post.views import PostList, PostDetail
 
 app_name = 'seo_post'
 urlpatterns = [
-    url(r'^category/(?P<category>[\w-]+)/$', PostList.as_view(),
+    url(r'^category/(?P<category_slug>[\w-]+)/$', PostList.as_view(),
         name='post_list_by_category'),
     url(r'^(?P<post_type>[\w-]+)/$', PostList.as_view(),
         name='post_list_by_type'),

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 
 from django.views import generic
-from seo_post.models import Post
+from seo_post.models import Post, PostCategory
 
 
 class PostList(generic.ListView):
@@ -16,8 +16,16 @@ class PostList(generic.ListView):
         if 'post_type' in self.kwargs:
             qs = qs.filter(post_type=self.kwargs['post_type'])
         if 'category' in self.kwargs:
-            qs = qs.filter(categories__slug=self.kwargs['category'])
+            qs = qs.filter(categories__slug=self.kwargs['category_slug'])
         return qs.published().order_by('-date_publish')
+
+    def get_context_data(self, **kwargs):
+        if self.kwargs.get('category_slug', None):
+            kwargs['category'] = \
+                PostCategory.objects.filter(
+                    slug=self.kwargs['category_slug']
+                ).first()
+        return super(PostList, self).get_context_data(**kwargs)
 
 
 class PostDetail(generic.DetailView):
