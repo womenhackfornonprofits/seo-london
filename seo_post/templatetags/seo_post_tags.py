@@ -14,6 +14,6 @@ def get_post_categories():
 
 @register.filter
 def get_header_color(post_type):
-    if post_type == 'blog':
-        return 'red'
-    return 'blue'
+    if post_type == 'news':
+        return 'blue'
+    return 'red'
