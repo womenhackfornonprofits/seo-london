@@ -1,6 +1,6 @@
 {% load paginator_tags %}
 
-{% if page_obj  %}
+{% if page_obj and page_obj.paginator.num_pages > 1 %}
     {% get_pagination_numbers page_obj as page_numbers %}
 
     {% if page_obj.has_previous %}
