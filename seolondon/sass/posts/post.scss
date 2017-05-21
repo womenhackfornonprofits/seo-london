@@ -1,4 +1,15 @@
 
+.post-list__main-header__post-type {
+    display: inline;
+}
+
+.post-list__main-header__category {
+    display: inline;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+}
+
+
 @mixin mixin_post_list__item__image {
   .ui.items > .item > .image.post_list__item__image{
     text-align: center;
