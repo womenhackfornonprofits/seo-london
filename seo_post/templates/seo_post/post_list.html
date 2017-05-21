@@ -36,18 +36,18 @@
                                 {% if post.post_type == 'blog' %}
                                     {% if post.author_image %}
                                         <div class="ui small image post_list__item__image">
-                                            <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True %}">
+                                            <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True subject_location=post.author_image.subject_location %}">
                                             <div class="ui basic black label ">by {{ post.author }}</div>
                                         </div>
                                     {% endif %}
                                 {% else %}
                                     {% if post.listing_image %}
                                         <div class="ui small image">
-                                            <img src="{% thumbnail post.listing_image 300x300 crop=True upscale=True %}">
+                                            <img src="{% thumbnail post.listing_image 300x300 crop=True upscale=True subject_location=post.listing_image.subject_location  %}">
                                         </div>
                                     {% elif post.main_image %}
                                         <div class="ui small image">
-                                            <img src="{% thumbnail post.main_image 300x300 crop=True upscale=True %}">
+                                            <img src="{% thumbnail post.main_image 300x300 crop=True upscale=True subject_location=post.main_image.subject_location %}">
                                         </div>
                                     {% endif %}
                                 {% endif %}
