@@ -24,15 +24,21 @@
   }
 }
 
-.post_list__content__top{
-  overflow-y: hidden;
-  height:150px;
-  padding-top: 5px;
+@media only screen and (min-width: 768px){
+
+  .post_list__content__top{
+    overflow-y: hidden;
+    height:150px;
+    padding-top: 5px;
+  }
 }
 
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 768px){
+
   .post_list__content__top{
-    height:250px;
+    overflow-y: hidden;
+    max-height:250px;
+    padding-top: 5px;
   }
 }
 
