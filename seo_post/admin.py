@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 from django.contrib import admin
+from django import forms
 from django.views import generic
 from cms.admin.placeholderadmin import PlaceholderAdminMixin
 
@@ -18,8 +19,23 @@ class PostCategoryAdmin(admin.ModelAdmin):
 _post_preview_view = generic.DetailView.as_view(model=models.Post)
 
 
+class PostAdminForm(forms.ModelForm):
+
+    excerpt = forms.CharField(
+        required=False, max_length=300,
+        widget=forms.Textarea(attrs={'rows': 3}),
+    )
+
+    class Meta:
+        model = models.Post
+        fields = '__all__'
+
+
 @admin.register(models.Post)
 class PostAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
+
+    form = PostAdminForm
+
     list_display = ('title', 'date_publish', 'author')
 
     fieldsets = (
