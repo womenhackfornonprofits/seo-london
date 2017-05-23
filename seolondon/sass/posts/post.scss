@@ -10,6 +10,8 @@
 }
 
 
+
+
 @mixin mixin_post_list__item__image {
   .ui.items > .item > .image.post_list__item__image{
     text-align: center;
@@ -48,11 +50,11 @@
   @include mixin_post_list__item__image;
 }
 
-.post_detail__main_image{
+.post-detail__main-image{
   margin-top: 5px;
 }
 
-.post_detail__content{
+.post-detail__content{
   clear: both;
 
   img {
@@ -71,4 +73,8 @@
     margin-right: 0;
   }
 
+}
+
+.post-detail__social-sharing  i.inverted.circular.red.icon{
+  background: $red!important;
 }

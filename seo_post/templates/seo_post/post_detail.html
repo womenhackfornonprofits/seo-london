@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load cms_tags %}
 {% load seo_post_tags %}
+{% load social_sharing_tags %}
 {% load thumbnail %}
 
 {% block header_logo %}
@@ -45,9 +46,9 @@
                             </div>
                         </div>
 
-                        <img class="ui fluid image post_detail__main_image" src="{% thumbnail post.main_image 600x200 crop=True %}">
+                        <img class="ui fluid image post-detail__main-image" src="{% thumbnail post.main_image 600x200 crop=True %}">
                         <div class="ui divider"></div>
-                        <div class="ui content post_detail__content">
+                        <div class="ui content post-detail__content">
                             {{ post.body|safe }}
                         </div>
                     </article>
@@ -55,6 +56,9 @@
             </div>
             <div class="row">
                 <div class="fourteen wide mobile fourteen wide tablet twelve wide computer column segment ">
+                    <div class="post-detail__social-sharing">
+                        {% social_sharing url=request.build_absolute_uri title=post.title extra_icon_css=header_color %}
+                    </div>
                     <div class="ui divider"></div>
                     <div>
                         If you are a candidate, sponsor firm employee, alumni or supporter and you would like to
