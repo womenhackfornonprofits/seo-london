@@ -1,0 +1,45 @@
+{
+  "name": "seo-london",
+  "scripts": {},
+  "env": {
+    "CONSTANT_CONTACT_CA_ID": {
+      "required": true
+    },
+    "CONSTANT_CONTACT_DEFAULT_LIST_ID": {
+      "required": true
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "required": true
+    },
+    "IFRAMELY_API_KEY": {
+      "required": true
+    },
+    "SEO_ALLOWED_HOST": {
+      "required": true
+    },
+    "SEO_AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "SEO_AWS_S3_REGION_NAME": {
+      "required": true
+    },
+    "SEO_AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "SEO_AWS_STORAGE_BUCKET_NAME": {
+      "required": true
+    },
+    "SEO_USE_AWS_STORAGE": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
