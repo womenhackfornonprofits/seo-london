@@ -1,4 +1,4 @@
-from seolondon.settings import *
+from seolondon.settings import *  # noqa
 
 DEBUG = True
 
@@ -44,12 +44,12 @@ LOGGING = {
 }
 
 try:
-    from local_settings import *
+    from local_settings import *  # noqa
 except ImportError as e:
     if 'No module named local_setting' not in str(e):
         raise
     print (str(e))
 
 
-AWS_STATIC_URL=\
+AWS_STATIC_URL = \
     'https://s3.eu-west-2.amazonaws.com/seo-london-web-media/static/'
