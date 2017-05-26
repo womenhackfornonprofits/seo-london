@@ -9,12 +9,12 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_DATABASE_PREFIX = 'constance:seolondon:'
 
 CONSTANCE_CONFIG = OrderedDict([
-    ('APPLY_LINK',
-     ('http://www.seolondon-careers.com/profile', 'APPLY LINK', 'url')),
+    ('APPLY_TO_SEO_LINK',
+     ('http://www.seolondon-careers.com/profile', 'APPLY TO SEO LINK', 'url')),
 ])
 
 CONSTANCE_CONFIG_FIELDSETS = {
-    'General Options': ('APPLY_LINK',),
+    'General Options': ('APPLY_TO_SEO_LINK',),
 }
 
 CONSTANCE_ADDITIONAL_FIELDS = {

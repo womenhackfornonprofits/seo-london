@@ -57,6 +57,7 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
                 'cms.context_processors.cms_settings',
+                'constance.context_processors.config',
                 'seolondon.context_processors.google_tracking',
                 'seolondon.context_processors.constant_email'
             ],
