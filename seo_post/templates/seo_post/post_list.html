@@ -11,134 +11,76 @@
 
 {% block content %}
     {% with header_color=view.kwargs.post_type|get_header_color %}
-    <div class="ui section">
-        <div class="ui centered relaxed grid container">
-            <div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
-                <h1 class="post-list__main-header__post-type caps-title {{ header_color }} ">
-                    {% if view.kwargs.post_type == 'blog' %}
-                        Blog
-                    {% elif view.kwargs.post_type == 'news' %}
-                        News
-                    {% else %}
-                        Blog / News
+        <div class="ui section">
+            <div class="ui centered relaxed grid container">
+                {# Main Post List #}
+                <div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
+                    <h1 class="post-list__main-header__post-type caps-title {{ header_color }} ">
+                        {% if view.kwargs.post_type == 'blog' %}
+                            Blog
+                        {% elif view.kwargs.post_type == 'news' %}
+                            News
+                        {% else %}
+                            Blog / News
+                        {% endif %}
+                    </h1>
+                    {% if category %}
+                        <h2 class="post-list__main-header__category {{ header_color }}">
+                            {{ category.name }}
+                        </h2>
                     {% endif %}
-                </h1>
-                {% if category %}
-                    <h2 class="post-list__main-header__category {{ header_color }}">
-                        {{ category.name }}
-                    </h2>
-                {% endif %}
-                <div class="ui {{ header_color }} divider"></div>
-                <div class="ui section">
-                    <div class="ui divided items">
-                        {% for post in page_obj.object_list %}
-                            <div class="ui item">
-                                {% if post.post_type == 'blog' %}
-                                    {% if post.author_image %}
-                                        <div class="ui small image post_list__item__image">
-                                            <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True subject_location=post.author_image.subject_location %}">
-                                            <div class="ui basic black label ">by {{ post.author }}</div>
-                                        </div>
-                                    {% endif %}
-                                {% else %}
-                                    {% if post.listing_image %}
-                                        <div class="ui small image">
-                                            <img src="{% thumbnail post.listing_image 300x300 crop=True upscale=True subject_location=post.listing_image.subject_location  %}">
-                                        </div>
-                                    {% elif post.main_image %}
-                                        <div class="ui small image">
-                                            <img src="{% thumbnail post.main_image 300x300 crop=True upscale=True subject_location=post.main_image.subject_location %}">
-                                        </div>
-                                    {% endif %}
-                                {% endif %}
-
-                                <div class="content">
-                                    <div class="post_list__content__top">
-                                        <a class="ui  caps-title small {{ header_color }}" href="{{ post.get_absolute_url }}">
-                                            {{ post.title }}
-                                        </a>
-                                        <div class="meta">
-                                            <span class="ui small right floated">
-                                                {{ post.date_publish|date:'d M Y' }}
-                                            </span>
-                                            {% if post.post_type != 'blog' %}
-                                                <span  class="ui right floated tiny ">(by {{ post.author }})</span>
-                                            {% endif %}
-
-                                            {% if post.subtitle %}
-                                                <div>
-                                                    {{ post.subtitle }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="description" style="clear: both;">
-                                            <div >
-                                            {% firstof post.excerpt post.body|safe %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="extra">
-                                        <a class="ui right floated mini {{ header_color }} button" href="{{ post.get_absolute_url }}">more</a>
-                                        {% if post.categories.exists %}
-                                            <div>
-                                                {% for category in post.categories.all %}
-                                                    <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">{{ category.name }}</a>
-                                                {% endfor %}
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
                     <div class="ui {{ header_color }} divider"></div>
-                    <div>
-                        {% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}
+                    <div class="ui section">
+                        {% include 'seo_post/_include/_list_item_list.html' with page_obj=page_obj header_color=header_color only %}
+                        <div class="ui {{ header_color }} divider"></div>
+                        <div>
+                            {% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="sixteen wide mobile sixteen wide tablet four wide computer column ">
-                <h2 class="caps-title ui {{ header_color }}">
-                    Tags
-                </h2>
-                <div class="ui {{ header_color }} divider"></div>
-                <div class="ui section">
-                    {% get_post_categories as categories %}
-                    <ul class="ui list">
-                        {% for category in categories %}
-                            <li>
-                                {% if view.kwargs.category_slug == category.slug %}
-                                    {{ category.name }}
-                                {% else %}
-                                    <a href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">
-                                        {{ category.name }}
-                                    </a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                        {% get_post_types as post_types %}
-                        {% for post_type in post_types %}
-                            {% if view.kwargs.post_type != post_type %}
+                {# TAGS #}
+                <div class="sixteen wide mobile sixteen wide tablet four wide computer column ">
+                    <h2 class="caps-title ui {{ header_color }}">
+                        Tags
+                    </h2>
+                    <div class="ui {{ header_color }} divider"></div>
+                    <div class="ui section">
+                        {% get_post_categories as categories %}
+                        <ul class="ui list">
+                            {% for category in categories %}
                                 <li>
-                                    <a href="{% url 'seo_post:post_list_by_type' post_type=post_type  %}">
-                                        All {{ post_type|title }}{% if post_type != 'news' %}s{% endif %}
-                                    </a>
+                                    {% if view.kwargs.category_slug == category.slug %}
+                                        {{ category.name }}
+                                    {% else %}
+                                        <a href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">
+                                            {{ category.name }}
+                                        </a>
+                                    {% endif %}
                                 </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
+                            {% endfor %}
+                            {% get_post_types as post_types %}
+                            {% for post_type in post_types %}
+                                {% if view.kwargs.post_type != post_type %}
+                                    <li>
+                                        <a href="{% url 'seo_post:post_list_by_type' post_type=post_type  %}">
+                                            All {{ post_type|title }}{% if post_type != 'news' %}s{% endif %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="sixteen wide mobile sixteen wide tablet fourteen wide computer column ">
-                <div>
-                    If you are a candidate, sponsor firm employee, alumni or supporter and you would like to
-                    blog for us, please contact us at <a href="mailto:info@seo-london.org">info@seo-london.org</a>
-                    expressing your interest.
+                {# INTEREST #}
+                <div class="sixteen wide mobile sixteen wide tablet fourteen wide computer column ">
+                    <div>
+                        If you are a candidate, sponsor firm employee, alumni or supporter and you would like to
+                        blog for us, please contact us at <a href="mailto:info@seo-london.org">info@seo-london.org</a>
+                        expressing your interest.
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     {% endwith %}
 {% endblock content %}
 
