@@ -6,7 +6,7 @@ machine:
     version: 5.4.0
 deployment:
   staging:
-    branch: blog_n_news
+    branch: feature/blog_n_news
     owner: womenhackfornonprofits
     heroku:
       appname: testseoapp1
