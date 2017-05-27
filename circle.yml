@@ -4,3 +4,9 @@ machine:
     DJANGO_SETTINGS_MODULE: seolondon.settings.test
   node:
     version: 5.4.0
+deployment:
+  staging:
+    branch: blog_n_news
+    owner: womenhackfornonprofits
+    heroku:
+      appname: testseoapp1
