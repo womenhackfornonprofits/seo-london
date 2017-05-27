@@ -1,0 +1,5 @@
+{% for social_sharing in social_sharings %}
+    <a href="{{ social_sharing.url }}" alt="{{ social_sharing.name }}">
+        <i class="{{ social_sharing.icon }} {{ extra_icon_css }}" ></i>
+    </a>
+{% endfor %}

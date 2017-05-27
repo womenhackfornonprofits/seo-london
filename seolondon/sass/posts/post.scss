@@ -1,4 +1,17 @@
 
+.post-list__main-header__post-type {
+    display: inline;
+}
+
+.post-list__main-header__category {
+    display: inline;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+}
+
+
+
+
 @mixin mixin_post_list__item__image {
   .ui.items > .item > .image.post_list__item__image{
     text-align: center;
@@ -13,6 +26,23 @@
   }
 }
 
+@media only screen and (min-width: 768px){
+
+  .post_list__content__top{
+    overflow-y: hidden;
+    height:150px;
+    padding-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 768px){
+
+  .post_list__content__top{
+    overflow-y: hidden;
+    max-height:250px;
+    padding-top: 5px;
+  }
+}
 
 @include mixin_post_list__item__image;
 
@@ -20,11 +50,11 @@
   @include mixin_post_list__item__image;
 }
 
-.post_detail__hero_image{
+.post-detail__main-image{
   margin-top: 5px;
 }
 
-.post_detail__content{
+.post-detail__content{
   clear: both;
 
   img {
@@ -43,4 +73,8 @@
     margin-right: 0;
   }
 
+}
+
+.post-detail__social-sharing  i.inverted.circular.red.icon{
+  background: $red!important;
 }

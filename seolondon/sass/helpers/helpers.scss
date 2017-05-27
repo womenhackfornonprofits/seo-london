@@ -122,6 +122,14 @@
   color: white;
 }
 
+.grey {
+  color: $light-grey;
+}
+
+.orange {
+  color: $orange;
+}
+
 .teal-background {
   background-color: $teal;
 }
@@ -140,9 +148,7 @@
   font-weight: 300;
 }
 
-.orange {
-  color: $orange;
-}
+
 
 .ui.divider:not(.vertical):not(.horizontal) {
   &.red {

@@ -1,17 +1,21 @@
-from seolondon.settings import *
-import dj_database_url
+from seolondon.settings import *  # noqa
+
+from seolondon.settings import env, DATABASES
 
 DEBUG = False
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'] = dj_database_url.config()
+
+DATABASES['default'].setdefault('CONN_MAX_AGE', 500)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = env.str("SECRET_KEY")
 
-ALLOWED_HOSTS = ['www.seo-london.org', 'seo-london.org']
+ALLOWED_HOSTS = env.list(
+    'ALLOWED_HOSTS', default=['www.seo-london.org', 'seo-london.org']
+)
+
 
 PREPEND_WWW = True
 
