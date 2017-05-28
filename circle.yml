@@ -2,3 +2,11 @@ machine:
   environment:
     DATABASE_URL: 'sqlite://:memory:'
     DJANGO_SETTINGS_MODULE: seolondon.settings.test
+  node:
+    version: 5.4.0
+deployment:
+  staging:
+    branch: master 
+    owner: womenhackfornonprofits
+    heroku:
+      appname: seo-london-prod
