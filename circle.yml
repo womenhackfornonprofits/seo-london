@@ -6,7 +6,7 @@ machine:
     version: 5.4.0
 deployment:
   staging:
-    branch: feature/blog_n_news
+    branch: master 
     owner: womenhackfornonprofits
     heroku:
-      appname: testseoapp1
+      appname: seo-london-prod
