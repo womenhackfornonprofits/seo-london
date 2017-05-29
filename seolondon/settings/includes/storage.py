@@ -29,7 +29,18 @@ AWS_STATIC_URL = \
         region_name=AWS_S3_REGION_NAME,
         bucket_name=AWS_STORAGE_BUCKET_NAME
     )
-AWS_STATIC_URL = env.str('SEO_AWS_STATIC_URL', AWS_STATIC_URL)
+AWS_STATIC_URL = env.str('SEO_AWS_STATIC_URL', default=AWS_STATIC_URL)
+
+# This is to satisfy the review app in heroku
+# so prefix will be {app_name}_filer_public
+AWS_FILER_STORAGE_EXTRA_PREFIX = env.str(
+    'SEO_AWS_FILER_STORAGE_EXTRA_PREFIX', default=""
+)
+
+if AWS_FILER_STORAGE_EXTRA_PREFIX:
+    AWS_FILER_STORAGE_EXTRA_PREFIX = \
+        AWS_FILER_STORAGE_EXTRA_PREFIX + "__"
+
 
 USE_AWS_STORAGE = env.bool('SEO_USE_AWS_STORAGE', default=False)
 
@@ -46,7 +57,9 @@ if all([AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY_ID,
 
                 },
                 'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-                'UPLOAD_TO_PREFIX': 'filer_public',
+                'UPLOAD_TO_PREFIX': '{}filer_public'.format(
+                    AWS_FILER_STORAGE_EXTRA_PREFIX
+                ),
             },
             'thumbnails': {
                 'ENGINE': DEFAULT_FILE_STORAGE,
@@ -64,7 +77,9 @@ if all([AWS_SECRET_ACCESS_KEY, AWS_ACCESS_KEY_ID,
                     'bucket_name': AWS_PRIVATE_STORAGE_BUCKET_NAME,
                 },
                 'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
-                'UPLOAD_TO_PREFIX': 'filer_private',
+                'UPLOAD_TO_PREFIX': '{}filer_private'.format(
+                    AWS_FILER_STORAGE_EXTRA_PREFIX
+                ),
             },
             'thumbnails': {
                 'ENGINE': DEFAULT_FILE_STORAGE,
