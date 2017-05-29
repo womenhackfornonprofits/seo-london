@@ -2,16 +2,34 @@
   "name": "seo-london",
   "scripts": {},
   "env": {
+    "CONSTANT_CONTACT_ALUMNI_LIST_ID": {
+      "required": true
+    },
     "CONSTANT_CONTACT_CA_ID": {
       "required": true
     },
     "CONSTANT_CONTACT_DEFAULT_LIST_ID": {
       "required": true
     },
+    "DEBUG_COLLECTSTATIC": {
+      "required": true
+    },
     "DJANGO_SETTINGS_MODULE": {
       "required": true
     },
+    "GOOGLE_ANALYTICS_TRACKING_ID": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_MAUVE_URL": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_ORANGE_URL": {
+      "required": true
+    },
     "IFRAMELY_API_KEY": {
+     "required": true
+    },
+    "SECRET_KEY": {
       "required": true
     },
     "SEO_ALLOWED_HOST": {
