@@ -6,6 +6,7 @@ project.db
 __pycache__/
 .DS_Store
 **.pyc
+.env
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
