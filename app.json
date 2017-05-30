@@ -25,12 +25,6 @@
     "GOOGLE_ANALYTICS_TRACKING_ID": {
       "required": true
     },
-    "HEROKU_POSTGRESQL_MAUVE_URL": {
-      "required": true
-    },
-    "HEROKU_POSTGRESQL_ORANGE_URL": {
-      "required": true
-    },
     "SECRET_KEY": {
       "required": true
     },
