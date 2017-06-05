@@ -119,7 +119,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_filebrowser_filer',
     'django_extensions',
-    'constance',
     'constance.backends.database',
     'reversion',
     'storages',
@@ -128,6 +127,7 @@ INSTALLED_APPS = [
     'seo_post',
     'djangocms_repeater',
     'djangocms_plain_text',
+    'seolondon.constance_apps.SeoConstanceAppConfig',
 ]
 
 LANGUAGES = (
