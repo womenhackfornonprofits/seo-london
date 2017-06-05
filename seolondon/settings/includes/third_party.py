@@ -10,7 +10,7 @@ CONSTANCE_DATABASE_PREFIX = 'constance:seolondon:'
 
 CONSTANCE_CONFIG = OrderedDict([
     ('APPLY_TO_SEO_LINK',
-     ('http://www.seolondon-careers.com/profile', 'APPLY TO SEO LINK', 'url')),
+     ('https://goo.gl/forms/eLwmi1IqRUbWZ05t2', 'APPLY TO SEO LINK', 'url')),
 ])
 
 CONSTANCE_CONFIG_FIELDSETS = {
