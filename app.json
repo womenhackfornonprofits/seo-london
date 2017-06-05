@@ -26,6 +26,9 @@
     "HEROKU_POSTGRESQL_ORANGE_URL": {
       "required": true
     },
+    "IFRAMELY_API_KEY": {
+     "required": true
+    },
     "SECRET_KEY": {
       "required": true
     },
@@ -50,7 +53,6 @@
   },
   "formation": {},
   "addons": [
-    "heroku-postgresql",
     "heroku-postgresql"
   ],
   "buildpacks": [
