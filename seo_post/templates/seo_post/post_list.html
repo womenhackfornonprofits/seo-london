@@ -63,11 +63,16 @@
                                 {% if view.kwargs.post_type != post_type %}
                                     <li>
                                         <a href="{% url 'seo_post:post_list_by_type' post_type=post_type  %}">
-                                            All {{ post_type|title }}{% if post_type != 'news' %}s{% endif %}
+                                            {{ post_type|title }}{% if post_type != 'news' %}s{% endif %}
                                         </a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
+                            <li>
+                                <a href="{% url 'seo_post:post_list' %}">
+                                    All
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

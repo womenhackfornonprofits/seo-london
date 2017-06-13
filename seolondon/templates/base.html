@@ -52,7 +52,7 @@
         <nav id="primary-menu" class="desktop links menu">
             <ul>
                 {% show_menu 0 100 100 100 %}
-                <li><a class="fixed" target="_blank" href="{{ config.APPLY_TO_SEO_LINK }}">Apply / Log In</a></li>
+                <li><a class="fixed" target="_blank" href="{{ config.APPLY_TO_SEO_LINK }}">Apply to SEO</a></li>
             </ul>
         </nav>
         <nav class="mobile toggle menu">
@@ -67,7 +67,7 @@
                 {% show_menu 0 100 100 100 %}
                 {# here the Apply / Log in element should be similar to the rest of items in terms of styling #}
                 <li class="child sibling">
-                    <a class="fixed" target="_blank" href="{{ config.APPLY_TO_SEO_LINK }}">Apply / Log In</a>
+                    <a class="fixed" target="_blank" href="{{ config.APPLY_TO_SEO_LINK }}">Apply to SEO</a>
                 </li>
             </ul>
         </nav>
@@ -96,7 +96,7 @@
                 <nav class="content">
                     <ul class="menu">
                         <li><a href="/about-us/">About Us</a></li>
-                        <li><a href="http://www.seolondon-careers.com/profile">Apply to SEO</a></li>
+                        <li><a href="{{ config.APPLY_TO_SEO_LINK }}">Apply to SEO</a></li>
                         <li><a href="/get-involved/">Get Involved</a></li>
                         <li><a href="/schools/">Schools</a></li>
                         <li><a href="/careers/">Careers</a></li>
@@ -201,7 +201,7 @@
         <div class="ui two column stackable grid">
             <div class="column">
                 <p>Careers Programme - click the button below to start your application for the SEO London Careers Programme.</p>
-                <a href="http://www.seolondon-careers.com/profile" target="_blank" class="ui primary button">Apply Now</a>
+                <a href="{{ config.APPLY_TO_SEO_LINK }}" target="_blank" class="ui primary button">Apply Now</a>
             </div>
             <div class="column">
                 <p>Scholars Programme - click the button below to start your application for the SEO Scholars Programme.</p>
