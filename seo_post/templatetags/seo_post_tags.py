@@ -21,4 +21,6 @@ def get_post_types():
 def get_header_color(post_type):
     if post_type == 'news':
         return 'blue'
-    return 'red'
+    elif post_type == 'blog':
+        return 'red'
+    return 'teal'
