@@ -198,6 +198,7 @@
             background: $accent;
             color: #FFF;
             margin-left: 10px;
+            min-width: 85px;
           }
 
           @include computer {
