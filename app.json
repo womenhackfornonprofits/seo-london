@@ -1,7 +1,12 @@
 {
   "name": "seo-london",
-  "scripts": {},
+  "scripts": {
+    "postdeploy": "pg_dump $STAGING_DATABASE_URL | psql $DATABASE_URL && python manage.py migrate"
+  },
   "env": {
+    "STAGING_DATABASE_URL": {
+      "required": true
+    },
     "CONSTANT_CONTACT_ALUMNI_LIST_ID": {
       "required": true
     },
@@ -18,12 +23,6 @@
       "required": true
     },
     "GOOGLE_ANALYTICS_TRACKING_ID": {
-      "required": true
-    },
-    "HEROKU_POSTGRESQL_MAUVE_URL": {
-      "required": true
-    },
-    "HEROKU_POSTGRESQL_ORANGE_URL": {
       "required": true
     },
     "SECRET_KEY": {

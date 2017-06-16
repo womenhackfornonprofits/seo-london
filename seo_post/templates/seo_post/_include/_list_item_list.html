@@ -1,0 +1,64 @@
+{% load thumbnail %}
+
+<div class="ui divided items">
+    {% for post in page_obj.object_list %}
+        <div class="ui item">
+            {% if post.post_type == 'blog' %}
+                {% if post.author_image %}
+                    <div class="ui small image post_list__item__image">
+                        <img src="{% thumbnail post.author_image 300x300 crop=True upscale=True subject_location=post.author_image.subject_location %}">
+                        <div class="ui basic black label ">by {{ post.author }}</div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if post.listing_image %}
+                    <div class="ui small image">
+                        <img src="{% thumbnail post.listing_image 300x300 crop=True upscale=True subject_location=post.listing_image.subject_location  %}">
+                    </div>
+                {% elif post.main_image %}
+                    <div class="ui small image">
+                        <img src="{% thumbnail post.main_image 300x300 crop=True upscale=True subject_location=post.main_image.subject_location %}">
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            <div class="content">
+                <div class="post_list__content__top">
+                    <a class="ui  caps-title small {{ header_color }}" href="{{ post.get_absolute_url }}">
+                        {{ post.title }}
+                    </a>
+                    <div class="meta">
+                        <span class="ui small right floated">
+                            {{ post.date_publish|date:'d M Y' }}
+                        </span>
+                        {% if post.post_type != 'blog' %}
+                            <span  class="ui right floated tiny ">(by {{ post.author }})</span>
+                        {% endif %}
+
+                        {% if post.subtitle %}
+                            <div>
+                                {{ post.subtitle }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="description" style="clear: both;">
+                        <div >
+                        {% firstof post.excerpt post.body|safe %}
+                        </div>
+                    </div>
+                </div>
+                <div class="extra">
+                    <a class="ui right floated mini {{ header_color }} button" href="{{ post.get_absolute_url }}">more</a>
+                    {% if post.categories.exists %}
+                        <div>
+                            {% for category in post.categories.all %}
+                                <a class="ui basic grey label" href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">{{ category.name }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

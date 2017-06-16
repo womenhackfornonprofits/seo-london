@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+{% load seo_post_tags %}
+{% load thumbnail %}
+
+
+{% block header_logo %}
+    {% static_placeholder 'blog_news_logo' %}
+{% endblock header_logo %}
+
+
+{% block content %}
+    {% with header_color=view.kwargs.post_type|get_header_color %}
+        <div class="ui section">
+            <div class="ui centered relaxed grid container">
+                {# Main Post List #}
+                <div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
+                    <h1 class="post-list__main-header__post-type caps-title {{ header_color }} ">
+                        {% if view.kwargs.post_type == 'blog' %}
+                            Blog
+                        {% elif view.kwargs.post_type == 'news' %}
+                            News
+                        {% else %}
+                            Blog / News
+                        {% endif %}
+                    </h1>
+                    {% if category %}
+                        <h2 class="post-list__main-header__category {{ header_color }}">
+                            {{ category.name }}
+                        </h2>
+                    {% endif %}
+                    <div class="ui {{ header_color }} divider"></div>
+                    <div class="ui section">
+                        {% include 'seo_post/_include/_list_item_list.html' with page_obj=page_obj header_color=header_color only %}
+                        <div class="ui {{ header_color }} divider"></div>
+                        <div>
+                            {% include "seo_post/_include/pagination.html" with page_obj=page_obj only %}
+                        </div>
+                    </div>
+                </div>
+                {# TAGS #}
+                <div class="sixteen wide mobile sixteen wide tablet four wide computer column ">
+                    <h2 class="caps-title ui {{ header_color }}">
+                        Tags
+                    </h2>
+                    <div class="ui {{ header_color }} divider"></div>
+                    <div class="ui section">
+                        {% get_post_categories as categories %}
+                        <ul class="ui list">
+                            {% for category in categories %}
+                                <li>
+                                    {% if view.kwargs.category_slug == category.slug %}
+                                        {{ category.name }}
+                                    {% else %}
+                                        <a href="{% url 'seo_post:post_list_by_category' category_slug=category.slug  %}">
+                                            {{ category.name }}
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            {% get_post_types as post_types %}
+                            {% for post_type in post_types %}
+                                {% if view.kwargs.post_type != post_type %}
+                                    <li>
+                                        <a href="{% url 'seo_post:post_list_by_type' post_type=post_type  %}">
+                                            {{ post_type|title }}{% if post_type != 'news' %}s{% endif %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            <li>
+                                <a href="{% url 'seo_post:post_list' %}">
+                                    All
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {# INTEREST #}
+                <div class="sixteen wide mobile sixteen wide tablet fourteen wide computer column ">
+                    <div>
+                        If you are a candidate, sponsor firm employee, alumni or supporter and you would like to
+                        blog for us, please contact us at <a href="mailto:info@seo-london.org">info@seo-london.org</a>
+                        expressing your interest.
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endwith %}
+{% endblock content %}
+
+
+
+
+

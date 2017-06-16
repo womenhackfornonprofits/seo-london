@@ -9,4 +9,4 @@ deployment:
     branch: master 
     owner: womenhackfornonprofits
     heroku:
-      appname: seo-london-prod
+      appname: seo-london-staging

@@ -110,8 +110,24 @@
   color: $teal;
 }
 
+.blue {
+  color: $blue;
+}
+
+.red {
+  color: $red;
+}
+
 .white {
   color: white;
+}
+
+.grey {
+  color: $light-grey;
+}
+
+.orange {
+  color: $orange;
 }
 
 .teal-background {
@@ -132,8 +148,15 @@
   font-weight: 300;
 }
 
-.orange {
-  color: $orange;
+
+
+.ui.divider:not(.vertical):not(.horizontal) {
+  &.red {
+    border-top-color: $red;
+  }
+  &.blue {
+    border-top-color: $blue;
+  }
 }
 
 .center-align {

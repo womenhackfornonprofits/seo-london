@@ -15,6 +15,8 @@ urlpatterns = [
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
+    url(r'^filer/', include('filer.urls')),
+    url(r'^filebrowser_filer/', include('ckeditor_filebrowser_filer.urls')),
 ]
 
 urlpatterns += i18n_patterns('',

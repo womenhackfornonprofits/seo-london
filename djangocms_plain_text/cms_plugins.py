@@ -20,4 +20,5 @@ class PlainTextPlugin(CMSPluginBase):
         })
         return context
 
+
 plugin_pool.register_plugin(PlainTextPlugin)

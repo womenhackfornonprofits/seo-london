@@ -1,4 +1,4 @@
-from seolondon.settings import *
+from seolondon.settings import *  # noqa
 
 import django
 
@@ -19,4 +19,4 @@ class DisableMigrations(object):
             return 'notmigrations'
 
 
-MIGRATION_MODULES=DisableMigrations()
+MIGRATION_MODULES = DisableMigrations()
