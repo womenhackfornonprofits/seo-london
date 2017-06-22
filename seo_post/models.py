@@ -46,7 +46,7 @@ class Post(models.Model):
         choices=POST_TYPES
     )
     title = models.CharField(
-        max_length=50
+        max_length=60
     )
     subtitle = models.CharField(
         max_length=150,
