@@ -18,12 +18,12 @@ class PostToolbar(CMSToolbar):
         position = admin_menu.find_first(
             Break, identifier=ADMINISTRATION_BREAK)
         menu = admin_menu.get_or_create_menu(
-            'post-menu', _('Blog/News'), position=position)
+            'post-menu', _('Connect'), position=position)
         url = reverse('admin:seo_post_post_changelist')
-        menu.add_link_item(_('Blog/News overview'), url=url)
+        menu.add_link_item(_('Jobs Board'), url=url)
         admin_menu.add_break('post-break', position=menu)
 
         menu.add_modal_item(
-            name=_('Add new Blog/News'),
+            name=_('Add new Job'),
             url=reverse('admin:seo_post_post_add'),
         )
