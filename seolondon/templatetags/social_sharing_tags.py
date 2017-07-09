@@ -40,7 +40,7 @@ _social_share_configs = [
 ]
 
 
-@register.inclusion_tag('seo_post/templatetags/social_sharing.html')
+@register.inclusion_tag('seolondon/templatetags/social_sharing.html')
 def social_sharing(url, title, extra_icon_css=''):
     social_sharings = []
     for social_share_config in _social_share_configs:
