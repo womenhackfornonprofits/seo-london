@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load aws_static_url_tags %}
+{% load cms_tags %}
+{% load social_sharing_tags %}
+{% load thumbnail %}
+
+{% block "head__social_cards" %}
+
+    {% with meta_description_default="Read '"|add:job.job_title|add:"' in SEO London" %}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@SEOLondonInfo">
+        <meta name="twitter:creator" content="@SEOLondonInfo">
+        <meta name="twitter:title" content="{{ job.job_title }}">
+        <meta name="twitter:description" content="{{ job.summary|default:meta_description_default }}">
+        <meta name="twitter:image" content="{% aws_static_url "Social_Media_Card1_rkwzom.png" %}" />
+        <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{{ job.title }}" />
+        <meta property="og:description" content="{{ job.summary|default:meta_description_default }}" />
+        <meta property="og:image" content="{% aws_static_url "Social_Media_Card1_rkwzom.png" %}" />
+   {% endwith %}
+
+{% endblock "head__social_cards" %}
+
+
+{% block header_logo %}
+    {% static_placeholder 'jobboard_logo' %}
+{% endblock header_logo %}
+
+{% block content %}
+    
+    <div class="ui section">
+        <div class="ui container">
+            <div class="ui centered grid">
+                <div class="row">
+                    <div class="fourteen wide mobile fourteen wide tablet twelve wide computer column segment ">
+                        <article>
+                            <div class="ui content">
+                                <h1 class="caps-title ui red">{{ job.job_title }}</h1>
+                            </div>
+                            <div class="ui red divider"></div>
+                            <div>
+                                <span> {{ job.company_name }} </span>
+                                <span>-</span>
+                                <span> {{ job.location }} </span>
+                            </div>
+                            <div>
+                                {% if job.min_salary %}
+                                    <span> £{{ job.min_salary }} </span>
+                                {% endif %}
+                                {% if job.min_salary and job.max_salary %}
+                                    <span>-</span>
+                                {% endif %}
+                                {% if job.max_salary %}
+                                    <span> £{{ job.max_salary }} </span>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <div class="ui container">
+                                    <div style="padding-bottom:10px;">
+                                        <div > {{ job.date_publish|date:'d M Y' }} </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ui divider"></div>
+                            <div class="ui content job-detail__content">
+                                {{ job.job_detail|safe }}
+                            </div>
+                            <div class="ui divider"></div>
+                            {% if job.apply_url %}
+                                <div>
+                                    <a class="ui mini red button" href="{{ job.apply_url }}">Apply Position</a>
+                                </div>
+                            {% endif %}
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+{% endblock content %}

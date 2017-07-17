@@ -1,0 +1,42 @@
+{% load thumbnail %}
+
+<div class="ui divided items">
+    {% for job in page_obj.object_list %}
+        <div class="ui item">
+            <div class="content">
+                <div class="job_list__content__top">
+                    <a class="ui caps-title small red" href="{{ job.listing_url }}">
+                        {{ job.job_title }}
+                    </a>
+                    <div class="meta">
+                        <div>
+                            <span> {{ job.company_name }} </span>
+                            <span> - </span>
+                            <span> {{ job.location }} </span>
+                        </div>
+                        <div>
+                            {% if job.min_salary %}
+                                <span> £{{ job.min_salary }} </span>
+                            {% endif %}
+                            {% if job.max_salary %}
+                                <span> £{{ job.max_salary }} </span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="description" style="clear: both;">
+                        <div >
+                        {% firstof job.summary job.job_detail|safe %}
+                        </div>
+                    </div>
+                </div>
+                <div class="extra">
+                    <a class="ui right floated mini red button" href="{{ job.listing_url }}">more</a>
+                    <span>
+                        {{ job.date_publish|date:'d M' }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

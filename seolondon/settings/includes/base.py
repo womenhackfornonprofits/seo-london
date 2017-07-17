@@ -125,6 +125,7 @@ INSTALLED_APPS = [
     # SEO SPECIFICS
     'seolondon',
     'seo_post',
+    'seo_job',
     'djangocms_repeater',
     'djangocms_plain_text',
     'seolondon.constance_apps.SeoConstanceAppConfig',

@@ -46,6 +46,28 @@ CKEDITOR_CONFIGS = {
             ['Preview', 'Embed', 'ShowBlocks', 'Source']
         ]
     },
+    'seojob_ckeditor': {
+
+        'extraPlugins': 'preview',
+        'removePlugins': 'image',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Undo', 'Redo'],
+            ['Format', 'Styles'],
+            [
+                'Bold', 'Italic', 'Underline',
+                '-', 'Link', 'Unlink', 'Anchor',
+                '-', 'RemoveFormat',
+            ],
+            [
+                'HorizontalRule',
+                '-', 'Table',
+                '-', 'BulletedList', 'NumberedList',
+                '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+            ],
+            ['Preview', 'Embed', 'ShowBlocks', 'Source']
+        ]
+    },
 }
 
 if IFRAMELY_API_KEY:
