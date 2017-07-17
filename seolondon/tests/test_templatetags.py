@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 import unittest
 
-from seo_post.templatetags.paginator_tags import (
+from seolondon.templatetags.paginator_tags import (
     calculate_pagination_numbers
 )
 
