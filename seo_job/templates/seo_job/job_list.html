@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+{% load thumbnail %}
+
+
+{% block header_logo %}
+    {% static_placeholder 'jobboard_logo' %}
+{% endblock header_logo %}
+
+
+{% block content %}
+   
+    <div class="ui section">
+        <div class="ui centered relaxed grid container">
+            {# Main Job List #}
+            <div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
+                <h1 class="caps-title red">
+                    Jobs
+                </h1>
+                <div class="ui divider"></div>
+                <div class="ui section">
+                    {% include 'seo_job/_include/_list_item_list.html' with page_obj=page_obj only %}
+                    <div class="ui divider"></div>
+                    <div>
+                        {% include "seo_job/_include/pagination.html" with page_obj=page_obj only %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+
+
+
+
+
