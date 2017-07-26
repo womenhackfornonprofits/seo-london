@@ -37,7 +37,7 @@ Here we want to set up a python virtual environment and set up a source code
 	- OR Download the [Postgres App](http://postgresapp.com/)
 2. Make sure the Postgres Server is up and running:
 	- If using the App simply start the server from there (Mac)
-	- If using command line:` brew services start postgresql` (Mac)
+	- If using command line: `brew services start postgresql` (Mac)
 3. Create a new database: `createdb seolondon` 
     - NOTE: do not run migrations as we will import the whole database
 4. Create a user: 
