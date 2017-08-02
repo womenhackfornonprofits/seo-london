@@ -40,19 +40,19 @@
                             </div>
                             <div class="ui red divider"></div>
                             <div>
-                                <span> {{ job.company_name }} </span>
+                                <span> <b> {{ job.company_name }} </b></span>
                                 <span>-</span>
                                 <span> {{ job.location }} </span>
                             </div>
                             <div>
                                 {% if job.min_salary %}
-                                    <span> £{{ job.min_salary }} </span>
+                                    <span> £{{ job.min_salary|floatformat:"0" }} </span>
                                 {% endif %}
                                 {% if job.min_salary and job.max_salary %}
                                     <span>-</span>
                                 {% endif %}
                                 {% if job.max_salary %}
-                                    <span> £{{ job.max_salary }} </span>
+                                    <span> £{{ job.max_salary|floatformat:"0" }} </span>
                                 {% endif %}
                             </div>
                             <div>
