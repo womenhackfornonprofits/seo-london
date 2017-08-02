@@ -78,6 +78,8 @@ class JobAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
         }),
     )
 
+    ordering = ('-date_publish',)
+
     def get_urls(self):
         urls = super(JobAdmin, self).get_urls()
         my_urls = [
