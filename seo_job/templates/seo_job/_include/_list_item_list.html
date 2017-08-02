@@ -9,21 +9,21 @@
                         {{ job.job_title }}
                     </a>
                     <div class="meta">
-                        <div>
-                            <span> {{ job.company_name }} </span>
-                            <span> - </span>
-                            <span> {{ job.location }} </span>
-                        </div>
-                        <div>
-                            {% if job.min_salary %}
-                                <span> £{{ job.min_salary }} </span>
-                            {% endif %}
-                            {% if job.max_salary %}
-                                <span> £{{ job.max_salary }} </span>
-                            {% endif %}
-                        </div>
+                        <span> <b>{{ job.company_name }}</b> </span>
+                        <span> - </span>
+                        <span> {{ job.location }} </span>
                     </div>
-
+                    <div class="meta">
+                        {% if job.min_salary %}
+                            <span> £{{ job.min_salary|floatformat:"0" }} </span>
+                        {% endif %}
+                        {% if job.min_salary and job.max_salary %}
+                            <span>-</span>
+                        {% endif %}
+                        {% if job.max_salary %}
+                            <span> £{{ job.max_salary|floatformat:"0" }} </span>
+                        {% endif %}
+                    </div>
                     <div class="description" style="clear: both;">
                         <div >
                         {% firstof job.summary job.job_detail|safe %}
