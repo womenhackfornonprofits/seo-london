@@ -74,8 +74,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <img class="ui fluid image post-detail__main-image" src="{% thumbnail post.main_image 600x200 crop=True %}">
+                                {% if post.main_image %}
+                                    <img class="ui fluid image post-detail__main-image" src="{% thumbnail post.main_image 600x200 crop=True %}">
+                                {% endif %}
                                 <div class="ui divider"></div>
                                 <div class="ui content post-detail__content">
                                     {{ post.body|safe }}
