@@ -1,18 +1,5 @@
 {% load aws_static_url_tags %}
-{% if instance.logoChoice == '1' %}
+
 <div class="logo item">
-    <a href="/"><img src="{% aws_static_url "logo-careers_b2fq91.png" %}" alt="Logo image for SEO Careers"></a>
+    <a href="/"><img src="{% aws_static_url instance.image_url %}" alt="Logo image for {{ instance.get_logoChoice_display }}"></a>
 </div>
-{% elif instance.logoChoice == '2' %}
-<div class="logo item">
-    <a href="/"><img src="{% aws_static_url "logo-scholars_imtodz.png" %}" alt="Logo image for SEO Scholars"></a>
-</div>
-{% elif instance.logoChoice == '3' %}
-<div class="logo item">
-    <a href="/"><img src="{% aws_static_url "logo-connect_ed7f77.png" %}" alt="Logo image for SEO Connect"></a>
-</div>
-{% else %}
-<div class="logo item">
-    <a href="/"><img src="{% aws_static_url "logo.png" %}" alt="Logo image for SEO London"></a>
-</div>
-{% endif %}

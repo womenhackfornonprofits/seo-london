@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.text import slugify
 
-from cms.models.fields import PlaceholderField
 from filer.fields.image import FilerImageField
 
 from cms.models import CMSPlugin
@@ -42,15 +41,10 @@ CAREERSTEPCHOICE = (
     ('w', 'White'),
 )
 
-LOGOCHOICE = (
-    ('0', 'SEO London'),
-    ('1', 'SEO Careers'),
-    ('2', 'SEO Scholars'),
-    ('3', 'SEO Connect'),
-)
 
 _DEFAULT_IMAGE_URL = '{}{}'.format(
     settings.AWS_STATIC_URL, 'placeholder_aewrin.png')
+
 
 class Repeater(CMSPlugin):
     repeater_name = models.CharField(max_length=50)
@@ -72,10 +66,36 @@ class CareerStep(CMSPlugin):
 
 
 class Logo(CMSPlugin):
-    logoChoice = models.CharField(max_length=1, choices=LOGOCHOICE, default='0')
+
+    LOGO_CHOICES = (
+        ('0', 'SEO London'),
+        ('1', 'SEO Careers'),
+        ('2', 'SEO Scholars'),
+        ('3', 'SEO Connect'),
+        ('4', 'SEO Schools'),
+        ('5', 'SEO Advance'),
+    )
+    LOGO_IMAGE_URL = {
+        '0': 'logos/logo-seo-london.png',
+        '1': 'logos/logo-seo-careers.png',
+        '2': 'logos/logo-seo-scholars.png',
+        '3': 'logos/logo-seo-connect.png',
+        '4': 'logos/logo-seo-schools.png',
+        '5': 'logos/logo-seo-advance.png',
+    }
+
+    logoChoice = models.CharField(
+        max_length=1, choices=LOGO_CHOICES, default='0'
+    )
 
     def __str__(self):
         return self.logoChoice
+
+    def image_url(self):
+        return self.LOGO_IMAGE_URL.get(
+            self.logoChoice,
+            self.LOGO_IMAGE_URL.get('0', '')
+        )
 
 
 class SuccessStory(CMSPlugin):
