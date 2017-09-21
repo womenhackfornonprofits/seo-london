@@ -1,17 +1,18 @@
-node_modules/
-npm-debug.log
+.DS_Store
 .idea/
 .vscode/
-project.db
-__pycache__/
-.DS_Store
-**.pyc
+.vagrant/
 .env
+__pycache__/
+local_settings.py
+node_modules/
+npm-debug.log
+package-lock.json
+project.db
+web/media
+**.pyc
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
-web/media
-local_settings.py

@@ -27,6 +27,7 @@ django-s3direct==0.4.2
 django-sekizai==0.10.0
 Django-Select2==5.8.9
 django-storages==1.5.1
+django-test-without-migrations==0.6
 django-treebeard==4.0.1
 easy-thumbnails==2.3
 gunicorn==19.5.0

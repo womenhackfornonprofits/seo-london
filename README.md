@@ -4,11 +4,14 @@ Created and built by [Mindspray](http://www.mindspray.co.uk/), [Glendelm Design]
 
 ## How to set up a development environment
 
+**Please try following instructions in [Vagrant](Vagrant.md) first.  The instruction here is left for reference only.**
+
+
 ### Prerequisite:
 -  a github account
 -  a fork of Woman Hack for Non Profit's SEO London repository in your account:
    1. login to your github account
-   2. goto `https://github.com/womenhackfornonprofits/seo-london`, 
+   2. goto `https://github.com/womenhackfornonprofits/seo-london`,
    3. click fork icon in the upper left column
 
 
@@ -20,8 +23,8 @@ Here we want to set up a python virtual environment and set up a source code
 2. Upgrade pip & setup tools: `pip install --upgrade pip setuptools wheel`
 3. Install virtualenv: `pip install virtualenv`
 4. Install virtualenvwrapper: `pip install virtualenvwrapper`
-5. Source the virtualenvwrapper:`source /usr/local/bin/virtualenvwrapper.sh` 
-   - Note: To help do this automatically on every new shell you open add the 
+5. Source the virtualenvwrapper:`source /usr/local/bin/virtualenvwrapper.sh`
+   - Note: To help do this automatically on every new shell you open add the
      line above to your .bash_profile or .bashrc
 6. Create a new env for the project: `mkvirtualenv seolondon`
 7. To activate the virtualenv: `workon seolondon`, when finished to de-activate type in: `deactivate`
@@ -38,22 +41,22 @@ Here we want to set up a python virtual environment and set up a source code
 2. Make sure the Postgres Server is up and running:
 	- If using the App simply start the server from there (Mac)
 	- If using command line:` brew services start postgresql` (Mac)
-3. Create a new database: `createdb seolondon` 
+3. Create a new database: `createdb seolondon`
     - NOTE: do not run migrations as we will import the whole database
-4. Create a user: 
+4. Create a user:
     - run `psql`
     - then run `CREATE USER seolondon PASSWORD 'seolondon' `
 
 
 ### Loading data locally (very desirable but optional)
 
-Downlowd a postgresql dump and media dump.  
+Downlowd a postgresql dump and media dump.
 
 1. Get the database backup file (TBD)
-2. Unzip the file to a file name called `latest.dump` 
-3. Import the database into the local database (add `--clean` if you need it emptied) (this is a one line command):  
+2. Unzip the file to a file name called `latest.dump`
+3. Import the database into the local database (add `--clean` if you need it emptied) (this is a one line command):
    - `pg_restore --verbose --no-acl --no-owner -h localhost -U seolondon --role seolondon -d seolondon latest.dump`
-4. copy public media files to local 
+4. copy public media files to local
    (there will be a lot of print out, after this you should have files in `web/media/` folders):
    - `python manage.py copy_media_file`
 
@@ -68,13 +71,13 @@ Downlowd a postgresql dump and media dump.
 
 ### Troubleshooting
 
-- "Missing module...": Probably because you didn't activate the environment 
+- "Missing module...": Probably because you didn't activate the environment
   `source ../env/bin/activate`; or install the
    requirements inside the environment `pip install -r requirements.txt`.
 
 
 ## Production Environment
-This section is for users with a bit more experience, or 
+This section is for users with a bit more experience, or
 already accustomed with the setup.
 
 
@@ -84,10 +87,10 @@ already accustomed with the setup.
 - IFramely for blog video embed
 - Google Analytics / Google Tag Manager Code
 
-I think it is probably best to do `heroku configs` to get all the production configuration. 
+I think it is probably best to do `heroku configs` to get all the production configuration.
 
 
-### Download Database 
+### Download Database
 
 - Database
    1. Get a dump from Heroku: `heroku pg:backups:capture`
