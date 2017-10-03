@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load bleach_clean_tags %}
 
 <div class="ui divided items">
     {% for post in page_obj.object_list %}
@@ -42,9 +43,9 @@
                         {% endif %}
                     </div>
 
-                    <div class="description" style="clear: both;">
+                    <div class="description" style="clear: both; word-wrap: break-word;">
                         <div >
-                        {% firstof post.excerpt post.body|safe %}
+                        {% firstof post.excerpt post.body|bleach_simple_clean|truncatechars:300|safe %}
                         </div>
                     </div>
                 </div>
