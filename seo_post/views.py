@@ -15,7 +15,7 @@ class PostList(generic.ListView):
         qs = super(PostList, self).get_queryset()
         if 'post_type' in self.kwargs:
             qs = qs.filter(post_type=self.kwargs['post_type'])
-        if 'category' in self.kwargs:
+        if 'category_slug' in self.kwargs:
             qs = qs.filter(categories__slug=self.kwargs['category_slug'])
         return qs.published().order_by('-date_publish')
 
