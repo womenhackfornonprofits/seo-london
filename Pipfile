@@ -1,0 +1,49 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+
+[packages]
+
+bleach = "<2.0"
+"boto3" = "*"
+cmsplugin-filer = "*"
+django = "<1.9"
+django-appconf = "*"
+django-ckeditor = "*"
+django-ckeditor-filebrowser-filer = "*"
+django-classy-tags = "*"
+django-cms = "*"
+django-constance = {extras = ["database"]}
+djangocms-admin-style = "*"
+djangocms-attributes-field = "*"
+djangocms-column = "*"
+djangocms-googlemap = "*"
+djangocms-inherit = "*"
+djangocms-installer = "*"
+djangocms-link = "*"
+djangocms-style = "*"
+djangocms-text-ckeditor = "*"
+django-environ = "*"
+django-extensions = "*"
+django-filer = "*"
+django-filter = "*"
+django-mptt = "*"
+django-polymorphic = "<1.1"
+django-reversion = "*"
+django-sekizai = "*"
+"django-select2" = "*"
+django-storages = "*"
+django-test-without-migrations = "*"
+django-treebeard = "*"
+easy-thumbnails = "<2.4"
+gunicorn = "*"
+"html5lib" = "<=0.9999999"
+pillow = "*"
+"psycopg2" = "*"
+requests = "*"
+whitenoise = "*"
+
+
+[dev-packages]
