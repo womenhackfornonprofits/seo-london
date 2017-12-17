@@ -127,6 +127,12 @@ if ($donateEl.length) {
       $("#scroll-to-top").removeClass('visible');
     }
   });
+
+  $(
+    '.job-list__filter__select-input__label-container > input'
+  ).on('change', function(){
+    $('#job-list__filter__form').submit();
+  });
 });
 
 
