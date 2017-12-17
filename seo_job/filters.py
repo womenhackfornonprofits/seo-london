@@ -6,7 +6,8 @@ from collections import OrderedDict
 
 import django_filters
 from django.db import models
-from django.forms.widgets import CheckboxSelectMultiple
+from django import forms
+from django.forms.widgets import CheckboxSelectMultiple, RadioSelect
 from django.utils.html import format_html
 from seo_job.models import Job
 
@@ -21,8 +22,20 @@ def _choice_fn(field_name):
 
 class JobBaseFilter(django_filters.FilterSet):
 
-    q = django_filters.CharFilter(label='what', method='filter_q')
-    loc = django_filters.CharFilter(label='where', method='filter_loc')
+    q = django_filters.CharFilter(
+        label='what',
+        method='filter_q',
+        widget=forms.TextInput(
+            attrs={'placeholder': 'e.g. Marketing'}
+        )
+    )
+    loc = django_filters.CharFilter(
+        label='where',
+        method='filter_loc',
+        widget=forms.TextInput(
+            attrs={'placeholder': 'e.g. London'}
+        )
+    )
     company_name = django_filters.MultipleChoiceFilter(
         choices=lambda: _choice_fn('company_name')
     )
@@ -34,6 +47,17 @@ class JobBaseFilter(django_filters.FilterSet):
     )
     seniority = django_filters.MultipleChoiceFilter(
         choices=lambda: _choice_fn('seniority')
+    )
+    salary = django_filters.ChoiceFilter(
+        label='Salary',
+        choices=[
+            (20000, '20000+'),
+            (30000, '30000+'),
+            (40000, '40000+'),
+            (50000, '50000+'),
+            (60000, '60000+'),
+        ],
+        method='filter_salary'
     )
 
     class Meta:
@@ -70,6 +94,12 @@ class JobBaseFilter(django_filters.FilterSet):
             'location'
         ], queryset, name, value)
 
+    def filter_salary(self, queryset, name, value):
+        return queryset.filter(
+            models.Q(max_salary__gt=value) |
+            models.Q(min_salary__gt=value)
+        )
+
 
 class JobFormFilter(JobBaseFilter):
 
@@ -89,6 +119,10 @@ class JobFormFilter(JobBaseFilter):
         ('seniority', {
             'choices': 'get_choices',
             'widget': CheckboxSelectMultiple,
+        }),
+        ('salary', {
+            'choices': 'get_salary_choices',
+            'widget': RadioSelect,
         })
     ])
 
@@ -97,6 +131,7 @@ class JobFormFilter(JobBaseFilter):
         self._update_filters()
 
     def _update_filter(self, field_name, update_values):
+        filter_class = self.filters[field_name].__class__
         kwargs = {
             attr_name: getattr(self.filters[field_name], attr_name)
             for attr_name in [
@@ -113,9 +148,7 @@ class JobFormFilter(JobBaseFilter):
                     field_name, values
                 )
             )
-        return django_filters.MultipleChoiceFilter(
-            **kwargs
-        )
+        return filter_class(**kwargs)
 
     def _update_filters(self):
         # create the field for each filter
@@ -149,39 +182,80 @@ class JobFormFilter(JobBaseFilter):
             field_name
         ).annotate(
             counts=models.Count('id'),
-            selected=models.Max(models.Case(
-                models.When(
-                    then=models.Value(1),
-                    **{'{}__in'.format(field_name): values}
-                ),
-                default=models.Value(0),
-                output_field=models.IntegerField()
-            ))
-        ).values(
-            field_name, 'counts', 'selected'
-        ).order_by(
-            '-selected', '-counts',
-        )
+        ).order_by()
 
-        if choice_qs.exists():
-            choice_values = OrderedDict(
-                (v[field_name], v['counts']) for v in choice_qs
-            )
-        else:
-            choice_values = OrderedDict()
+        choice_values = [
+            (v[field_name], v['counts'], v[field_name] in values)
+            for v in choice_qs
+        ]
 
-        left_over_choice_values = {
-            (v, 0)
-            for v in values if v not in choice_values.keys()
-        } if values else {}
+        field_names = [v[0] for v in choice_values]
+
+        left_over_choice_values = [
+            (v, 0, True)
+            for v in values if v not in field_names
+         ] if values else []
 
         if left_over_choice_values:
-            choice_values.update(left_over_choice_values)
+            choice_values.extend(left_over_choice_values)
+
+        choice_values = sorted(
+            choice_values,
+            key=lambda x: (-x[2], -x[1])
+        )
         choices = [
             (
                 k, format_html('{} <span>({})</span>', k, v)
             )
-            for k, v in choice_values.items()
+            for k, v, selected in choice_values
         ]
 
+        return choices
+
+    def _cumulative_salary_counts(self, field_name):
+        qs = self._partial_qs(field_name)
+        default_choices = sorted(
+            self.filters[field_name].extra.get('choices'),
+            key=lambda x: -x[0]
+        )
+
+        when_args = [
+            models.When(
+                models.Q(max_salary__gt=level) |
+                models.Q(min_salary__gt=level),
+                then=level
+            )
+            for (level, name) in default_choices
+        ]
+
+        choice_counts_qs = qs.annotate(
+            salary_level=models.Case(
+                *when_args,
+                default=None,
+                output_field=models.IntegerField()
+            )
+        ).values(
+            'salary_level'
+        ).annotate(
+            counts=models.Count('id')
+        ).order_by(
+            'salary_level'
+        )
+        choice_counts_lookup = {
+            x['salary_level']: x['counts']
+            for x in choice_counts_qs
+        }
+        cum_total = 0
+        for val, name in default_choices:
+            cum_total += choice_counts_lookup.get(val, 0)
+            yield val, name, cum_total
+
+    def get_salary_choices(self, field_name, values):
+        choices = []
+        for val, name, cum_total in sorted(
+                self._cumulative_salary_counts(field_name),
+                key=lambda x: x[0]):
+            choices.append((val, format_html(
+                '{} <span>({})</span>', name, cum_total
+            )))
         return choices

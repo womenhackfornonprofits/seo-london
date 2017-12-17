@@ -13,8 +13,11 @@
     <div class="ui section">
 
         <div class="ui centered relaxed grid container">
-            <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
-                {% include 'seo_job/_include/_list_filter.html' with form_filter=form_filter only %}
+            <div class="four wide computer column computer only">
+                {% include 'seo_job/_include/_list_filter.html' with form_filter=form_filter active_accordian=True only %}
+            </div>
+            <div class="sixteen wide mobile sixteen wide tablet tablet only mobile only column">
+                {% include 'seo_job/_include/_list_filter.html' with form_filter=form_filter active_accordian=False only %}
             </div>
 
             {# Main Job List #}
