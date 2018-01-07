@@ -26,6 +26,18 @@ class Job(models.Model):
         max_length=50
     )
 
+    industry = models.CharField(
+        max_length=50, blank=True
+    )
+
+    job_function = models.CharField(
+        max_length=50, blank=True
+    )
+
+    seniority = models.CharField(
+        max_length=50, blank=True
+    )
+
     min_salary = models.DecimalField(
         null=True,
         blank=True,
