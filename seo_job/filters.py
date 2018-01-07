@@ -42,6 +42,9 @@ class JobBaseFilter(django_filters.FilterSet):
     location = django_filters.MultipleChoiceFilter(
         choices=lambda: _choice_fn('location')
     )
+    industry = django_filters.MultipleChoiceFilter(
+        choices=lambda: _choice_fn('industry')
+    )
     job_function = django_filters.MultipleChoiceFilter(
         choices=lambda: _choice_fn('job_function')
     )
@@ -86,7 +89,8 @@ class JobBaseFilter(django_filters.FilterSet):
             'job_title',
             'job_detail',
             'job_function',
-            'summary'
+            'summary',
+            'industry',
         ], queryset, name, value)
 
     def filter_loc(self, queryset, name, value):
@@ -109,6 +113,10 @@ class JobFormFilter(JobBaseFilter):
             'widget': CheckboxSelectMultiple,
         }),
         ('location', {
+            'choices': 'get_choices',
+            'widget': CheckboxSelectMultiple,
+        }),
+        ('industry', {
             'choices': 'get_choices',
             'widget': CheckboxSelectMultiple,
         }),
