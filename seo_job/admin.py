@@ -65,6 +65,8 @@ class JobAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
                 ('job_title', 'is_public'),
                 ('company_name', 'location'),
                 ('min_salary', 'max_salary'),
+                'job_function',
+                ('industry', 'seniority'),
                 'summary',
             )
         }),
