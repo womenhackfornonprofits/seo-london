@@ -85,5 +85,6 @@ python manage.py copy_media_file
 python manage.py runserver 0.0.0.0:8000
 ```
 
-The virtual machine can be shut down by running `vagrant halt` on the host machine.
+- If javascript/css source files are updated run `gulp build` afterwards to have them built.  (Can also run `gulp` which will run the build process continuously at the background)
 
+The virtual machine can be shut down by running `vagrant halt` on the host machine.
