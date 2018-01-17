@@ -14,6 +14,18 @@ from seo_job.querysets import JobQuerySet
 @python_2_unicode_compatible
 class Job(models.Model):
 
+    SENIORITY_CHOICES = (
+        ('low', 'Low'),
+        ('mid', 'Mid'),
+        ('high', 'High'),
+        ('executive', 'Executive'),
+    )
+
+    APPLICATION_ROUTE_CHOICES = (
+        ('direct', 'Apply Direct'),
+        ('seo', 'Apply through SEO'),
+    )
+
     job_title = models.CharField(
         max_length=100
     )
@@ -35,7 +47,11 @@ class Job(models.Model):
     )
 
     seniority = models.CharField(
-        max_length=50, blank=True
+        max_length=20, blank=True, choices=SENIORITY_CHOICES
+    )
+
+    application_route = models.CharField(
+        max_length=20, blank=True, choices=APPLICATION_ROUTE_CHOICES
     )
 
     min_salary = models.DecimalField(

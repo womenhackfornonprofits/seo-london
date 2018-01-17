@@ -36,20 +36,19 @@ class JobBaseFilter(django_filters.FilterSet):
             attrs={'placeholder': 'e.g. London'}
         )
     )
-    company_name = django_filters.MultipleChoiceFilter(
-        choices=lambda: _choice_fn('company_name')
+    industry = django_filters.MultipleChoiceFilter(
+        choices=lambda: _choice_fn('industry')
     )
     location = django_filters.MultipleChoiceFilter(
         choices=lambda: _choice_fn('location')
     )
-    industry = django_filters.MultipleChoiceFilter(
-        choices=lambda: _choice_fn('industry')
-    )
-    job_function = django_filters.MultipleChoiceFilter(
-        choices=lambda: _choice_fn('job_function')
-    )
     seniority = django_filters.MultipleChoiceFilter(
-        choices=lambda: _choice_fn('seniority')
+        choices=lambda: Job.SENIORITY_CHOICES,
+    )
+    route = django_filters.MultipleChoiceFilter(
+        name='application_route',
+        label='Route',
+        choices=lambda: Job.APPLICATION_ROUTE_CHOICES,
     )
     salary = django_filters.ChoiceFilter(
         label='Salary',
@@ -61,6 +60,9 @@ class JobBaseFilter(django_filters.FilterSet):
             (60000, '60000+'),
         ],
         method='filter_salary'
+    )
+    company_name = django_filters.MultipleChoiceFilter(
+        choices=lambda: _choice_fn('company_name')
     )
 
     class Meta:
@@ -88,7 +90,6 @@ class JobBaseFilter(django_filters.FilterSet):
         return self.filter_icontain_fields([
             'job_title',
             'job_detail',
-            'job_function',
             'summary',
             'industry',
         ], queryset, name, value)
@@ -108,52 +109,55 @@ class JobBaseFilter(django_filters.FilterSet):
 class JobFormFilter(JobBaseFilter):
 
     choice_filters = OrderedDict([
-        ('company_name', {
-            'choices': 'get_choices',
+        ('industry', {
+            'choices': 'get_choices_variable_list',
             'widget': CheckboxSelectMultiple,
         }),
         ('location', {
-            'choices': 'get_choices',
-            'widget': CheckboxSelectMultiple,
-        }),
-        ('industry', {
-            'choices': 'get_choices',
-            'widget': CheckboxSelectMultiple,
-        }),
-        ('job_function', {
-            'choices': 'get_choices',
+            'choices': 'get_choices_variable_list',
             'widget': CheckboxSelectMultiple,
         }),
         ('seniority', {
             'choices': 'get_choices',
             'widget': CheckboxSelectMultiple,
         }),
+        ('route', {
+            'choices': 'get_choices',
+            'widget': CheckboxSelectMultiple,
+        }),
         ('salary', {
             'choices': 'get_salary_choices',
             'widget': RadioSelect,
-        })
+        }),
+        ('company_name', {
+            'choices': 'get_choices_variable_list',
+            'widget': CheckboxSelectMultiple,
+        }),
+
     ])
 
     def __init__(self, data=None, queryset=None, **kwargs):
         super(JobFormFilter, self).__init__(data, queryset, **kwargs)
         self._update_filters()
 
-    def _update_filter(self, field_name, update_values):
-        filter_class = self.filters[field_name].__class__
+    def _update_filter(self, filter_name, update_values):
+        filter_class = self.filters[filter_name].__class__
         kwargs = {
-            attr_name: getattr(self.filters[field_name], attr_name)
+            attr_name: getattr(self.filters[filter_name], attr_name)
             for attr_name in [
                 'field_name', 'label', 'method', 'lookup_expr',
                 'distinct', 'exclude',
             ]
         }
-        kwargs.update(getattr(self.filters[field_name], 'extra'))
+        kwargs.update(getattr(self.filters[filter_name], 'extra'))
+        original_choices = kwargs.get('choices')
+        field_name = kwargs.get('field_name')
         kwargs.update(update_values)
         if isinstance(update_values['choices'], basestring):
-            values = self.data.get(field_name, []) if self.data else []
+            values = self.data.get(filter_name, []) if self.data else []
             kwargs['choices'] = (
                 getattr(self, update_values['choices'])(
-                    field_name, values
+                    filter_name, field_name, values, original_choices
                 )
             )
         return filter_class(**kwargs)
@@ -172,17 +176,23 @@ class JobFormFilter(JobBaseFilter):
             else:
                 del self.filters[k]
 
-    def _partial_qs(self, field_name):
+    def _partial_qs(self, filter_name):
         qs = self.queryset
         data = self.data
         for name, filter_ in self.filters.items():
             value = data.get(name)
-            if value is not None and field_name != name:
+            if value is not None and filter_name != name:
                 qs = filter_.filter(qs, value)
         return qs
 
-    def get_choices(self, field_name, values):
-        qs = self._partial_qs(field_name)
+    def get_choices(
+            self, filter_name, field_name, values, original_choices=None):
+        choice_fn = (
+            dict(original_choices()).get
+            if original_choices is not None
+            else lambda x: x
+        )
+        qs = self._partial_qs(filter_name)
 
         choice_qs = qs.exclude(
             **{field_name: ''}
@@ -213,17 +223,21 @@ class JobFormFilter(JobBaseFilter):
         )
         choices = [
             (
-                k, format_html('{} <span>({})</span>', k, v)
+                k, format_html('{} <span>({})</span>', choice_fn(k), v)
             )
             for k, v, selected in choice_values
         ]
 
         return choices
 
-    def _cumulative_salary_counts(self, field_name):
-        qs = self._partial_qs(field_name)
+    def get_choices_variable_list(
+            self, filter_name, field_name, values, original_choices=None):
+        return self.get_choices(filter_name, field_name, values)
+
+    def _cumulative_salary_counts(self, filter_name, field_name):
+        qs = self._partial_qs(filter_name)
         default_choices = sorted(
-            self.filters[field_name].extra.get('choices'),
+            self.filters[filter_name].extra.get('choices'),
             key=lambda x: -x[0]
         )
 
@@ -258,10 +272,11 @@ class JobFormFilter(JobBaseFilter):
             cum_total += choice_counts_lookup.get(val, 0)
             yield val, name, cum_total
 
-    def get_salary_choices(self, field_name, values):
+    def get_salary_choices(
+            self, filter_name, field_name, values, original_choices=None):
         choices = []
         for val, name, cum_total in sorted(
-                self._cumulative_salary_counts(field_name),
+                self._cumulative_salary_counts(filter_name, field_name),
                 key=lambda x: x[0]):
             choices.append((val, format_html(
                 '{} <span>({})</span>', name, cum_total
