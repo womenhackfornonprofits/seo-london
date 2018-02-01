@@ -15,32 +15,30 @@ parameter
     {% endfor %}
     <button class="ui mini red button" type="submit">Submit</button>
     {% for field in form_filter.form %}
-        <div class="job-list__filter__select-input__group">
-            <div class="ui fluid accordion">
-                {% if field.name != "q" and field.name != "loc" %}
-                    <div class="{% if active_accordian %} active {% endif %} title">
+        {% if field.name != "q" and field.name != "loc" %}
+            <div class="job-list__filter__select-input__group">
+                <div class="ui fluid accordion">
+                    <div class="job-list__filter__select-input__title title">
                         <i class="dropdown icon float right"></i>
                         <span>{{ field.label }}</span>
                     </div>
-                    <div class="{% if active_accordian %} active {% endif %} content">
-                        <div class="job-list__filter__select-input__group">
-                            <ul>
-                                {% for checkbox in field %}
-                                    <li>
-                                        <label class="job-list__filter__select-input__label-container">
-                                            <span class="job-list__filter__select-input__label-text">
-                                                {{ checkbox.choice_label }}
-                                            </span>
-                                            {{ checkbox.tag }} <span class="job-list__filter__select-input__mark"/>
-                                        </label>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                    <div class="job-list__filter__select-input__content content">
+                        <ul>
+                            {% for checkbox in field %}
+                                <li>
+                                    <label class="job-list__filter__select-input__label-container">
+                                        <span class="job-list__filter__select-input__label-text">
+                                            {{ checkbox.choice_label }}
+                                        </span>
+                                        {{ checkbox.tag }} <span class="job-list__filter__select-input__mark"/>
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                {% endif %}
+                </div>
             </div>
-        </div>
+        {% endif %}
     {% endfor %}
 
 

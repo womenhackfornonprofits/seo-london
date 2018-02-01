@@ -133,6 +133,33 @@ if ($donateEl.length) {
   ).on('change', function(){
     $('#job-list__filter__form').submit();
   });
+
+  var elems = $('.job-list__filter__select-input__group');
+  if (elems.length > 0) {
+    var jobListFilterUpdateActiveStatus = function (mql){
+      elems.each(function(idx, elem){
+        var $elem = $(elem);
+        var targets = $elem.find(
+          '.job-list__filter__select-input__title,'+
+          '.job-list__filter__select-input__content'
+        );
+        var selected = $elem.find('input[checked]:not([value=""])').length > 0;
+        if (selected) {
+          targets.addClass('active');
+        }
+        else if (mql.matches) {
+          targets.addClass('active');
+        }
+        else {
+          targets.removeClass('active');
+        }
+      })
+    }
+    var mediaQueryList = window.matchMedia("only screen and (min-width: 992px)");
+    mediaQueryList.onchange = jobListFilterUpdateActiveStatus;
+    jobListFilterUpdateActiveStatus(mediaQueryList);
+  }
+
 });
 
 
