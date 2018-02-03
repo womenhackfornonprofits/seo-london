@@ -27,7 +27,7 @@
                     {% include 'seo_job/_include/_list_item_list.html' with page_obj=page_obj only %}
                     <div class="ui divider"></div>
                     <div>
-                        {% include "seo_job/_include/pagination.html" with page_obj=page_obj only %}
+                        {% include "seo_job/_include/pagination.html" with page_obj=page_obj filter_data=form_filter.data only %}
                     </div>
                 </div>
             </div>

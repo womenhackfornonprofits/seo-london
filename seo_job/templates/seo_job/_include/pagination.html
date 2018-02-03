@@ -1,10 +1,15 @@
+{% comment %}
+parameter:
+- page_obj
+- filter_data
+{% endcomment %}
 {% load paginator_tags %}
 
 {% if page_obj and page_obj.paginator.num_pages > 1 %}
     {% get_pagination_numbers page_obj as page_numbers %}
 
     {% if page_obj.has_previous %}
-        <div class="ui basic label"><a href="?page={{ page_obj.previous_page_number }}">previous</a></div>
+        <div class="ui basic label"><a href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_obj.previous_page_number %}">previous</a></div>
     {% endif %}
 
     {% if page_numbers %}
@@ -14,7 +19,7 @@
                 {% if page_number == page_obj.number %}
                     {{ page_number }}
                 {% else %}
-                    <a href="?page={{ page_number }}">{{ page_number }}</a>
+                    <a href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_number %}">{{ page_number }}</a>
                 {% endif %}
             {% else %}
                 ...
@@ -24,7 +29,7 @@
     {% endif %}
 
     {% if page_obj.has_next %}
-        <div class="ui basic label"><a href="?page={{ page_obj.next_page_number }}">next</a></div>
+        <div class="ui basic label"><a href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_obj.next_page_number %}">next</a></div>
     {% endif %}
 
 {% endif %}
