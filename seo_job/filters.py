@@ -243,8 +243,8 @@ class JobFormFilter(JobBaseFilter):
 
         when_args = [
             models.When(
-                models.Q(max_salary__gt=level) |
-                models.Q(min_salary__gt=level),
+                models.Q(max_salary__gte=level) |
+                models.Q(min_salary__gte=level),
                 then=level
             )
             for (level, name) in default_choices
