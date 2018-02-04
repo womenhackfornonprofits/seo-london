@@ -6,30 +6,43 @@ parameter:
 {% load paginator_tags %}
 
 {% if page_obj and page_obj.paginator.num_pages > 1 %}
+<div class="job-list__pagination__select-input__label-container">
     {% get_pagination_numbers page_obj as page_numbers %}
 
     {% if page_obj.has_previous %}
-        <div class="ui basic label"><a href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_obj.previous_page_number %}">previous</a></div>
+        <a
+            class="ui basic mini button"
+            href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_obj.previous_page_number %}">
+            previous
+        </a>
     {% endif %}
 
     {% if page_numbers %}
         {% for page_number in page_numbers %}
-            <div class="ui basic label">
             {% if page_number %}
                 {% if page_number == page_obj.number %}
-                    {{ page_number }}
+                    <button class="ui basic mini disabled button job-list__pagination__currentpage">
+                        {{ page_number }}
+                    </button>
                 {% else %}
-                    <a href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_number %}">{{ page_number }}</a>
+                    <a
+                        class="ui basic mini button"
+                        href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_number %}">
+                        {{ page_number }}
+                    </a>
                 {% endif %}
             {% else %}
-                ...
+                <span class="ui basic mini disabled button">...</span>
             {% endif %}
-            </div>
         {% endfor %}
     {% endif %}
 
     {% if page_obj.has_next %}
-        <div class="ui basic label"><a href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_obj.next_page_number %}">next</a></div>
+        <a
+            class="ui basic mini button"
+            href="?{% get_query_string_with_page_number filter_data=filter_data page_number=page_obj.next_page_number %}">
+            next
+        </a>
     {% endif %}
-
+</div>
 {% endif %}

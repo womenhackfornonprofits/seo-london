@@ -124,3 +124,21 @@
         background: white;
     }
 }
+
+.job-list__pagination__select-input__label-container {
+    .ui.basic.button {
+        text-transform: none!important;
+        padding-top: 10px!important;
+        padding-bottom: 10px!important;
+        padding-left: 10px!important;
+        padding-right: 10px!important;
+    }
+    .ui.basic.disabled.button.job-list__pagination__currentpage{
+        color: rgba(0,0,0,1)!important;
+        font-weight: 700!important;
+        opacity: 0.8!important;
+        box-shadow: 0 0 0 1px rgba(34,36,38,.15) inset!important;
+
+    }
+
+}
