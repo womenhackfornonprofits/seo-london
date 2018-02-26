@@ -101,8 +101,8 @@ class JobBaseFilter(django_filters.FilterSet):
 
     def filter_salary(self, queryset, name, value):
         return queryset.filter(
-            models.Q(max_salary__gt=value) |
-            models.Q(min_salary__gt=value)
+            models.Q(max_salary__gte=value) |
+            models.Q(min_salary__gte=value)
         )
 
 
