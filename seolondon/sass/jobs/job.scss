@@ -1,4 +1,14 @@
 
+.job-list__filter__button{
+    display: none;
+    &.ui.basic.button {
+        color: $red!important;
+        box-shadow: 0 0 0 1px $red inset
+    }
+    &.ui{
+        margin-bottom: 25px;
+    }
+}
 
 .job-list__filter__textbox-group {
     > input[type=text] {
