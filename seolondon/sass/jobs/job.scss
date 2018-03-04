@@ -3,7 +3,9 @@
     display: none;
     &.ui.basic.button {
         color: $red!important;
-        box-shadow: 0 0 0 1px $red inset
+        padding-top: 20px!important;
+        padding-bottom: 20px!important;
+        box-shadow: 0 0 0 1px $red inset;
     }
     &.ui{
         margin-bottom: 25px;
