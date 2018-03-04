@@ -1,0 +1,47 @@
+{% comment %}
+
+parameter
+- form_filter
+- active_accordian
+{% endcomment %}
+<form id="job-list__filter__form">
+    {% for field in form_filter.form %}
+        {% if field.name == "q" or field.name == "loc" %}
+            <div class="job-list__filter__textbox-group">
+                {{ field }}
+                <label class="job-list__filter__textbox-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <button class="ui mini red button" type="submit">Submit</button>
+    {% for field in form_filter.form %}
+        {% if field.name != "q" and field.name != "loc" %}
+            <div class="job-list__filter__select-input__group">
+                <div class="ui fluid accordion job-list__accordion">
+                    <div class="job-list__filter__select-input__title title">
+                        <i class="dropdown icon float right"></i>
+                        <span>{{ field.label }}</span>
+                    </div>
+                    <div class="job-list__filter__select-input__content content" data-job-filter-name="{{ field.name }}">
+                        <ul>
+                            {% for checkbox in field %}
+                                <li>
+                                    <label class="job-list__filter__select-input__label-container">
+                                        <span class="job-list__filter__select-input__label-text">
+                                            {{ checkbox.choice_label }}
+                                        </span>
+                                        {{ checkbox.tag }} <span class="job-list__filter__select-input__mark"/>
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <noscript>
+        <button class="ui mini red button" type="submit">Submit</button>
+    </noscript>
+</form>

@@ -55,6 +55,9 @@ class JobAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
     list_display = (
         'job_title', 'company_name', 'is_public', 'date_publish',
     )
+    search_fields = (
+        'job_title', 'company_name', 'location', 'summary', 'job_detail'
+    )
 
     fieldsets = (
         (None, {
@@ -62,6 +65,8 @@ class JobAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
                 ('job_title', 'is_public'),
                 ('company_name', 'location'),
                 ('min_salary', 'max_salary'),
+                ('seniority', 'application_route'),
+                'industry',
                 'summary',
             )
         }),

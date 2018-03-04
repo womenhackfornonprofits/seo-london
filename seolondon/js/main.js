@@ -4,7 +4,7 @@ $(document).ready(function ($) {
     animation: 'horizontal'
   });
 
-  $('.ui.accordion')
+  $('.ui.accordion.default-accordion')
     .accordion({
       selector: {
         trigger: '.title'
@@ -127,6 +127,126 @@ if ($donateEl.length) {
       $("#scroll-to-top").removeClass('visible');
     }
   });
+
+  /****************************************
+   * START job list
+   ****************************************/
+
+  $(
+    '.job-list__filter__select-input__label-container > input'
+  ).on('change', function(){
+    $('#job-list__filter__form').submit();
+  });
+
+  var saveJobListAccordianState = function (elem, value) {
+    try {
+      if (elem && elem.dataset.jobFilterName) {
+        sessionStorage.setItem('jobfilter_' + elem.dataset.jobFilterName, value);
+      }
+    } catch (err) {
+      null; // TODO: this line is added to bypass linter
+    }
+  }
+
+  var loadJobListAccordianState = function (elem) {
+    try {
+      if (elem && elem.dataset.jobFilterName) {
+        return sessionStorage.getItem('jobfilter_' + elem.dataset.jobFilterName);
+      }
+    } catch (err) {
+      return null;
+    }
+  }
+
+  $('.ui.accordion.job-list__accordion')
+  .accordion({
+    onOpen: function() {
+      saveJobListAccordianState(this, 'true');
+    },
+    onClose: function() {
+      saveJobListAccordianState(this, 'false');
+    },
+    selector: {
+      trigger: '.title'
+    }
+  });
+  $(
+    '.job-list__filter__select-input__label-container'
+  ).on('change', function(){
+    var mediaQueryList = window.matchMedia("only screen and (min-width: 992px)");
+    if (mediaQueryList.matches) {
+      $('#job-list__filter__form').submit();
+    }
+  });
+
+  var elems = $('.job-list__filter__outer');
+  if (elems.length > 0) {
+    elems.each(function(idx, elem){
+      var $elem = $(elem);
+      var button_target = $elem.find('.job-list__filter__button');
+      var form_wrapper = $elem.find('.job-list__filter__form_wrapper');
+      button_target.on('click', function(){
+        form_wrapper.toggle();
+        button_target.text(
+          form_wrapper.css('display') == 'none' ? 'Show Filter' : 'Hide Filter'
+        );
+      });
+
+    });
+
+    var jobListFilterUpdateActiveStatus = function (mql){
+      elems.each(function(idx, elem){
+        var $elem = $(elem);
+
+        var button_target = $elem.find('.job-list__filter__button');
+        var form_wrapper = $elem.find('.job-list__filter__form_wrapper');
+        if (mql.matches) {
+          button_target.hide();
+          form_wrapper.show();
+        }
+        else {
+          button_target.show();
+          form_wrapper.hide();
+        }
+
+        var accordions = $elem.find(
+          '.job-list__accordion'
+        );
+        accordions.each(function(idx, accordianElem){
+          var targets = $(accordianElem).find(
+            '.job-list__filter__select-input__title,'+
+            '.job-list__filter__select-input__content'
+          );
+          var contents = $(accordianElem).find(
+            '.job-list__filter__select-input__content'
+          );
+          var state = loadJobListAccordianState(
+            contents.length > 0 && contents[0]
+          )
+          if (state==='true') {
+            targets.addClass('active');
+          }
+          else if (state==='false'){
+            targets.removeClass('active');
+          }
+          else if (mql.matches) {
+            targets.addClass('active');
+          }
+          else {
+            targets.removeClass('active');
+          }
+        })
+      })
+    }
+    var mediaQueryList = window.matchMedia("only screen and (min-width: 992px)");
+    mediaQueryList.onchange = jobListFilterUpdateActiveStatus;
+    jobListFilterUpdateActiveStatus(mediaQueryList);
+  }
+
+  /****************************************
+   * END job list
+   ****************************************/
+
 });
 
 

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from itertools import chain
 from django import template
+from django.http import QueryDict
 
 register = template.Library()
 
@@ -56,3 +57,18 @@ def get_pagination_numbers(page_obj):
         page_obj.paginator.num_pages,
         page_obj.number
     )
+
+
+@register.simple_tag
+def get_query_string_with_page_number(filter_data, page_number):
+
+    qd = QueryDict().copy()
+    for k, v in filter_data.items():
+        if not v:
+            continue
+        if isinstance(v, list):
+            qd.setlist(k, v)
+        else:
+            qd.update({k, v})
+    qd.update({'page': page_number})
+    return qd.urlencode()

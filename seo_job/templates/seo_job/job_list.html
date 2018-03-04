@@ -9,9 +9,19 @@
 
 
 {% block content %}
-   
+
     <div class="ui section">
+
         <div class="ui centered relaxed grid container">
+            <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
+                <div class="job-list__filter__outer">
+                    <button class="ui mini fluid basic button job-list__filter__button">Show Filter</button>
+                    <div class="job-list__filter__form_wrapper">
+                        {% include 'seo_job/_include/_list_filter.html' with form_filter=form_filter only %}
+                    </div>
+                </div>
+            </div>
+
             {# Main Job List #}
             <div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
                 <h1 class="caps-title red">
@@ -21,14 +31,12 @@
                 <div class="ui section">
                     {% include 'seo_job/_include/_list_item_list.html' with page_obj=page_obj only %}
                     <div class="ui divider"></div>
-                    <div>
-                        {% include "seo_job/_include/pagination.html" with page_obj=page_obj only %}
-                    </div>
+                    {% include "seo_job/_include/pagination.html" with page_obj=page_obj filter_data=form_filter.data only %}
                 </div>
             </div>
         </div>
     </div>
-    
+
 {% endblock content %}
 
 
