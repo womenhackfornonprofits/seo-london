@@ -1,6 +1,5 @@
 
 .job-list__filter__button{
-    display: none;
     &.ui.basic.button {
         color: $red!important;
         padding-top: 20px!important;
@@ -9,6 +8,9 @@
     }
     &.ui{
         margin-bottom: 25px;
+    }
+    &.ui.fluid.button{
+        display: none;
     }
 }
 
