@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "python3 manage.py runserver"
+    "server": "python3 manage.py runserver",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -34,7 +36,7 @@
     "gulp-help": "^1.6.1",
     "gulp-if": "^2.0.1",
     "gulp-jshint": "^2.0.1",
-    "gulp-less": "^3.1.0",
+    "gulp-less": "^4.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-notify": "^2.2.0",
@@ -51,9 +53,11 @@
     "gulp-watch": "^4.3.8",
     "jquery": "^3.1.0",
     "run-sequence": "^1.2.2",
-    "semantic-ui": "^2.2.2"
+    "semantic-ui": "^2.2.2",
+    "snyk": "^1.83.0"
   },
   "devDependencies": {
     "gulp-touch": "^1.0.1"
-  }
+  },
+  "snyk": true
 }
