@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "python3 manage.py runserver"
+    "server": "python3 manage.py runserver",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -51,9 +53,11 @@
     "gulp-watch": "^4.3.8",
     "jquery": "^3.1.0",
     "run-sequence": "^1.2.2",
-    "semantic-ui": "^2.2.2"
+    "semantic-ui": "^2.2.2",
+    "snyk": "^1.89.0"
   },
   "devDependencies": {
     "gulp-touch": "^1.0.1"
-  }
+  },
+  "snyk": true
 }
