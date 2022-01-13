@@ -45,7 +45,7 @@ html5lib==0.9999999
 idna==2.6
 jmespath==0.9.3
 olefile==0.44
-pillow==4.3.0
+pillow==9.0.0
 psycopg2==2.7.3.2
 python-dateutil==2.6.1
 pytz==2017.3
