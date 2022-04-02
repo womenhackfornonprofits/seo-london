@@ -42,7 +42,7 @@
     "gulp-print": "^2.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
-    "gulp-rtlcss": "^1.0.0",
+    "gulp-rtlcss": "^2.0.0",
     "gulp-sass": "^2.3.1",
     "gulp-sftp": "^0.1.5",
     "gulp-sourcemaps": "^1.6.0",
