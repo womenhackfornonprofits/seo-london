@@ -5,12 +5,12 @@ botocore==1.7.36
 certifi==2017.7.27.1
 chardet==3.0.4
 cmsplugin-filer==1.1.3
-django==1.8.18
+django==3.2.15
 django-appconf==1.0.2
 django-ckeditor==5.3.1
 django-ckeditor-filebrowser-filer==0.2.3
 django-classy-tags==0.8.0
-django-cms==3.4.5
+django-cms==3.4.7
 djangocms-admin-style==1.2.7
 djangocms-attributes-field==0.3.0
 djangocms-column==1.7.0
@@ -33,7 +33,7 @@ django-polymorphic==1.0.2
 django-reversion==2.0.10
 django-sekizai==0.10.0
 django-select2==5.11.1
-django-storages==1.6.5
+django-storages==1.7
 django-test-without-migrations==0.6
 django-treebeard==4.1.2
 dj-database-url==0.4.2
