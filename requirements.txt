@@ -23,7 +23,7 @@ djangocms-text-ckeditor==3.5.1
 django-constance==2.0.0
 django-environ==0.4.4
 django-extensions==1.9.6
-django-filer==1.2.8
+django-filer==3.0.0rc1
 django-filter==1.1.0
 django-formtools==2.1
 django-js-asset==0.1.1
