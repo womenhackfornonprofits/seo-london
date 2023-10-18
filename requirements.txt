@@ -54,5 +54,5 @@ s3transfer==0.1.11
 six==1.11.0
 tzlocal==1.4
 unidecode==0.4.21
-urllib3==1.22
+urllib3==1.26.18
 whitenoise==3.3.1
