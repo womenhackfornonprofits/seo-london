@@ -32,7 +32,7 @@ django-picklefield==1.0.0
 django-polymorphic==1.0.2
 django-reversion==2.0.10
 django-sekizai==0.10.0
-django-select2==5.11.1
+django-select2==8.4.1
 django-storages==1.6.5
 django-test-without-migrations==0.6
 django-treebeard==4.1.2
