@@ -43,7 +43,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-rtlcss": "^1.0.0",
-    "gulp-sass": "^2.3.1",
+    "gulp-sass": "^5.0.0",
     "gulp-sftp": "^0.1.5",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
